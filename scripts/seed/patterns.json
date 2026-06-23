@@ -3054,5 +3054,64 @@
       "yin-2024",
       "deceptive-design-trick-wording"
     ]
+  },
+  {
+    "code": "S11",
+    "slug": "romantic-intimate-mechanics",
+    "title": "Romantic / intimate mechanics",
+    "purpose": "both",
+    "category": "Social & parasocial",
+    "family": "social",
+    "severity": "Medium",
+    "platforms": [
+      "Mobile / F2P",
+      "PC / console",
+      "Live-service"
+    ],
+    "evidenceLevel": "Emerging",
+    "evidenceNote": "Early conceptual analysis argues that intentionally crafted romantic mechanics can compromise player wellbeing and heighten susceptibility to manipulative, exploitative, and deceptive design (Zhang & Seaborn, 2025).",
+    "harmVectors": [
+      "emotional",
+      "financial",
+      "autonomy",
+      "social-relational"
+    ],
+    "modes": [
+      "manipulative",
+      "exploitative"
+    ],
+    "tags": [
+      "parasocial",
+      "romance",
+      "emotional",
+      "monetization",
+      "relationships",
+      "serves-gameplay",
+      "serves-business",
+      "emotional-pressure",
+      "social-pressure",
+      "vulnerability-exploitation",
+      "consent-undermined",
+      "developers"
+    ],
+    "aliases": [
+      "romance mechanics",
+      "dating-sim monetisation",
+      "otome gacha",
+      "AI companion intimacy",
+      "synthetic intimacy"
+    ],
+    "summary": "A romantic or affectionate bond — with a character or another player — is engineered, then its progression is routed through spending or compulsion loops.",
+    "howItWorks": "The design invites the player into a romantic or intimate relationship — usually with a game character, sometimes with other players — and then routes the bond's progression through paid or engineered actions. Affection meters, date events, confession scenes, or a character's continued 'interest' advance with premium currency, gacha pulls, energy timers, or daily check-ins, so the warmth of the relationship and the spend or retention loop become the same loop.",
+    "whyHarmful": "It recruits one of the strongest human motivators — the wish for connection and reciprocated affection — to drive spending and continued engagement, and it lands hardest on lonely or emotionally vulnerable players. Because the relationship is authored to feel mutual, players can be steered toward choices they would not otherwise make, blurring genuine emotional experience with manufactured intimacy and the monetisation built on top of it. Romantic mechanics can be a legitimate, valued part of play; they become a deceptive pattern when the affection is instrumentalised to extract money, data, or time.",
+    "examples": [
+      "Otome / dating-sim routes where a character's affection or a confession scene is gated behind premium choices or currency",
+      "Gacha banners built around romanceable characters, pairing variable-ratio pulls with parasocial attachment",
+      "AI-companion apps that escalate intimacy, then paywall affection, memory, or 'exclusivity'"
+    ],
+    "references": [
+      "zhang-seaborn-2025"
+    ],
+    "related": []
   }
 ]
