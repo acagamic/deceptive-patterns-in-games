@@ -9,23 +9,23 @@ const max = tags[0]?.count ?? 1;
 
 <Base
   title="Topics"
-  description="Recurring concepts across the deceptive-patterns library, as a tag cloud."
+  description="Recurring concepts across the exploitative-patterns library, as a tag cloud."
 >
   <section class="mx-auto max-w-4xl px-4 py-10">
-    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">Topics</h1>
-    <p class="mt-2 max-w-2xl text-muted">
+    <h1 class="font-sans text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">Topics</h1>
+    <p class="mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-muted">
       Recurring concepts that cut across mechanisms and harms. Larger labels
       appear in more patterns.
     </p>
-    <div class="mt-6 flex flex-wrap items-center gap-2.5">
+    <div class="mt-8 flex flex-wrap items-center gap-2.5">
       {
         tags.map(({ tag, count }) => (
           <a
             href={`/tags/${tag}`}
-            class="rounded-full border border-border bg-paper px-3 py-1 text-ink transition hover:border-accent/50 hover:text-accent"
-            style={`font-size:${(0.82 + (count / max) * 0.55).toFixed(2)}rem`}
+            class="rounded-full border border-border bg-paper px-3.5 py-1.5 text-ink/90 font-medium tracking-tight transition-all duration-150 hover:bg-surface-2 hover:text-ink btn-press-active"
+            style={`font-size:${(0.82 + (count / max) * 0.45).toFixed(2)}rem`}
           >
-            {tagLabel(tag)} <span class="text-muted">· {count}</span>
+            {tagLabel(tag)} <span class="text-xs text-muted/80 ml-1 font-semibold">{count}</span>
           </a>
         ))
       }

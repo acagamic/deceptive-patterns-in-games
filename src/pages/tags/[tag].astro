@@ -33,13 +33,13 @@ const maps = await labelMaps();
 >
   <section class="mx-auto max-w-4xl px-4 py-10" data-pagefind-body>
     <nav class="mb-4 text-xs text-muted">
-      <a href="/tags" class="hover:text-accent">Topics</a>
+      <a href="/tags" class="hover:text-ink transition-colors duration-150 font-medium">Topics</a>
       <span class="px-1">/</span><span>{tagLabel(tag)}</span>
     </nav>
-    <h1 class="font-serif text-3xl font-bold capitalize text-ink sm:text-4xl">
+    <h1 class="font-sans text-3xl font-extrabold tracking-tight capitalize text-ink sm:text-4xl">
       {tagLabel(tag)}
     </h1>
-    <p class="mt-2 text-muted">
+    <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
       {members.length} pattern{members.length === 1 ? "" : "s"} tagged with this topic.
     </p>
     <div class="mt-6 grid gap-3 sm:grid-cols-2">
