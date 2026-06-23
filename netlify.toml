@@ -8,6 +8,15 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Redirect the previous primary domain to the new one (301). `force = true` is
+# required because the site also resolves on the old host, so the path would
+# otherwise match and the redirect would be skipped.
+[[redirects]]
+  from = "https://deceptivepatterns.lennartnacke.com/*"
+  to = "https://exploitativepatterns.lennartnacke.com/:splat"
+  status = 301
+  force = true
+
 # Pagefind ships small wasm/json assets; make sure they're served correctly.
 [[headers]]
   for = "/pagefind/*"

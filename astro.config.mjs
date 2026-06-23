@@ -6,7 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // Update `site` to the production URL at deploy time (Netlify / custom domain).
 export default defineConfig({
-  site: process.env.SITE_URL || "https://deceptivepatterns.lennartnacke.com",
+  site: process.env.SITE_URL || "https://exploitativepatterns.lennartnacke.com",
   integrations: [mdx(), sitemap()],
   vite: { plugins: [tailwindcss()] },
 });
