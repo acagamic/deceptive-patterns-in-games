@@ -1,5 +1,5 @@
 {
-  "name": "deceptive-patterns-in-games",
+  "name": "exploitative-patterns-in-games",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "A research primer and reference library for deceptive, exploitative, and harmful design patterns in games.",
+  "description": "A research primer and reference library for exploitative, deceptive, and harmful design patterns in games.",
   "devDependencies": {
     "pagefind": "^1.5.2"
   },

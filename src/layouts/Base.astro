@@ -11,10 +11,10 @@ interface Props {
 }
 const {
   title,
-  description = "A research primer and reference library for deceptive, exploitative, and harmful design patterns in games — grounded in resolvable scholarship and primary sources.",
+  description = "A research primer and reference library for exploitative, deceptive, and harmful design patterns in games — grounded in resolvable scholarship and primary sources.",
 } = Astro.props;
 
-const siteName = "Deceptive Patterns in Games";
+const siteName = "Exploitative Patterns in Games";
 const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---

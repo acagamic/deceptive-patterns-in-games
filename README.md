@@ -1,13 +1,13 @@
-# Deceptive Patterns in Games
+# Exploitative Patterns in Games
 
-A research primer and reference library for **deceptive, exploitative, and harmful design in games** — what the patterns are, how they work, and the conditions under which they become harmful. Built as a clear, source-anchored orientation for students, journalists, developers, parents, and policymakers.
+A research primer and reference library for **exploitative, deceptive, and harmful design in games** — what the patterns are, how they work, and the conditions under which they become harmful. Built as a clear, source-anchored orientation for students, journalists, developers, parents, and policymakers.
 
 Prepared around the **2026 Dagstuhl Seminar on Harms**.
 
 ## Why it exists
 
+- **Exploitation over deception.** While "deceptive design" (or "deceptive patterns") is the common regulatory term for dark patterns, deception strictly requires inducing or exploiting a *false belief* about a material fact (e.g., hiding odds). In contrast, many of the gravest harms in games (such as loot boxes, aggressive monetization, or whale-targeting) are fully transparent, yet take *unfair advantage of a vulnerability* (such as cognitive biases, age, or impulsivity). This is the definition of exploitation. By focusing on **Exploitative Patterns**, this primer addresses design choices that harm players regardless of whether they are deceived.
 - **Deception ≠ harm.** Games legitimately deceive (bluffs, fog of war, plot twists). Entries are classified by the *conditions* under which they become harmful — see the [harm rubric](src/pages/rubric.astro) — not by the label.
-- **Exploitation is foregrounded.** The gravest harms (loot boxes, whale-targeting) are often fully transparent, so the model centres exploitation alongside deception.
 - **Evidence on the surface.** Every pattern carries an evidence level and resolvable sources, with DOI-linked scholarship where available and primary web sources where they document the mechanism — more transparent than a votes-only directory.
 
 ## Stack
