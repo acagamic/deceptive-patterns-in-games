@@ -2,7 +2,15 @@
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Badge from "../../components/Badge.astro";
-import { formatRef, refYear, refAuthors, CATEGORY_LABEL, type CSL } from "../../lib/refs";
+import {
+  formatRef,
+  refYear,
+  refAuthors,
+  formatAPA,
+  formatACM,
+  CATEGORY_LABEL,
+  type CSL,
+} from "../../lib/refs";
 import { allPatterns, sevTone } from "../../lib/patterns";
 
 export async function getStaticPaths() {
@@ -33,9 +41,12 @@ const bibtex = `@${bibType}{${ref.id},
   title     = {${ref.title}},
   ${ref["container-title"] ? `${venueField} = {${ref["container-title"]}},\n  ` : ""}year      = {${refYear(ref)}},${ref.publisher ? `\n  publisher = {${ref.publisher}},` : ""}${ref.DOI ? `\n  doi       = {${ref.DOI}},` : ""}${ref.URL ? `\n  url       = {${ref.URL}}` : ""}
 }`;
-const csl = JSON.stringify(ref, null, 2);
-const preCls =
-  "mt-2 overflow-x-auto rounded-lg border border-border bg-surface/60 p-3 text-xs text-ink";
+
+const formats = [
+  { id: "bibtex", label: "BibTeX", text: bibtex, mono: true },
+  { id: "apa", label: "APA", text: formatAPA(ref), mono: false },
+  { id: "acm", label: "ACM SIGCHI", text: formatACM(ref), mono: false },
+];
 ---
 
 <Base title={ref.title} description={formatRef(ref)}>
@@ -119,11 +130,98 @@ const preCls =
     }
 
     <section class="mt-10">
-      <h2 class="font-serif text-xl font-semibold text-ink">Export</h2>
-      <h3 class="mt-3 text-sm font-semibold text-muted">BibTeX</h3>
-      <pre class={preCls}>{bibtex}</pre>
-      <h3 class="mt-4 text-sm font-semibold text-muted">CSL JSON</h3>
-      <pre class={preCls}>{csl}</pre>
+      <h2 class="font-serif text-xl font-semibold text-ink">Cite this</h2>
+      <div
+        class="citebox mt-3 overflow-hidden rounded-lg border border-border bg-surface/40"
+        data-citebox
+      >
+        <div
+          class="flex items-center justify-between gap-2 border-b border-border px-2 py-1.5"
+        >
+          <div class="flex flex-wrap gap-1" role="tablist" aria-label="Citation format">
+            {
+              formats.map((f, i) => (
+                <button
+                  type="button"
+                  class="citetab rounded-md px-2.5 py-1 text-xs font-medium text-muted transition-colors hover:text-ink aria-selected:bg-paper aria-selected:text-ink"
+                  role="tab"
+                  aria-selected={i === 0 ? "true" : "false"}
+                  data-tab={f.id}
+                >
+                  {f.label}
+                </button>
+              ))
+            }
+          </div>
+          <button
+            type="button"
+            class="citecopy inline-flex shrink-0 items-center gap-1.5 rounded-md border border-border px-2 py-1 text-xs text-muted transition-colors hover:text-ink"
+            aria-label="Copy citation to clipboard"
+          >
+            <svg
+              class="h-3.5 w-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+              <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+            </svg>
+            <span class="citecopy-label">Copy</span>
+          </button>
+        </div>
+        {
+          formats.map((f, i) =>
+            f.mono ? (
+              <pre
+                class="citepanel m-0 overflow-x-auto px-3 py-3 font-mono text-xs leading-relaxed text-ink"
+                data-panel={f.id}
+                hidden={i !== 0}
+              >{f.text}</pre>
+            ) : (
+              <p
+                class="citepanel m-0 px-3 py-3 text-xs leading-relaxed text-ink"
+                data-panel={f.id}
+                hidden={i !== 0}
+              >{f.text}</p>
+            ),
+          )
+        }
+      </div>
     </section>
   </article>
+
+  <script>
+    for (const box of document.querySelectorAll<HTMLElement>("[data-citebox]")) {
+      const tabs = box.querySelectorAll<HTMLButtonElement>(".citetab");
+      const panels = box.querySelectorAll<HTMLElement>(".citepanel");
+      const copyBtn = box.querySelector<HTMLButtonElement>(".citecopy");
+      const label = box.querySelector<HTMLElement>(".citecopy-label");
+      const show = (id: string) => {
+        tabs.forEach((t) => t.setAttribute("aria-selected", String(t.dataset.tab === id)));
+        panels.forEach((p) => (p.hidden = p.dataset.panel !== id));
+      };
+      tabs.forEach((t) =>
+        t.addEventListener("click", () => t.dataset.tab && show(t.dataset.tab)),
+      );
+      copyBtn?.addEventListener("click", async () => {
+        const active = box.querySelector<HTMLElement>(".citepanel:not([hidden])");
+        const text = (active?.textContent ?? "").trim();
+        if (!text || !label) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          label.textContent = "Copied";
+        } catch {
+          label.textContent = "Copy failed";
+        }
+        setTimeout(() => {
+          label.textContent = "Copy";
+        }, 1500);
+      });
+    }
+  </script>
 </Base>

@@ -11,6 +11,10 @@ export type CSL = {
   DOI?: string;
   URL?: string;
   category?: string;
+  volume?: string | number;
+  issue?: string | number;
+  page?: string | number;
+  note?: string;
 };
 
 let cache: Map<string, CSL> | null = null;
@@ -56,6 +60,93 @@ export function formatRef(d: CSL): string {
   if (d["container-title"]) parts.push(`${d["container-title"]}.`);
   if (d.publisher) parts.push(`${d.publisher}.`);
   return parts.join(" ");
+}
+
+/** First-name initials, e.g. "Gloria Xiaodan" -> "G. X." */
+function initials(given?: string): string {
+  return (given ?? "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((g) => (g[0] ? g[0].toUpperCase() + "." : ""))
+    .join(" ");
+}
+
+/** APA-style author list, e.g. "Zhang, G. X., & Seaborn, K." */
+function apaAuthors(d: CSL): string {
+  const names = (d.author ?? [])
+    .map((a) =>
+      a.literal ? a.literal : [a.family, initials(a.given)].filter(Boolean).join(", "),
+    )
+    .filter(Boolean);
+  if (names.length === 0) return "";
+  if (names.length === 1) return names[0];
+  return names.slice(0, -1).join(", ") + ", & " + names[names.length - 1];
+}
+
+/** APA 7th-style reference string (plain text; the reader can italicise). */
+export function formatAPA(d: CSL): string {
+  const out: string[] = [];
+  const a = apaAuthors(d);
+  out.push(a ? `${a} (${refYear(d)}).` : `(${refYear(d)}).`);
+  out.push(`${d.title}.`);
+  const ct = d["container-title"];
+  if (ct && d.type === "article-journal") {
+    let vol = d.volume ? `${d.volume}` : "";
+    if (d.issue) vol += `(${d.issue})`;
+    let s = ct;
+    if (vol) s += `, ${vol}`;
+    if (d.page) s += `, ${d.page}`;
+    out.push(`${s}.`);
+  } else if (ct) {
+    let s = `In ${ct}`;
+    if (d.page) s += ` (pp. ${d.page})`;
+    out.push(`${s}.`);
+    if (d.publisher) out.push(`${d.publisher}.`);
+  } else if (d.publisher) {
+    out.push(`${d.publisher}.`);
+  }
+  if (d.DOI) out.push(`https://doi.org/${d.DOI}`);
+  else if (d.URL) out.push(d.URL);
+  return out.join(" ");
+}
+
+/** ACM (SIGCHI) author list, full names: "A B and C D" / "A, B, and C". */
+function acmAuthors(d: CSL): string {
+  const names = (d.author ?? [])
+    .map((a) => (a.literal ? a.literal : [a.given, a.family].filter(Boolean).join(" ")))
+    .filter(Boolean);
+  if (names.length === 0) return "";
+  if (names.length === 1) return names[0];
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return names.slice(0, -1).join(", ") + ", and " + names[names.length - 1];
+}
+
+/** ACM Reference Format (SIGCHI) string. */
+export function formatACM(d: CSL): string {
+  const out: string[] = [];
+  const a = acmAuthors(d);
+  if (a) out.push(`${a}.`);
+  out.push(`${refYear(d)}.`);
+  out.push(`${d.title}.`);
+  const ct = d["container-title"];
+  if (ct && d.type === "article-journal") {
+    let s = ct;
+    if (d.volume) s += ` ${d.volume}`;
+    if (d.issue) s += `, ${d.issue}`;
+    s += ` (${refYear(d)})`;
+    if (d.page) s += `, ${d.page}`;
+    out.push(`${s}.`);
+  } else if (ct) {
+    let s = `In ${ct}`;
+    if (d.page) s += `, ${d.page}`;
+    out.push(`${s}.`);
+    if (d.publisher) out.push(`${d.publisher}.`);
+  } else if (d.publisher) {
+    out.push(`${d.publisher}.`);
+  }
+  if (d.DOI) out.push(`https://doi.org/${d.DOI}`);
+  else if (d.URL) out.push(d.URL);
+  return out.join(" ");
 }
 
 export const CATEGORY_LABEL: Record<string, string> = {
