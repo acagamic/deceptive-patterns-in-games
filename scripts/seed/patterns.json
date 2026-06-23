@@ -29,7 +29,17 @@
       "monetization",
       "whales",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "gacha",
@@ -79,7 +89,14 @@
       "transparency",
       "randomised-rewards",
       "disclosure",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "undisclosed probabilities",
@@ -90,7 +107,7 @@
     "whyHarmful": "Without odds, players cannot form an accurate belief about what their money buys \u2014 a textbook deceptive failure of material transparency. Mandatory odds disclosure is among the most widely proposed regulatory fixes.",
     "examples": [
       "A loot box that lists items but not their drop rates",
-      "Odds shown only in an external web page, not in the purchase flow"
+      "Loot-box odds shown only on an external web page, not in the in-game purchase flow"
     ],
     "references": [
       "xiao-2022",
@@ -122,7 +139,15 @@
       "price-obfuscation",
       "monetization",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "currency laundering",
@@ -165,7 +190,11 @@
       "anchoring",
       "decoy",
       "monetization",
-      "developers"
+      "developers",
+      "serves-business",
+      "low-transparency",
+      "monetary-pressure",
+      "cognitive-pressure"
     ],
     "aliases": [
       "decoy pricing",
@@ -176,7 +205,7 @@
     "whyHarmful": "The arrangement exploits anchoring and the decoy effect to shift spending upward without adding real value, privileging the provider's interest over the player's.",
     "examples": [
       "Starter / Value / Mega coin packs where 'Value' is the obvious pick",
-      "Limited 'bundle' deals that bundle in unwanted items"
+      "Limited in-game bundle deals that bundle in unwanted items"
     ],
     "references": [
       "petrovskaya-zendle-2022",
@@ -211,7 +240,14 @@
       "fairness",
       "monetization",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "social-pressure",
+      "monetary-pressure",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "P2W",
@@ -256,7 +292,17 @@
       "time-pressure",
       "monetization",
       "pay-to-skip",
-      "children-parents"
+      "children-parents",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "pay-to-progress",
@@ -267,7 +313,7 @@
     "whyHarmful": "It converts the player's time into a lever for extraction and shrinks the realistic free path, shading from manipulation into coercion when progression is effectively withheld until payment.",
     "examples": [
       "Doubled XP or instant-build offers after a deliberately slow curve",
-      "Resource caps that make the free path impractical"
+      "Game resource caps that make the free progression path impractical"
     ],
     "references": [
       "king-delfabbro-2019",
@@ -300,7 +346,17 @@
       "scarcity",
       "urgency",
       "retention",
-      "children-parents"
+      "children-parents",
+      "serves-business",
+      "commercialized-to-children",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "disengagement-penalty",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "fading opportunities",
@@ -343,7 +399,13 @@
     "tags": [
       "friction",
       "monetization",
-      "quality-of-life"
+      "quality-of-life",
+      "serves-business",
+      "transparent-but-exploitative",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "monetary-pressure",
+      "access-pressure"
     ],
     "aliases": [
       "paywalled convenience",
@@ -354,7 +416,7 @@
     "whyHarmful": "It manufactures inconvenience to extract payment for relief, an asymmetric transfer of value that benefits the provider at the player's expense.",
     "examples": [
       "Paid inventory expansions in games with deliberately tiny default storage",
-      "Selling an 'auto-play' for a grindy loop"
+      "Selling in-game auto-play for a deliberately grindy loop"
     ],
     "references": [
       "petrovskaya-zendle-2022",
@@ -384,7 +446,14 @@
     "tags": [
       "bait-and-switch",
       "advertising",
-      "misrepresentation"
+      "misrepresentation",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "fake ads",
@@ -429,7 +498,15 @@
       "disguised-ads",
       "forced-action",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "monetary-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "unskippable ads",
@@ -440,7 +517,7 @@
     "whyHarmful": "It forces attention and, when disguised, deceives \u2014 disproportionately reaching children who cannot reliably distinguish ads from play.",
     "examples": [
       "Mandatory ad before each level retry",
-      "An 'ad' that mimics the game's own UI"
+      "An interstitial game ad that mimics the game's own UI"
     ],
     "references": [
       "radesky-2022",
@@ -476,7 +553,16 @@
       "children",
       "consent",
       "children-parents",
-      "developers"
+      "developers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "mis-tap purchases",
@@ -487,7 +573,7 @@
     "whyHarmful": "It manufactures purchases the player did not intend \u2014 a consent failure that has drawn major regulatory action, and is acute for children.",
     "examples": [
       "A 'claim reward' button that actually buys currency",
-      "One-tap purchases with no meaningful confirmation"
+      "One-tap in-game purchases with no meaningful confirmation"
     ],
     "references": [
       "king-2023",
@@ -522,7 +608,18 @@
       "obstruction",
       "retention",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "emotional-pressure",
+      "disengagement-penalty",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "season pass trap",
@@ -533,7 +630,7 @@
     "whyHarmful": "It withholds and penalises exit, the coercive core, converting fear of wasted investment into recurring spend and obligatory play.",
     "examples": [
       "A season pass whose unspent tiers vanish at reset",
-      "Subscriptions easy to start but buried to cancel"
+      "Game subscriptions that are easy to start but buried to cancel"
     ],
     "references": [
       "hadan-2024"
@@ -565,7 +662,13 @@
       "grind",
       "retention",
       "time",
-      "progression"
+      "progression",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "temporal-pressure",
+      "monetary-pressure",
+      "access-pressure"
     ],
     "aliases": [
       "grinding",
@@ -607,7 +710,17 @@
       "appointment-mechanics",
       "retention",
       "time-pressure",
-      "children-parents"
+      "children-parents",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "disengagement-penalty",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "energy systems",
@@ -619,7 +732,7 @@
     "howItWorks": "An energy/lives meter depletes and refills on a real-world clock, prompting players to return on the game's schedule or pay to continue.",
     "whyHarmful": "It colonises the player's real time and converts impatience into spend; appointment scheduling is especially hard on children who lack control over when they play.",
     "examples": [
-      "Five 'lives' that refill one per 30 minutes",
+      "Five in-game lives that refill one per 30 minutes",
       "Timed building/crafting that costs gems to finish now"
     ],
     "references": [
@@ -655,7 +768,18 @@
       "habit-formation",
       "retention",
       "children-parents",
-      "developers"
+      "developers",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "disengagement-penalty",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "login bonuses",
@@ -667,7 +791,7 @@
     "whyHarmful": "It manufactures anxiety about missing out and binds daily attention through loss aversion rather than genuine enjoyment.",
     "examples": [
       "A 30-day reward calendar that resets on a single miss",
-      "Streak counters with escalating bonuses"
+      "Daily login streak counters with escalating in-game bonuses"
     ],
     "references": [
       "lewis-2014",
@@ -698,7 +822,14 @@
       "attention-capture",
       "time",
       "transparency",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "temporal-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "time fog",
@@ -739,7 +870,10 @@
       "attention-capture",
       "infinite-content",
       "auto-advance",
-      "developers"
+      "developers",
+      "serves-gameplay",
+      "serves-business",
+      "cognitive-pressure"
     ],
     "aliases": [
       "endless loops",
@@ -786,7 +920,20 @@
       "guilt",
       "retention",
       "teammates",
-      "children-parents"
+      "children-parents",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "disengagement-penalty",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "guild pressure",
@@ -831,7 +978,15 @@
       "children",
       "characters",
       "emotional",
-      "children-parents"
+      "children-parents",
+      "serves-business",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "social-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "character nagging",
@@ -841,7 +996,7 @@
     "howItWorks": "A trusted mascot pleads, looks sad, or rewards the player for spending, leveraging the emotional bond \u2014 especially powerful with children.",
     "whyHarmful": "It exploits a developmental vulnerability: children attribute feelings and authority to characters and cannot easily resist their 'requests'.",
     "examples": [
-      "A sad mascot asking the child not to leave",
+      "A sad game mascot asking the child not to leave",
       "A character who 'gives a gift' that opens the store"
     ],
     "references": [
@@ -874,7 +1029,16 @@
       "invitation-spam",
       "virality",
       "referrals",
-      "children-parents"
+      "children-parents",
+      "serves-business",
+      "commercialized-to-children",
+      "consent-undermined",
+      "temporal-pressure",
+      "social-pressure",
+      "cognitive-pressure",
+      "data-pressure",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "referral spam",
@@ -885,7 +1049,7 @@
     "whyHarmful": "It instrumentalises relationships and can harvest contact data, transferring social capital and privacy to the provider.",
     "examples": [
       "'Invite 3 friends to unlock'",
-      "Daily gift-spam to a contact list"
+      "Daily in-game gift-spam to a contact list"
     ],
     "references": [
       "zhang-2025a",
@@ -917,7 +1081,16 @@
       "impersonation",
       "social",
       "persuasion",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "social-pressure",
+      "monetary-pressure",
+      "emotional-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "fake friend messages",
@@ -960,7 +1133,15 @@
       "status",
       "peer-comparison",
       "monetization",
-      "cosmetics"
+      "cosmetics",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "social-pressure",
+      "monetary-pressure",
+      "emotional-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "pay-for-prestige",
@@ -1003,7 +1184,14 @@
       "variable-ratio",
       "near-miss",
       "reinforcement",
-      "gambling-like"
+      "gambling-like",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "slot-machine reinforcement",
@@ -1014,7 +1202,7 @@
     "whyHarmful": "Variable-ratio schedules are the most persistent form of reinforcement, and near-miss framing fuels chasing \u2014 the engine behind randomised-reward harm.",
     "examples": [
       "A pull that lands just short of the rare item",
-      "Reels or spins that frequently show near-wins"
+      "Slot-like reward reels or spins that frequently show near-wins"
     ],
     "references": [
       "drummond-2018",
@@ -1045,7 +1233,13 @@
     "tags": [
       "sunk-cost",
       "entrapment",
-      "commitment"
+      "commitment",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "the trap",
@@ -1055,8 +1249,8 @@
     "howItWorks": "Progress, collections, or partial purchases are framed so quitting feels like wasting what is already invested.",
     "whyHarmful": "It exploits the sunk-cost fallacy to keep players committing more money and time against their own interest.",
     "examples": [
-      "'You're 80% to the prize \u2014 keep going'",
-      "Collections that feel wasteful to abandon"
+      "A quest or event banner saying 'You're 80% to the prize \u2014 keep going'",
+      "Character, skin, or creature collections that feel wasteful to abandon"
     ],
     "references": [
       "king-delfabbro-2018a"
@@ -1086,7 +1280,14 @@
       "illusion-of-control",
       "skill-framing",
       "gambling-like",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "fake skill",
@@ -1096,8 +1297,8 @@
     "howItWorks": "Stop buttons, 'pick a box', or timing flourishes imply agency over results that are actually random.",
     "whyHarmful": "It fosters a false belief that effort or skill changes the odds, encouraging continued play and spend on what is pure chance.",
     "examples": [
-      "A 'tap to stop' wheel whose result is predetermined",
-      "Choose-your-box reveals over fixed odds"
+      "A loot wheel where 'tap to stop' appears skill-based but the result is predetermined",
+      "Choose-your-loot-box game reveals over fixed odds"
     ],
     "references": [
       "king-delfabbro-2019"
@@ -1128,7 +1329,14 @@
       "reinforcement",
       "celebration",
       "juice",
-      "developers"
+      "developers",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "losses disguised as wins",
@@ -1139,7 +1347,7 @@
     "whyHarmful": "Sensory reinforcement strengthens the spend-reward loop and can disguise losses as wins, nudging continued play.",
     "examples": [
       "Big celebratory effects for a low-value pull",
-      "Fanfare on a 'win' that cost more than it returned"
+      "Game fanfare on a 'win' that cost more than it returned"
     ],
     "references": [
       "sousa-2023",
@@ -1170,7 +1378,12 @@
       "nagging",
       "upsell",
       "interruption",
-      "popups"
+      "popups",
+      "serves-business",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "monetary-pressure",
+      "access-pressure"
     ],
     "aliases": [
       "pop-up spam",
@@ -1212,7 +1425,14 @@
       "hidden-costs",
       "transparency",
       "pricing",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "drip pricing",
@@ -1223,7 +1443,7 @@
     "whyHarmful": "Withholding a material fact about price deceives the player and undermines informed consent.",
     "examples": [
       "A 'free' item that needs paid currency to use",
-      "Costs that surface only at the final step"
+      "Game shop costs that surface only at the final step"
     ],
     "references": [
       "mathur-2019",
@@ -1255,7 +1475,14 @@
       "confirmshaming",
       "guilt",
       "opt-out",
-      "developers"
+      "developers",
+      "serves-business",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "guilt opt-out",
@@ -1265,8 +1492,8 @@
     "howItWorks": "The decline button is phrased to make saying no feel foolish or shameful ('No thanks, I hate saving money').",
     "whyHarmful": "It manipulates through emotion rather than reasons, eroding autonomy at the point of choice.",
     "examples": [
-      "'No, I don't want to get stronger' to decline an offer",
-      "Guilt-worded unsubscribe prompts"
+      "A game offer decline button saying 'No, I don't want to get stronger'",
+      "Guilt-worded opt-out prompts in a game subscription flow"
     ],
     "references": [
       "gray-2018",
@@ -1298,7 +1525,13 @@
       "misdirection",
       "visual-hierarchy",
       "defaults",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "false hierarchy",
@@ -1308,8 +1541,8 @@
     "howItWorks": "Color, size, and placement make the spend or opt-in button dominant while the alternative is muted.",
     "whyHarmful": "It biases choices by exploiting attention rather than informing it, quietly redirecting decisions.",
     "examples": [
-      "A bright 'Buy' button beside a greyed-out 'No'",
-      "Pre-highlighted most-expensive option"
+      "A game shop modal with a bright 'Buy' button beside a greyed-out 'No'",
+      "A pre-highlighted most-expensive in-game currency pack"
     ],
     "references": [
       "king-2023",
@@ -1346,7 +1579,14 @@
       "obstruction",
       "exit",
       "policymakers",
-      "developers"
+      "developers",
+      "serves-business",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "disengagement-penalty",
+      "access-pressure"
     ],
     "aliases": [
       "sludge",
@@ -1357,8 +1597,8 @@
     "howItWorks": "Cancellation is buried, multi-step, or routed through obstacles, while signup is one tap.",
     "whyHarmful": "It penalises and withholds exit \u2014 the coercive core \u2014 trapping spend and time and overriding the player's choice to leave.",
     "examples": [
-      "Refund links hidden deep in settings",
-      "Cancellation that demands multiple confirmations and waits"
+      "Game refund links hidden deep in account or platform settings",
+      "Game subscription cancellation that demands multiple confirmations and waits"
     ],
     "references": [
       "newall-2025",
@@ -1393,7 +1633,14 @@
       "advertising",
       "trust",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "ads-as-gameplay",
@@ -1433,7 +1680,14 @@
       "value-obfuscation",
       "misrepresentation",
       "framing",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "fake discounts",
@@ -1443,8 +1697,8 @@
     "howItWorks": "Inflated 'original' prices, fake discounts, or vague yields make purchases look more valuable than they are.",
     "whyHarmful": "It induces a false belief about value, distorting the player's cost-benefit judgement at the point of sale.",
     "examples": [
-      "'80% off' against a price never charged",
-      "Bundles whose stated value double-counts items"
+      "A game shop '80% off' claim against a price never charged",
+      "In-game bundles whose stated value double-counts items"
     ],
     "references": [
       "bank-2023",
@@ -1478,7 +1732,17 @@
       "power-creep",
       "monetization",
       "competition",
-      "obsolescence"
+      "obsolescence",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "social-pressure",
+      "monetary-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "power inflation",
@@ -1526,7 +1790,17 @@
       "exclusivity",
       "fomo",
       "monetization",
-      "children-parents"
+      "children-parents",
+      "serves-business",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "emotional-pressure",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "timed exclusivity",
@@ -1537,7 +1811,7 @@
     "whyHarmful": "When early items affect gameplay it blurs into pay-to-win and undermines competitive fairness, and the \u201cit'll be free later\u201d framing normalises impulse spending driven by urgency rather than value.",
     "examples": [
       "Early weapon unlocks in live-service shooters",
-      "Battle-pass \u201cearly access\u201d tiers",
+      "Battle-pass early-access tiers in a live-service game",
       "Pre-release character bundles"
     ],
     "references": [
@@ -1574,7 +1848,16 @@
       "crowdfunding",
       "creator-economy",
       "tipping",
-      "monetization"
+      "monetization",
+      "serves-business",
+      "transparent-but-exploitative",
+      "consent-undermined",
+      "social-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "tipping",
@@ -1586,7 +1869,7 @@
     "examples": [
       "In-platform creator tipping and commissions on UGC platforms",
       "Crowdfunded ships or items for unreleased games",
-      "Paid creator-subscription perks"
+      "Paid in-game creator-subscription perks"
     ],
     "references": [
       "zhang-2025a",
@@ -1622,7 +1905,18 @@
       "save",
       "interruption",
       "retention",
-      "developers"
+      "developers",
+      "serves-gameplay",
+      "serves-business",
+      "commercialized-to-children",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "temporal-pressure",
+      "emotional-pressure",
+      "disengagement-penalty",
+      "access-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "no save point",
@@ -1635,7 +1929,7 @@
     "examples": [
       "Roblox experiences with no mid-session save",
       "Match or raid modes that punish quitting",
-      "Base-builders where you're raided offline unless you buy a shield"
+      "Base-builder games where you're raided offline unless you buy a shield"
     ],
     "references": [
       "radesky-2022",
@@ -1670,7 +1964,15 @@
       "live-service",
       "retention",
       "seasons",
-      "novelty"
+      "novelty",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "disengagement-penalty"
     ],
     "aliases": [
       "live-service treadmill",
@@ -1681,8 +1983,8 @@
     "whyHarmful": "The never-ending cadence removes natural stopping points, inflates long-run time spent, and feeds perpetual catch-up pressure that also sustains monetisation.",
     "examples": [
       "Seasonal storylines in live-service shooters",
-      "Roughly ten-week content refreshes",
-      "Expansion cadences that reset the meta"
+      "Roughly ten-week live-service content refreshes",
+      "Game expansion cadences that reset the meta"
     ],
     "references": [
       "lewis-2014",
@@ -1716,7 +2018,16 @@
       "reciprocity",
       "gifting",
       "obligation",
-      "social"
+      "social",
+      "serves-business",
+      "consent-undermined",
+      "temporal-pressure",
+      "social-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "gift obligation"
@@ -1725,7 +2036,7 @@
     "howItWorks": "The game or other players send unsolicited gifts or help, triggering the reciprocity norm so the recipient feels obliged to reciprocate with time, money, or invitations.",
     "whyHarmful": "It weaponises a deep social norm to extract behaviour the player wouldn't otherwise choose, and entangles real relationships in the monetisation loop.",
     "examples": [
-      "Free \u201cgifts\u201d that prompt a return purchase",
+      "Free in-game gifts that prompt a return purchase",
       "Guild help that obliges reciprocation",
       "Daily gifting chains between friends"
     ],
@@ -1760,7 +2071,13 @@
       "toxicity",
       "harassment",
       "anti-social",
-      "social"
+      "social",
+      "serves-business",
+      "transparent-but-exploitative",
+      "social-pressure",
+      "emotional-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "toxicity by design"
@@ -1770,8 +2087,8 @@
     "whyHarmful": "It externalises harm onto other players \u2014 especially vulnerable and younger ones \u2014 degrading wellbeing and community health, and can become a vector for broader social harms.",
     "examples": [
       "Reward systems that incentivise griefing",
-      "Unmoderated voice and chat tied to competitive pressure",
-      "Status earned by humiliating others"
+      "Unmoderated in-game voice and chat tied to competitive pressure",
+      "In-game status earned by humiliating other players"
     ],
     "references": [
       "zhang-2025a",
@@ -1807,7 +2124,16 @@
       "leaderboards",
       "ranking",
       "status",
-      "retention"
+      "retention",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "temporal-pressure",
+      "social-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "ranked pressure",
@@ -1819,7 +2145,7 @@
     "examples": [
       "Seasonal ranked resets with exclusive rewards",
       "Friend leaderboards on idle and mobile games",
-      "Buyable rank boosts"
+      "Buyable ranked-mode game boosts"
     ],
     "references": [
       "freeman-2022",
@@ -1853,7 +2179,16 @@
       "brand-collaboration",
       "licensed-ip",
       "fomo",
-      "cosmetics"
+      "cosmetics",
+      "serves-business",
+      "transparent-but-exploitative",
+      "consent-undermined",
+      "temporal-pressure",
+      "social-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "crossover fomo",
@@ -1904,7 +2239,18 @@
       "identity-labels",
       "peer-comparison",
       "algorithmic",
-      "consent"
+      "consent",
+      "serves-gameplay",
+      "serves-business",
+      "transparent-but-exploitative",
+      "consent-undermined",
+      "temporal-pressure",
+      "social-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "data-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "algorithmic social sorting",
@@ -1958,7 +2304,13 @@
       "badges",
       "completion",
       "motivation",
-      "developers"
+      "developers",
+      "serves-gameplay",
+      "transparent-but-exploitative",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "endowed progress effect",
@@ -1968,9 +2320,9 @@
     "howItWorks": "Progress bars start pre-filled, badges show \u201calmost there,\u201d and tracked partial completion exploits the endowed-progress and Zeigarnik effects to compel finishing.",
     "whyHarmful": "It manufactures a completion drive from an artificial gap, channelling time and money toward goals the player didn't independently set; paired with time limits it becomes urgent.",
     "examples": [
-      "Pre-stamped \u201cloyalty\u201d progress",
+      "Pre-stamped game loyalty progress",
       "Battle-pass tiers shown most of the way done",
-      "Badge grids with conspicuous gaps"
+      "In-game badge grids with conspicuous gaps"
     ],
     "references": [
       "lewis-2014",
@@ -2006,7 +2358,18 @@
       "completionism",
       "collection",
       "sets",
-      "gacha"
+      "gacha",
+      "serves-gameplay",
+      "commercialized-to-children",
+      "transparent-but-exploitative",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "disengagement-penalty",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "completionism",
@@ -2052,7 +2415,15 @@
       "cognitive-bias",
       "near-miss",
       "optimism-bias",
-      "randomised-rewards"
+      "randomised-rewards",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "optimism bias",
@@ -2062,9 +2433,9 @@
     "howItWorks": "Celebratory feedback for wins, salient near-misses, and broadcast of others' rare successes make good outcomes feel more frequent and likely than they actually are.",
     "whyHarmful": "It distorts the player's estimate of the odds, encouraging continued play and spend on what is mostly chance \u2014 a belief-level (deceptive) effect layered on reinforcement (manipulative).",
     "examples": [
-      "\u201cSo close!\u201d near-miss reels",
-      "Server-wide announcements of rare wins",
-      "Highlighting wins while hiding the misses"
+      "'So close!' near-miss reels after an in-game pull",
+      "Server-wide announcements of rare loot wins",
+      "Highlighting player wins while hiding the misses"
     ],
     "references": [
       "king-delfabbro-2019",
@@ -2098,7 +2469,16 @@
       "social-proof",
       "fomo",
       "trust",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "fabricated popularity",
@@ -2108,9 +2488,9 @@
     "howItWorks": "The interface shows invented or unverifiable activity, purchase counts, or \u201cplayers online\u201d figures to imply popularity and manufacture trust and urgency.",
     "whyHarmful": "It induces a false belief about how others behave, exploiting conformity to steer spending and engagement \u2014 deception about the social context.",
     "examples": [
-      "Fake \u201cX people are viewing or buying this\u201d counters",
+      "Fake in-game 'X players are viewing or buying this' counters",
       "Inflated player-count or popularity badges",
-      "Bogus testimonial pop-ups"
+      "Bogus player-testimonial pop-ups in a game shop"
     ],
     "references": [
       "mathur-2019",
@@ -2145,7 +2525,16 @@
       "transparency",
       "obstruction",
       "policymakers",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "price-comparison blocking"
@@ -2154,9 +2543,9 @@
     "howItWorks": "Currencies, bundle contents, and shifting offers are structured so equivalent options can't be lined up side by side; like-for-like comparison is obstructed.",
     "whyHarmful": "Blocking comparison defeats informed choice and hides poor value \u2014 a key precondition for overspending, closely tied to currency obfuscation and decoy pricing.",
     "examples": [
-      "Bundles priced in mismatched currencies",
+      "Game bundles priced in mismatched currencies",
       "No way to compare odds or value across packs",
-      "Offers that change before you can compare them"
+      "Game shop offers that change before you can compare them"
     ],
     "references": [
       "mathur-2021",
@@ -2191,7 +2580,16 @@
       "offer-wall",
       "cross-promotion",
       "data-tracking",
-      "advertising"
+      "advertising",
+      "serves-business",
+      "commercialized-to-children",
+      "low-transparency",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "monetary-pressure",
+      "data-pressure",
+      "access-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "offerwall",
@@ -2202,7 +2600,7 @@
     "whyHarmful": "It funnels players into third-party spending and time with opaque data-sharing they rarely understand, and is especially exploitative of children chasing the reward.",
     "examples": [
       "\u201cEarn free gems\u201d offer walls",
-      "Install-and-spend cross-promotions",
+      "Install-and-spend game cross-promotions",
       "Rewards for watching external streams"
     ],
     "references": [
@@ -2243,7 +2641,17 @@
       "data",
       "dynamic-pricing",
       "hidden",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "data-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "dynamic spend optimisation",
@@ -2254,8 +2662,8 @@
     "howItWorks": "Dynamic systems informed by play and purchase history adjust what each player sees \u2014 offers, \u201cfrustration \u2192 sell-a-fix\u201d difficulty, or matchmaking that surrounds them with spenders \u2014 optimised per person to increase spend, invisibly.",
     "whyHarmful": "Invisible, individualised targeting defeats informed consent and comparison, can exploit identified vulnerabilities (a data-protection concern), and manufactures false social proof; children and at-risk players cannot detect or resist it. The severity rating is precautionary: the harm could be severe when such targeting is deployed at scale, even though the public game-specific evidence base is still emerging.",
     "examples": [
-      "Behaviour-tuned offers and dynamic pricing",
-      "Difficulty tuned to sell a fix",
+      "Behaviour-tuned in-game offers and dynamic pricing",
+      "Game difficulty tuned to sell a fix",
       "Matchmaking that normalises spending"
     ],
     "references": [
@@ -2298,7 +2706,16 @@
       "consent",
       "purchase-flow",
       "policymakers",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "data-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "trick questions",
@@ -2310,8 +2727,8 @@
     "whyHarmful": "The harm is epistemic and autonomy-based: the player is not choosing the action they believe they are choosing. When attached to premium currency, subscriptions, ads, data permissions, or account-linking flows, misleading copy can turn ordinary scan-reading into financial or privacy harm.",
     "examples": [
       "A claim button that quietly spends premium currency rather than collecting a free reward",
-      "Double-negative consent toggles for tracking, notifications, or personalised offers",
-      "A decline option worded so it appears to reject a penalty but actually accepts one",
+      "Double-negative game consent toggles for tracking, notifications, or personalised offers",
+      "A game decline option worded so it appears to reject a penalty but actually accepts one",
       "Quest or event copy that hides a required ad watch, account link, or purchase behind vague wording"
     ],
     "references": [
@@ -2354,7 +2771,16 @@
       "consent",
       "purchase-flow",
       "policymakers",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "data-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "preselected option",
@@ -2366,8 +2792,8 @@
     "whyHarmful": "Defaults exploit inertia and misplaced trust: players often assume defaults are safe or recommended. In games, this can turn a quick continue action into opt-in tracking, notifications, matchmaking exposure, subscription renewal, or a paid purchase path.",
     "examples": [
       "A paid bundle tier preselected in a shop modal",
-      "Personalised offers or tracking enabled by default",
-      "Auto-renewal or notifications preselected during account linking",
+      "In-game personalised offers or tracking enabled by default",
+      "Game subscription auto-renewal or notifications preselected during account linking",
       "A default matchmaking or social-visibility setting that exposes more than expected"
     ],
     "references": [
@@ -2406,7 +2832,13 @@
       "shop",
       "settings",
       "comparison-prevention",
-      "developers"
+      "developers",
+      "serves-business",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "option flooding",
@@ -2418,9 +2850,9 @@
     "whyHarmful": "Choice overload undermines informed consent without hiding every detail. Players technically see options, but the volume and structure of information make meaningful comparison unrealistic, especially under time pressure or during play interruption.",
     "examples": [
       "A live-service shop with dozens of time-limited bundles and currencies",
-      "Settings split across many screens with repeated prompts to accept the default",
+      "Game settings split across many screens with repeated prompts to accept the default",
       "Event reward screens with many exchange rates and upgrade paths",
-      "A consent or account-linking flow with dense toggles and unclear tradeoffs"
+      "A game consent or account-linking flow with dense toggles and unclear tradeoffs"
     ],
     "references": [
       "gray-2024",
@@ -2461,7 +2893,18 @@
       "address-book",
       "account-linking",
       "children-parents",
-      "policymakers"
+      "policymakers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "no-meaningful-opt-out",
+      "consent-undermined",
+      "social-pressure",
+      "data-pressure",
+      "access-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "privacy zuckering",
@@ -2476,7 +2919,7 @@
       "A game reward gated behind linking a social account",
       "Contact-list access framed as necessary to find friends",
       "UGC access that requires unnecessary profile or identity data",
-      "Friend-invite flows that collect contacts before clearly explaining how they will be used"
+      "Game friend-invite flows that collect contacts before clearly explaining how they will be used"
     ],
     "references": [
       "gray-2024",
@@ -2516,7 +2959,18 @@
       "wrong-language",
       "consent",
       "transparency",
-      "developers"
+      "developers",
+      "serves-business",
+      "commercialized-to-children",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "data-pressure",
+      "access-pressure",
+      "ugc-platforms",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "complex language",
@@ -2528,9 +2982,9 @@
     "whyHarmful": "Disclosure does not protect autonomy if the player cannot understand it. In games, complex or inaccessible wording is especially harmful for children, cross-language audiences, and fast-paced play contexts where players are pushed to continue quickly.",
     "examples": [
       "Loot-box odds or subscription terms written in dense legal language",
-      "Tracking or personalised-offer consent shown only in the wrong language",
-      "Child-facing purchase prompts with adult legal vocabulary",
-      "Account-linking terms hidden behind untranslated platform jargon"
+      "Game tracking or personalised-offer consent shown only in the wrong language",
+      "Child-facing game purchase prompts with adult legal vocabulary",
+      "Game account-linking terms hidden behind untranslated platform jargon"
     ],
     "references": [
       "gray-2024",
@@ -2569,7 +3023,16 @@
       "ambiguity",
       "purchase-flow",
       "interface-cues",
-      "developers"
+      "developers",
+      "serves-business",
+      "deceptive-communication",
+      "low-transparency",
+      "consent-undermined",
+      "temporal-pressure",
+      "monetary-pressure",
+      "cognitive-pressure",
+      "emotional-pressure",
+      "vulnerability-exploitation"
     ],
     "aliases": [
       "unclear consequence",
@@ -2582,7 +3045,7 @@
     "examples": [
       "A glowing 'open' affordance that consumes premium currency without saying so",
       "A reroll button that spends a rare item without previewing the cost",
-      "A social-share icon that posts publicly rather than opening a private invite",
+      "A game social-share icon that posts publicly rather than opening a private invite",
       "A claim prompt that starts a timed event instead of merely collecting a reward"
     ],
     "references": [
