@@ -6,51 +6,51 @@
 /* ---- Semantic design tokens (light) ---- */
 :root {
   --paper: #ffffff;
-  --surface: #f6f7f9;
-  --surface-2: #eceff4;
-  --ink: #1a2130;
-  --muted: #586173;
-  --border: #e3e7ed;
-  --brand: #1f2a4a;
+  --surface: #f5f5f7;
+  --surface-2: #e8e8ed;
+  --ink: #1d1d1f;
+  --muted: #86868b;
+  --border: #e5e5ea;
+  --brand: #1d1d1f;
   --brand-ink: #ffffff;
-  --accent: #b07d05;        /* amber, AA on paper */
-  --accent-soft: #fbf3da;
-  --link: #355c8a;
+  --accent: #0066cc;        /* Apple Developer Blue */
+  --accent-soft: #f2f6fc;
+  --link: #0066cc;
 
-  /* Severity scale */
-  --sev-low: #0e8e80;
-  --sev-medium: #b07d05;
-  --sev-high: #c75f28;
-  --sev-severe: #c0333c;
+  /* Severity scale (HIG System Colors) */
+  --sev-low: #248a3d;
+  --sev-medium: #ff9500;
+  --sev-high: #ff3b30;
+  --sev-severe: #af52de;
 
-  /* Evidence scale (cool, distinct from severity) */
-  --ev-strong: #2f6f4f;
-  --ev-moderate: #6b6f86;
-  --ev-emerging: #8a7048;
+  /* Evidence scale (cool HIG System Colors) */
+  --ev-strong: #248a3d;
+  --ev-moderate: #86868b;
+  --ev-emerging: #5856d6;
 }
 
 /* ---- Semantic design tokens (dark) ---- */
 .dark {
-  --paper: #0f131c;
-  --surface: #161c28;
-  --surface-2: #1d2533;
-  --ink: #e8ecf3;
-  --muted: #9aa6bc;
-  --border: #283142;
-  --brand: #c9d6f2;
-  --brand-ink: #0f131c;
-  --accent: #f0b429;
-  --accent-soft: #2a2615;
-  --link: #8fb4e0;
+  --paper: #000000;         /* OLED black */
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --ink: #f5f5f7;
+  --muted: #86868b;
+  --border: #3a3a3c;
+  --brand: #f5f5f7;
+  --brand-ink: #000000;
+  --accent: #2997ff;        /* Apple Developer Dark Blue */
+  --accent-soft: #00254d;
+  --link: #2997ff;
 
-  --sev-low: #2bb3a3;
-  --sev-medium: #e7a52a;
-  --sev-high: #ef8a4b;
-  --sev-severe: #f06a72;
+  --sev-low: #30d158;
+  --sev-medium: #ff9f0a;
+  --sev-high: #ff453a;
+  --sev-severe: #bf5af2;
 
-  --ev-strong: #5fb98a;
-  --ev-moderate: #aab0c6;
-  --ev-emerging: #d0b277;
+  --ev-strong: #30d158;
+  --ev-moderate: #98989d;
+  --ev-emerging: #5e5ce6;
 }
 
 /* ---- Map tokens into Tailwind's theme so utilities resolve them ---- */
@@ -76,8 +76,8 @@
   --color-ev-moderate: var(--ev-moderate);
   --color-ev-emerging: var(--ev-emerging);
 
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, "Inter Variable", sans-serif;
+  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Source Serif 4 Variable", Georgia, serif;
 }
 
 html {
@@ -142,11 +142,79 @@ body {
 
 /* Pagefind UI theming hooks */
 :root {
-  --pagefind-ui-primary: var(--brand);
+  --pagefind-ui-primary: var(--accent);
   --pagefind-ui-text: var(--ink);
   --pagefind-ui-background: var(--paper);
   --pagefind-ui-border: var(--border);
   --pagefind-ui-tag: var(--surface);
-  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-border-radius: 10px;
   --pagefind-ui-font: var(--font-sans);
+}
+
+/* ---- Apple HIG Utilities & Custom Override Classes ---- */
+.glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(var(--paper), 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Apply light/dark background specifically for frosted glass transparency */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.72);
+}
+.dark {
+  --glass-bg: rgba(0, 0, 0, 0.72);
+}
+.glass-nav {
+  background-color: var(--glass-bg);
+}
+
+/* Scale animations for cards and buttons (active state / press) */
+.btn-press-active:active {
+  transform: scale(0.97);
+}
+
+.card-hover-effect {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover-effect:hover {
+  transform: translateY(-2px) scale(1.008);
+}
+.card-hover-effect:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Apple inputs styling overrides */
+input[type="search"], select {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input[type="search"]:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.dark input[type="search"]:focus, .dark select:focus {
+  box-shadow: 0 0 0 3px rgba(41, 151, 255, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Pagefind Custom Overrides for HIG alignment */
+.pagefind-ui__search-input {
+  background-color: var(--surface) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--border) !important;
+  font-weight: 400 !important;
+  padding: 12px 16px !important;
+}
+.pagefind-ui__search-input:focus {
+  border-color: var(--accent) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15) !important;
+}
+.dark .pagefind-ui__search-input:focus {
+  box-shadow: 0 0 0 3px rgba(41, 151, 255, 0.25) !important;
 }

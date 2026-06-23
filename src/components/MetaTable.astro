@@ -18,19 +18,19 @@ interface Props {
 }
 const { pattern, family, harm, mode } = Astro.props;
 const d = pattern.data;
-const dt = "text-xs font-semibold uppercase tracking-wide text-muted";
+const dt = "text-[10.5px] font-semibold uppercase tracking-wider text-muted/90";
 ---
 
 <dl
-  class="grid gap-x-6 gap-y-4 rounded-xl border border-border bg-surface/50 p-5 text-sm sm:grid-cols-2"
+  class="grid gap-x-8 gap-y-5 rounded-2xl border border-border bg-surface p-6 text-sm sm:grid-cols-2"
 >
   <div>
     <dt class={dt}>Code</dt>
-    <dd class="mt-1 font-mono text-ink">{d.code}</dd>
+    <dd class="mt-1 font-mono text-ink font-medium">{d.code}</dd>
   </div>
   <div>
     <dt class={dt}>Category</dt>
-    <dd class="mt-1 text-ink">{d.category}</dd>
+    <dd class="mt-1 text-ink font-medium">{d.category}</dd>
   </div>
   <div>
     <dt class={dt}>Severity</dt>
@@ -38,29 +38,29 @@ const dt = "text-xs font-semibold uppercase tracking-wide text-muted";
   </div>
   <div>
     <dt class={dt}>Evidence</dt>
-    <dd class="mt-1 flex flex-col gap-1">
+    <dd class="mt-1 flex flex-col gap-1 items-start">
       <Badge label={d.evidenceLevel} tone={evTone(d.evidenceLevel)} />
-      {d.evidenceNote && <span class="text-xs text-muted">{d.evidenceNote}</span>}
+      {d.evidenceNote && <span class="text-xs text-muted/90 leading-relaxed">{d.evidenceNote}</span>}
     </dd>
   </div>
   <div class="sm:col-span-2">
     <dt class={dt}>Purpose served</dt>
-    <dd class="mt-1 flex flex-col gap-1">
+    <dd class="mt-1 flex flex-col gap-1 items-start">
       <Badge label={purposeLabel(d.purpose)} tone={purposeTone(d.purpose)} />
-      <span class="text-xs text-muted">{purposeNote(d.purpose)}</span>
+      <span class="text-xs text-muted/90 leading-relaxed">{purposeNote(d.purpose)}</span>
     </dd>
   </div>
   <div>
     <dt class={dt}>Mechanism family</dt>
     <dd class="mt-1">
-      <a class="text-link underline-offset-2 hover:underline" href={`/families/${d.family}`}>
+      <a class="text-link font-medium hover:underline transition-colors decoration-accent/30 underline-offset-2" href={`/families/${d.family}`}>
         {family.get(d.family) ?? d.family}
       </a>
     </dd>
   </div>
   <div>
     <dt class={dt}>Platforms</dt>
-    <dd class="mt-1 text-ink">{d.platforms.join(" · ")}</dd>
+    <dd class="mt-1 text-ink font-medium">{d.platforms.join(" · ")}</dd>
   </div>
   <div>
     <dt class={dt}>Harm vectors</dt>
@@ -90,7 +90,7 @@ const dt = "text-xs font-semibold uppercase tracking-wide text-muted";
     d.aliases.length > 0 && (
       <div class="sm:col-span-2">
         <dt class={dt}>Also known as</dt>
-        <dd class="mt-1 text-muted">{d.aliases.join(", ")}</dd>
+        <dd class="mt-1 text-muted/90 font-medium">{d.aliases.join(", ")}</dd>
       </div>
     )
   }

@@ -54,42 +54,42 @@ const brightLines = [
   description="Harm is conditional. An eight-dimension rubric, a severity gradient, the five modes of adversarial design, and a bright-line do-not-ship list."
 >
   <section class="mx-auto max-w-4xl px-4 py-10" data-pagefind-body>
-    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
+    <h1 class="font-sans text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
       When does a pattern become harmful?
     </h1>
-    <p class="mt-3 max-w-2xl text-lg text-muted">
+    <p class="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-muted">
       Deception is not the same as harm. The descriptive catalogue says what a
       technique <em>is</em>; this rubric is the separate judgement layer that
       says how bad a given instance is.
     </p>
 
-    <section class="mt-8 rounded-2xl border border-border bg-surface/50 p-5">
-      <h2 class="font-serif text-xl font-bold text-ink">
+    <section class="mt-8 rounded-2xl border border-border bg-surface p-6">
+      <h2 class="font-sans text-lg font-bold tracking-tight text-ink">
         First: whose purpose does it serve?
       </h2>
-      <p class="mt-2 max-w-3xl text-muted">
+      <p class="mt-2 max-w-3xl text-xs sm:text-sm leading-relaxed text-muted">
         Before weighing how harmful a mechanic is, ask <em>why it exists</em>.
         Every pattern here is tagged by the purpose it serves — a fast first test
         for separating a standard game mechanic from a deceptive one.
       </p>
-      <div class="mt-4 grid gap-3 text-sm sm:grid-cols-3">
-        <div class="rounded-xl border border-sev-low/40 bg-sev-low/5 p-4">
-          <div class="font-semibold text-sev-low">Serves gameplay</div>
-          <p class="mt-1 text-muted">
+      <div class="mt-5 grid gap-4 text-xs sm:grid-cols-3">
+        <div class="rounded-2xl border border-sev-low/20 bg-sev-low/8 p-5">
+          <div class="text-sm font-bold tracking-tight text-sev-low">Serves gameplay</div>
+          <p class="mt-2 text-ink/80 leading-relaxed">
             Primarily for the player's experience — usually a standard mechanic,
             rarely deceptive on its own.
           </p>
         </div>
-        <div class="rounded-xl border border-sev-medium/40 bg-sev-medium/5 p-4">
-          <div class="font-semibold text-sev-medium">Gameplay &amp; business</div>
-          <p class="mt-1 text-muted">
+        <div class="rounded-2xl border border-sev-medium/20 bg-sev-medium/8 p-5">
+          <div class="text-sm font-bold tracking-tight text-sev-medium">Gameplay &amp; business</div>
+          <p class="mt-2 text-ink/80 leading-relaxed">
             Serves play and the provider at once — the contested middle where the
             conditions below decide.
           </p>
         </div>
-        <div class="rounded-xl border border-sev-severe/40 bg-sev-severe/5 p-4">
-          <div class="font-semibold text-sev-severe">Serves business</div>
-          <p class="mt-1 text-muted">
+        <div class="rounded-2xl border border-sev-severe/20 bg-sev-severe/8 p-5">
+          <div class="text-sm font-bold tracking-tight text-sev-severe">Serves business</div>
+          <p class="mt-2 text-ink/80 leading-relaxed">
             Primarily for revenue, retention, or data — the most suspect, and the
             clearest dark-pattern candidates.
           </p>
@@ -98,46 +98,44 @@ const brightLines = [
     </section>
 
     <!-- spectrum -->
-    <div class="mt-8 overflow-hidden rounded-lg border border-border">
-      <div class="grid grid-cols-2 sm:grid-cols-4">
+    <div class="mt-10">
+      <div class="h-6 w-full rounded-full bg-gradient-to-r from-sev-low via-sev-medium via-sev-high to-sev-severe relative shadow-inner">
+      </div>
+      <div class="mt-3 grid grid-cols-4 text-center text-xs font-semibold tracking-tight text-ink">
         {
           spectrum.map((s) => (
-            <div
-              class={`${segBg[s.tone]} px-3 py-3 text-center text-sm font-semibold text-white`}
-            >
-              {s.label}
-            </div>
+            <div>{s.label}</div>
           ))
         }
       </div>
     </div>
-    <p class="mt-1 text-right text-xs italic text-muted">increasing severity →</p>
+    <p class="mt-2 text-right text-[10px] uppercase font-bold tracking-wider text-muted">increasing severity →</p>
 
     <!-- 8 dimensions -->
-    <h2 class="mt-10 font-serif text-2xl font-bold text-ink">
+    <h2 class="mt-12 font-sans text-2xl font-bold tracking-tight text-ink">
       Eight conditions
     </h2>
-    <p class="mt-2 text-muted">
+    <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
       Each dimension pushes a given instance greener (more acceptable) or darker
       (more harmful). When locus + consent + vulnerability all tip darker, the
       case for “harmful” — and at the extreme “impermissible” — is strongest.
     </p>
-    <div class="mt-4 overflow-x-auto">
-      <table class="w-full border-collapse text-sm">
+    <div class="mt-6 overflow-x-auto">
+      <table class="w-full border-collapse text-xs">
         <thead>
           <tr class="border-b border-border text-left">
-            <th class="py-2 pr-4 font-semibold text-ink">Dimension</th>
-            <th class="py-2 pr-4 font-semibold text-sev-low">Greener</th>
-            <th class="py-2 font-semibold text-sev-severe">Darker</th>
+            <th class="py-3 pr-4 text-[10px] font-bold uppercase tracking-wider text-ink">Dimension</th>
+            <th class="py-3 pr-4 text-[10px] font-bold uppercase tracking-wider text-sev-low">Greener</th>
+            <th class="py-3 text-[10px] font-bold uppercase tracking-wider text-sev-severe">Darker</th>
           </tr>
         </thead>
         <tbody>
           {
             rubric.map((r) => (
               <tr class="border-b border-border align-top">
-                <td class="py-3 pr-4 font-medium text-ink">{r.data.dimension}</td>
-                <td class="py-3 pr-4 text-muted">{r.data.greener}</td>
-                <td class="py-3 text-muted">{r.data.darker}</td>
+                <td class="py-4 pr-4 font-bold text-ink sm:whitespace-nowrap">{r.data.dimension}</td>
+                <td class="py-4 pr-4 text-ink/80 leading-relaxed">{r.data.greener}</td>
+                <td class="py-4 text-ink/80 leading-relaxed">{r.data.darker}</td>
               </tr>
             ))
           }
@@ -146,63 +144,63 @@ const brightLines = [
     </div>
 
     <!-- severity tiers -->
-    <h2 class="mt-12 font-serif text-2xl font-bold text-ink">Severity gradient</h2>
-    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+    <h2 class="mt-16 font-sans text-2xl font-bold tracking-tight text-ink">Severity gradient</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-3">
       {
         tiers.map((t) => (
-          <div class="rounded-xl border border-border bg-paper p-4">
-            <div class={`font-serif text-lg font-bold ${t.tone}`}>{t.n}</div>
-            <div class="mt-0.5 text-sm font-semibold text-ink">{t.head}</div>
-            <p class="mt-2 text-sm text-muted">{t.body}</p>
+          <div class="rounded-2xl border border-border bg-paper p-5 card-hover-effect btn-press-active">
+            <div class={`font-sans text-base font-bold tracking-tight ${t.tone}`}>{t.n}</div>
+            <div class="mt-1 text-xs font-semibold text-ink">{t.head}</div>
+            <p class="mt-2 text-xs leading-relaxed text-muted">{t.body}</p>
           </div>
         ))
       }
     </div>
 
     <!-- bright lines -->
-    <h2 class="mt-12 font-serif text-2xl font-bold text-ink">
+    <h2 class="mt-16 font-sans text-2xl font-bold tracking-tight text-ink">
       Bright-line “do-not-ship” list
     </h2>
-    <p class="mt-2 text-muted">
+    <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
       The highest-confidence prohibitions, where the evidence and the rubric
       converge — specific enough for a regulator to enforce and a studio to test
       against.
     </p>
     <ol
-      class="mt-4 space-y-2 rounded-xl border border-sev-severe/30 bg-sev-severe/5 p-5 text-sm"
+      class="mt-5 space-y-3 rounded-2xl border border-sev-high/20 bg-sev-high/8 p-6 text-xs"
     >
       {
         brightLines.map((b, i) => (
           <li class="flex gap-3">
-            <span class="font-mono font-bold text-sev-severe">{i + 1}</span>
-            <span class="text-ink">{b}</span>
+            <span class="font-mono font-bold text-sev-high text-sm leading-none">{i + 1}</span>
+            <span class="text-ink leading-relaxed font-medium">{b}</span>
           </li>
         ))
       }
     </ol>
 
     <!-- modes -->
-    <h2 id="modes" class="mt-12 scroll-mt-20 font-serif text-2xl font-bold text-ink">
+    <h2 id="modes" class="mt-16 scroll-mt-20 font-sans text-2xl font-bold tracking-tight text-ink">
       Five modes of adversarial design
     </h2>
-    <p class="mt-2 text-muted">
+    <p class="mt-2 text-xs sm:text-sm leading-relaxed text-muted">
       A family of near-synonyms, separated by <em>what exactly is wrong</em>.
       They stack: one feature can be several at once.
     </p>
-    <div class="mt-4 space-y-3">
+    <div class="mt-6 space-y-4">
       {
         modes.map((m) => (
-          <div class="rounded-xl border border-border bg-paper p-4">
+          <div class="rounded-2xl border border-border bg-paper p-5 card-hover-effect btn-press-active">
             <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 class="font-serif text-lg font-semibold text-ink">
+              <h3 class="font-sans text-base font-semibold tracking-tight text-ink">
                 {m.data.title}
               </h3>
-              <span class="text-xs text-muted">
-                Intent required: {m.data.needsIntent}
+              <span class="text-[10px] font-bold uppercase tracking-wider text-muted">
+                Intent: {m.data.needsIntent}
               </span>
             </div>
-            <p class="mt-1 text-sm text-ink">{m.data.wrong}</p>
-            <p class="mt-1 text-xs text-muted">
+            <p class="mt-2 text-xs leading-relaxed text-ink/90">{m.data.wrong}</p>
+            <p class="mt-2 text-[11px] leading-relaxed text-muted font-medium">
               Operates on {m.data.operatesOn.toLowerCase()} · e.g. {m.data.example}
             </p>
           </div>
