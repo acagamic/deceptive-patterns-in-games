@@ -1,0 +1,244 @@
+---
+import { allPatterns } from "../lib/patterns";
+
+const patterns = await allPatterns();
+const points = patterns.map((p) => ({
+  slug: p.id,
+  code: p.data.code,
+  title: p.data.title,
+  severity: p.data.severity,
+  evidence: p.data.evidenceLevel,
+  note: p.data.evidenceNote ?? "",
+}));
+const vizData = { points };
+---
+
+<div class="scatterviz">
+  <div class="scatterviz-scroll">
+    <svg
+      id="sev-ev-viz"
+      role="img"
+      aria-label="Scatter grid placing every pattern by severity (rows, Low at the bottom to Severe at the top) and evidence strength (columns, Emerging to Strong). Dots are coloured by severity. Most patterns cluster at medium severity with moderate evidence, while the strongest evidence concentrates on the most severe patterns in the top-right priority corner."
+    ></svg>
+  </div>
+  <p id="sev-ev-cap" class="scatterviz-cap">
+    Each dot is one pattern, coloured by <strong>severity</strong>. Hover to name
+    it, click to open — or <a class="text-link underline" href="/patterns">browse all patterns</a>.
+  </p>
+</div>
+
+<script type="application/json" id="sev-ev-data" set:html={JSON.stringify(vizData)}
+></script>
+
+<script>
+  import { select } from "d3";
+
+  const svg = document.getElementById("sev-ev-viz");
+  const dataEl = document.getElementById("sev-ev-data");
+  const cap = document.getElementById("sev-ev-cap");
+  if (svg && dataEl) {
+    const data = JSON.parse(dataEl.textContent || "{}");
+    const points = data.points as any[];
+
+    const sevRows = ["Severe", "High", "Medium", "Low"];
+    const evCols = ["Emerging", "Moderate", "Strong"];
+
+    const W = 720, mL = 96, mR = 28, mT = 60, mB = 74;
+    const rowH = 84;
+    const colW = (W - mL - mR) / evCols.length;
+    const plotH = rowH * sevRows.length;
+    const H = mT + plotH + mB;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+
+    const cx = (i: number) => mL + colW * (i + 0.5);
+    const cy = (i: number) => mT + rowH * (i + 0.5);
+
+    // group points into severity|evidence cells
+    const cells = new Map<string, any[]>();
+    points.forEach((p) => {
+      const key = `${p.severity}|${p.evidence}`;
+      const arr = cells.get(key);
+      if (arr) arr.push(p);
+      else cells.set(key, [p]);
+    });
+
+    const root = select(svg);
+
+    // priority corner: high stakes (Severe + High rows) with Strong evidence
+    const sc = evCols.indexOf("Strong");
+    root
+      .append("rect")
+      .attr("x", mL + colW * sc)
+      .attr("y", mT)
+      .attr("width", colW)
+      .attr("height", rowH * 2)
+      .attr("class", "scatterviz-zone");
+    root
+      .append("text")
+      .attr("x", mL + colW * sc + colW / 2)
+      .attr("y", mT + 15)
+      .attr("text-anchor", "middle")
+      .attr("class", "scatterviz-zonelab")
+      .text("priority corner");
+
+    // grid
+    const grid = root.append("g");
+    for (let i = 0; i <= evCols.length; i++)
+      grid
+        .append("line")
+        .attr("x1", mL + colW * i)
+        .attr("y1", mT)
+        .attr("x2", mL + colW * i)
+        .attr("y2", mT + plotH)
+        .attr("class", "scatterviz-grid");
+    for (let i = 0; i <= sevRows.length; i++)
+      grid
+        .append("line")
+        .attr("x1", mL)
+        .attr("y1", mT + rowH * i)
+        .attr("x2", mL + colW * evCols.length)
+        .attr("y2", mT + rowH * i)
+        .attr("class", "scatterviz-grid");
+
+    // axis tick labels
+    sevRows.forEach((s, i) =>
+      root
+        .append("text")
+        .attr("x", mL - 14)
+        .attr("y", cy(i))
+        .attr("text-anchor", "end")
+        .attr("dominant-baseline", "middle")
+        .attr("class", "scatterviz-axislab")
+        .text(s),
+    );
+    evCols.forEach((e, i) =>
+      root
+        .append("text")
+        .attr("x", cx(i))
+        .attr("y", mT + plotH + 26)
+        .attr("text-anchor", "middle")
+        .attr("class", "scatterviz-axislab")
+        .text(e),
+    );
+
+    // axis titles
+    root
+      .append("text")
+      .attr("x", mL - 14)
+      .attr("y", mT - 30)
+      .attr("text-anchor", "end")
+      .attr("class", "scatterviz-axistitle")
+      .text("severity");
+    root
+      .append("text")
+      .attr("x", mL - 14)
+      .attr("y", mT - 15)
+      .attr("text-anchor", "end")
+      .attr("class", "scatterviz-axissub")
+      .text("↑ more serious");
+    root
+      .append("text")
+      .attr("x", mL + colW * evCols.length)
+      .attr("y", mT + plotH + 52)
+      .attr("text-anchor", "end")
+      .attr("class", "scatterviz-axistitle")
+      .text("evidence strength →");
+
+    const defaultCap = cap ? cap.innerHTML : "";
+    const R = 4.2, sp = 11.5;
+
+    cells.forEach((cell, key) => {
+      const [sev, ev] = key.split("|");
+      const ri = sevRows.indexOf(sev);
+      const ci = evCols.indexOf(ev);
+      if (ri < 0 || ci < 0) return;
+      cell.sort((a, b) => a.title.localeCompare(b.title));
+      const n = cell.length;
+      const cols = Math.ceil(Math.sqrt(n));
+      const rows = Math.ceil(n / cols);
+      const y0 = cy(ri) - ((rows - 1) * sp) / 2;
+      cell.forEach((p, k) => {
+        const r = Math.floor(k / cols);
+        const c = k % cols;
+        const inRow = Math.min(cols, n - r * cols);
+        const x = cx(ci) - ((inRow - 1) * sp) / 2 + c * sp;
+        const y = y0 + r * sp;
+        const g = root
+          .append("g")
+          .attr("class", "scatterviz-node")
+          .attr("role", "link")
+          .attr("tabindex", 0)
+          .attr("aria-label", `${p.title} — ${p.severity} severity, ${p.evidence} evidence`)
+          .style("cursor", "pointer");
+        g.append("circle")
+          .attr("cx", x)
+          .attr("cy", y)
+          .attr("r", R)
+          .attr("class", `scatterviz-dot sev-${p.severity}`);
+        const go = () => (window.location.href = `/patterns/${p.slug}`);
+        g.on("mouseenter", () => focusDot(g, p))
+          .on("mouseleave", () => blurDot(g))
+          .on("focus", () => focusDot(g, p))
+          .on("blur", () => blurDot(g))
+          .on("click", go)
+          .on("keydown", (e: any) => {
+            if (e.key === "Enter") go();
+          });
+      });
+    });
+
+    function focusDot(g: any, p: any) {
+      g.select("circle").attr("r", R + 2.4);
+      g.raise();
+      if (cap)
+        cap.innerHTML =
+          `<strong>${p.code} · ${p.title}</strong> — ${p.severity} severity · ${p.evidence} evidence` +
+          (p.note ? ` — <span class="scatterviz-note">${p.note}</span>` : "");
+    }
+    function blurDot(g: any) {
+      g.select("circle").attr("r", R);
+      if (cap) cap.innerHTML = defaultCap;
+    }
+  }
+</script>
+
+<style is:global>
+  .scatterviz-scroll { overflow-x: auto; }
+  #sev-ev-viz { width: 100%; height: auto; min-width: 600px; display: block; }
+  .scatterviz-cap {
+    margin-top: 0.85rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+    min-height: 2.6em;
+  }
+  .scatterviz-note { color: var(--ink); }
+  .scatterviz-grid { stroke: var(--border); stroke-width: 1; }
+  .scatterviz-zone { fill: var(--sev-high); opacity: 0.06; }
+  .scatterviz-zonelab {
+    fill: var(--sev-high);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    opacity: 0.7;
+  }
+  .scatterviz-axislab { fill: var(--ink); font-size: 12.5px; }
+  .scatterviz-axistitle {
+    fill: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .scatterviz-axissub { fill: var(--muted); font-size: 10.5px; }
+  .scatterviz-node { transition: opacity 0.12s; }
+  .scatterviz-dot { stroke: var(--paper); stroke-width: 1; transition: r 0.1s ease; }
+  .scatterviz-dot.sev-Low { fill: var(--sev-low); }
+  .scatterviz-dot.sev-Medium { fill: var(--sev-medium); }
+  .scatterviz-dot.sev-High { fill: var(--sev-high); }
+  .scatterviz-dot.sev-Severe { fill: var(--sev-severe); }
+  .scatterviz-node:focus-visible { outline: none; }
+  .scatterviz-node:focus-visible .scatterviz-dot {
+    stroke: var(--accent);
+    stroke-width: 2.5;
+  }
+</style>

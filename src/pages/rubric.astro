@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
+import Badge from "../components/Badge.astro";
+import ScatterViz from "../components/ScatterViz.astro";
 
 const rubric = await getCollection("rubric");
 const modes = await getCollection("modes");
@@ -46,6 +48,19 @@ const brightLines = [
   "Obstructed cancellation / refund and withdrawal “sludge” on recurring or large spends.",
   "Ads disguised as gameplay, and purchase-as-default UI in children's titles.",
   "Designs that individually profile and price to maximise a specific player's spend.",
+];
+
+const severityScale = [
+  { level: "Low", tone: "sev-low", note: "Trivial or easily reversed stakes — a mild, resistible nudge." },
+  { level: "Medium", tone: "sev-medium", note: "Real but bounded detriment; depends heavily on context and dose." },
+  { level: "High", tone: "sev-high", note: "Clear, substantial loss of money, time, or autonomy." },
+  { level: "Severe", tone: "sev-severe", note: "Large or escalating loss, or harm aimed at the vulnerable — a prohibition candidate." },
+];
+
+const evidenceScale = [
+  { level: "Emerging", tone: "ev-emerging", note: "Early or indirect: theory, a single study, an expert report, or analogy from another domain." },
+  { level: "Moderate", tone: "ev-moderate", note: "Several studies or consistent correlational findings; recognised in the literature." },
+  { level: "Strong", tone: "ev-strong", note: "Replicated, meta-analytic, or convergent evidence — e.g. loot boxes and problem gambling." },
 ];
 ---
 
@@ -95,6 +110,56 @@ const brightLines = [
           </p>
         </div>
       </div>
+    </section>
+
+    <!-- two scores: severity & evidence -->
+    <section class="mt-8 rounded-2xl border border-border bg-surface p-6">
+      <h2 class="font-sans text-lg font-bold tracking-tight text-ink">
+        The two scores: severity &amp; evidence
+      </h2>
+      <p class="mt-2 max-w-3xl text-xs sm:text-sm leading-relaxed text-muted">
+        Beyond purpose, every pattern carries two <em>independent</em> scores.
+        <strong class="text-ink">Severity</strong> is how serious the harm can be when
+        the pattern ships; <strong class="text-ink">evidence</strong> is how strong the
+        research base is that it actually causes harm. They are orthogonal — a pattern
+        can be severe but barely studied, or well-evidenced yet modest — so the map
+        below plots them on separate axes rather than collapsing them into one score.
+      </p>
+      <div class="mt-5 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+        <div>
+          <h3 class="text-[10px] font-bold uppercase tracking-wider text-muted">
+            Severity — how serious
+          </h3>
+          <ul class="mt-3 space-y-2.5">
+            {
+              severityScale.map((s) => (
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed">
+                  <Badge label={s.level} tone={s.tone} />
+                  <span class="text-muted">{s.note}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-[10px] font-bold uppercase tracking-wider text-muted">
+            Evidence — how sure
+          </h3>
+          <ul class="mt-3 space-y-2.5">
+            {
+              evidenceScale.map((e) => (
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed">
+                  <Badge label={e.level} tone={e.tone} />
+                  <span class="text-muted">{e.note}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <figure class="mt-7">
+        <ScatterViz />
+      </figure>
     </section>
 
     <!-- spectrum -->
