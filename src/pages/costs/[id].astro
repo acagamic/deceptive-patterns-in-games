@@ -16,10 +16,10 @@ const members = (await allPatterns())
   .sort((a, b) => sevRank(b.data.severity) - sevRank(a.data.severity));
 ---
 
-<Base title={`${harm.data.title} harm`} description={harm.data.description}>
+<Base title={`${harm.data.title} cost`} description={harm.data.description}>
   <section class="mx-auto max-w-4xl px-4 py-10" data-pagefind-body>
     <nav class="mb-4 text-xs text-muted">
-      <a href="/harms" class="hover:text-accent">Harms</a>
+      <a href="/costs" class="hover:text-accent">Player Costs</a>
       <span class="px-1">/</span><span>{harm.data.title}</span>
     </nav>
     <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">

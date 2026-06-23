@@ -66,10 +66,10 @@ const regularTags = d.tags.filter((t) => !AUDIENCES.has(t));
     <dd class="mt-1 text-ink font-medium">{d.platforms.join(" · ")}</dd>
   </div>
   <div>
-    <dt class={dt}>Harm vectors</dt>
+    <dt class={dt}>Player costs</dt>
     <dd class="mt-1 flex flex-wrap gap-1.5">
       {d.harmVectors.map((h) => (
-        <Badge label={harm.get(h) ?? h} tone="neutral" href={`/harms/${h}`} />
+        <Badge label={harm.get(h) ?? h} tone="neutral" href={`/costs/${h}`} />
       ))}
     </dd>
   </div>

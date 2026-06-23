@@ -17,6 +17,16 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/harms/*"
+  to = "/costs/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/harms"
+  to = "/costs"
+  status = 301
+
 # Pagefind ships small wasm/json assets; make sure they're served correctly.
 [[headers]]
   for = "/pagefind/*"

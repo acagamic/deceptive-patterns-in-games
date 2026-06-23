@@ -12,22 +12,22 @@ for (const p of patterns)
 ---
 
 <Base
-  title="Harm vectors"
-  description="Axis B: the resources a deceptive or exploitative pattern can put at risk — money, time, data, autonomy, social ties, emotional wellbeing, and competitive fairness."
+  title="Player Costs"
+  description="The resources a deceptive or exploitative pattern can put at risk — money, time, data, autonomy, social ties, emotional wellbeing, and competitive fairness."
 >
   <section class="mx-auto max-w-4xl px-4 py-10">
     <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
-      Harm vectors
+      Player Costs
     </h1>
     <p class="mt-2 max-w-2xl text-muted">
-      Axis B — <em>what it costs the player</em>. A single pattern usually
+      <em>What it costs the player</em>. A single pattern usually
       threatens more than one of these.
     </p>
     <div class="mt-6 grid gap-3 sm:grid-cols-2">
       {
         harms.map((h) => (
           <a
-            href={`/harms/${h.id}`}
+            href={`/costs/${h.id}`}
             class="rounded-xl border border-border bg-paper p-4 transition hover:border-accent/50"
           >
             <div class="flex items-center justify-between gap-2">

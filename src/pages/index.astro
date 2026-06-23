@@ -22,7 +22,7 @@ const featured = [...patterns]
 const stats = [
   { n: patterns.length, l: "named patterns" },
   { n: families.length, l: "mechanism families" },
-  { n: harms.length, l: "harm vectors" },
+  { n: harms.length, l: "player costs" },
   { n: refs.length, l: "cited sources" },
 ];
 ---
@@ -141,12 +141,12 @@ const stats = [
           </p>
         </a>
         <a
-          href="/harms"
+          href="/costs"
           class="rounded-2xl border border-border bg-paper p-6 card-hover-effect btn-press-active"
         >
           <div class="text-[10px] font-semibold uppercase tracking-wider text-muted">Axis B</div>
           <div class="mt-1 font-sans text-base font-semibold tracking-tight text-ink">
-            Harm vectors — <span class="text-accent">cost</span>
+            Player costs — <span class="text-accent">cost</span>
           </div>
           <p class="mt-1 text-xs leading-relaxed text-muted">
             {harms.length} resources a pattern can put at risk.

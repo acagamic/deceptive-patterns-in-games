@@ -34,11 +34,11 @@ const vizData = { famOrder, famTitle, harmOrder, harmTitle, techs };
 
 <div class="axisviz">
   <div class="axisviz-scroll">
-    <svg id="axis-viz" role="img" aria-label="Interactive map linking mechanism families, named techniques, and harm vectors"></svg>
+    <svg id="axis-viz" role="img" aria-label="Interactive map linking mechanism families, named techniques, and player costs"></svg>
   </div>
   <p id="axis-viz-cap" class="axisviz-cap">
     Hover a <strong>mechanism</strong>, <strong>technique</strong>, or{" "}
-    <strong>harm</strong> to trace its links — click a technique to open it.
+    <strong>cost</strong> to trace its links — click a technique to open it.
     Prefer a list? <a class="text-link underline" href="/patterns">Browse all patterns</a>.
   </p>
 </div>
@@ -94,7 +94,7 @@ const vizData = { famOrder, famTitle, harmOrder, harmTitle, techs };
     };
     head(famX - 14, "end", "MECHANISM", "how it works");
     head(techX, "middle", "TECHNIQUE", `${n} named`);
-    head(harmX + 14, "start", "HARM VECTOR", "what it costs");
+    head(harmX + 14, "start", "PLAYER COST", "what it costs");
 
     const gLinks = root.append("g");
     gLinks.selectAll("path").data(links).enter().append("path")
