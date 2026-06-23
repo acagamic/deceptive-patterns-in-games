@@ -19,6 +19,9 @@ interface Props {
 const { pattern, family, harm, mode } = Astro.props;
 const d = pattern.data;
 const dt = "text-[10.5px] font-semibold uppercase tracking-wider text-muted/90";
+const AUDIENCES = new Set(["policymakers", "developers", "children-parents"]);
+const audienceTags = d.tags.filter((t) => AUDIENCES.has(t));
+const regularTags = d.tags.filter((t) => !AUDIENCES.has(t));
 ---
 
 <dl
@@ -78,10 +81,22 @@ const dt = "text-[10.5px] font-semibold uppercase tracking-wider text-muted/90";
       ))}
     </dd>
   </div>
+  {
+    audienceTags.length > 0 && (
+      <div class="sm:col-span-2">
+        <dt class={dt}>Target Audience</dt>
+        <dd class="mt-1 flex flex-wrap gap-1.5">
+          {audienceTags.map((t) => (
+            <Badge label={tagLabel(t)} tone="accent" href={`/tags/${t}`} />
+          ))}
+        </dd>
+      </div>
+    )
+  }
   <div class="sm:col-span-2">
     <dt class={dt}>Tags</dt>
     <dd class="mt-1 flex flex-wrap gap-1.5">
-      {d.tags.map((t) => (
+      {regularTags.map((t) => (
         <Badge label={tagLabel(t)} tone="neutral" href={`/tags/${t}`} />
       ))}
     </dd>
