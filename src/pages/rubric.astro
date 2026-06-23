@@ -63,6 +63,40 @@ const brightLines = [
       says how bad a given instance is.
     </p>
 
+    <section class="mt-8 rounded-2xl border border-border bg-surface/50 p-5">
+      <h2 class="font-serif text-xl font-bold text-ink">
+        First: whose purpose does it serve?
+      </h2>
+      <p class="mt-2 max-w-3xl text-muted">
+        Before weighing how harmful a mechanic is, ask <em>why it exists</em>.
+        Every pattern here is tagged by the purpose it serves — a fast first test
+        for separating a standard game mechanic from a deceptive one.
+      </p>
+      <div class="mt-4 grid gap-3 text-sm sm:grid-cols-3">
+        <div class="rounded-xl border border-sev-low/40 bg-sev-low/5 p-4">
+          <div class="font-semibold text-sev-low">Serves gameplay</div>
+          <p class="mt-1 text-muted">
+            Primarily for the player's experience — usually a standard mechanic,
+            rarely deceptive on its own.
+          </p>
+        </div>
+        <div class="rounded-xl border border-sev-medium/40 bg-sev-medium/5 p-4">
+          <div class="font-semibold text-sev-medium">Gameplay &amp; business</div>
+          <p class="mt-1 text-muted">
+            Serves play and the provider at once — the contested middle where the
+            conditions below decide.
+          </p>
+        </div>
+        <div class="rounded-xl border border-sev-severe/40 bg-sev-severe/5 p-4">
+          <div class="font-semibold text-sev-severe">Serves business</div>
+          <p class="mt-1 text-muted">
+            Primarily for revenue, retention, or data — the most suspect, and the
+            clearest dark-pattern candidates.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- spectrum -->
     <div class="mt-8 overflow-hidden rounded-lg border border-border">
       <div class="grid grid-cols-2 sm:grid-cols-4">

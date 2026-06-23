@@ -132,7 +132,7 @@ def cmd_new(args):
 
     fm = {
         "title": title, "code": code, "category": category, "family": family,
-        "severity": severity, "platforms": ["Mobile / F2P"], "evidenceLevel": evidence,
+        "severity": severity, "purpose": "both", "platforms": ["Mobile / F2P"], "evidenceLevel": evidence,
         "evidenceNote": "", "harmVectors": arr(harms), "modes": arr(modes),
         "tags": arr(tags), "aliases": [], "summary": "One-sentence operational definition.",
         "examples": [], "references": arr(refs), "related": [], "updated": "2026-06-23",
@@ -163,8 +163,8 @@ def cmd_validate(_args):
     pat_slugs = {f.stem for f in PATTERNS.glob("*.mdx")}
     errors, warnings = [], []
 
-    required = ["title", "code", "category", "family", "severity", "evidenceLevel",
-                "harmVectors", "modes", "tags", "summary", "references"]
+    required = ["title", "code", "category", "family", "severity", "purpose",
+                "evidenceLevel", "harmVectors", "modes", "tags", "summary", "references"]
     codes = {}
     for f in sorted(PATTERNS.glob("*.mdx")):
         d = parse_frontmatter(f.read_text())
@@ -176,6 +176,8 @@ def cmd_validate(_args):
             errors.append(f"{name}: severity '{d.get('severity')}' not in {SEVERITIES}")
         if d.get("evidenceLevel") not in EVIDENCE:
             errors.append(f"{name}: evidenceLevel '{d.get('evidenceLevel')}' not in {EVIDENCE}")
+        if d.get("purpose") not in ("gameplay", "business", "both"):
+            errors.append(f"{name}: purpose '{d.get('purpose')}' not in gameplay/business/both")
         if d.get("family") not in fams:
             errors.append(f"{name}: family '{d.get('family')}' not in families.json")
         for h in d.get("harmVectors", []) or []:

@@ -28,6 +28,32 @@ export function evTone(e: string): string {
   );
 }
 
+/** Whether a mechanic serves the player (gameplay), the provider (business), or both. */
+export function purposeLabel(p: string): string {
+  return (
+    {
+      gameplay: "Serves gameplay",
+      business: "Serves business",
+      both: "Gameplay & business",
+    }[p] ?? p
+  );
+}
+
+export function purposeTone(p: string): string {
+  // green = legitimate play, amber = contested middle, red = provider-serving
+  return { gameplay: "ev-strong", both: "sev-medium", business: "sev-severe" }[p] ?? "neutral";
+}
+
+export function purposeNote(p: string): string {
+  return (
+    {
+      gameplay: "Primarily serves the player's experience — usually a standard mechanic, not a dark pattern.",
+      business: "Primarily serves the provider's revenue, retention, or data — the most suspect.",
+      both: "Serves play and the provider at once — the contested middle where context decides whether it's deceptive.",
+    }[p] ?? ""
+  );
+}
+
 export async function allPatterns(): Promise<Pattern[]> {
   const p = await getCollection("patterns");
   return p.sort((a, b) => a.data.title.localeCompare(b.data.title));

@@ -1,6 +1,7 @@
 [
   {
     "code": "M1", "slug": "loot-boxes-gacha", "title": "Loot boxes / gacha",
+    "purpose": "both",
     "category": "Monetary & randomised", "family": "monetary", "severity": "Severe",
     "platforms": ["Mobile / F2P", "PC / console", "Live-service"],
     "evidenceLevel": "Strong", "evidenceNote": "Replicated, meta-analytic correlation with problem gambling; effect stronger in adolescents.",
@@ -15,6 +16,7 @@
   },
   {
     "code": "M2", "slug": "hidden-undisclosed-odds", "title": "Hidden / undisclosed odds",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "sneaking", "severity": "High",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Strong", "evidenceNote": "Central to gambling-regulation analyses; disclosure is a leading policy remedy.",
@@ -29,6 +31,7 @@
   },
   {
     "code": "M3", "slug": "premium-currency-obfuscation", "title": "Premium-currency obfuscation",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "sneaking", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Documented in player-perception and consumer-law analyses of mobile monetization.",
@@ -43,6 +46,7 @@
   },
   {
     "code": "M4", "slug": "bundle-anchoring-decoys", "title": "Bundle anchoring & decoys",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "interface-interference", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Consistent with player-reported pricing tactics; grounded in choice-architecture research.",
@@ -57,6 +61,7 @@
   },
   {
     "code": "M5", "slug": "pay-to-win", "title": "Pay-to-win",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "monetary", "severity": "High",
     "platforms": ["Mobile / F2P", "PC / console", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Strong, consistent player-perceived unfairness in competitive contexts.",
@@ -71,6 +76,7 @@
   },
   {
     "code": "M6", "slug": "pay-to-skip-engineered-grind", "title": "Pay-to-skip / engineered grind",
+    "purpose": "both",
     "category": "Monetary & randomised", "family": "temporal", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Documented in exploitation-focused analyses of monetized game services.",
@@ -85,6 +91,7 @@
   },
   {
     "code": "M7", "slug": "fomo-limited-time-offers", "title": "FOMO / limited-time offers",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Recurring in player reports and early-childhood gaming studies.",
@@ -99,6 +106,7 @@
   },
   {
     "code": "M8", "slug": "monetising-quality-of-life", "title": "Monetising basic quality-of-life",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "obstruction", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Reported by players as an unfair, friction-for-sale tactic.",
@@ -113,6 +121,7 @@
   },
   {
     "code": "M9", "slug": "bait-and-switch", "title": "Bait-and-switch / product not as expected",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "sneaking", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Frequent in player reviews of mobile monetization.",
@@ -127,6 +136,7 @@
   },
   {
     "code": "M10", "slug": "predatory-forced-advertising", "title": "Predatory / forced advertising",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "forced-action", "severity": "High",
     "platforms": ["Mobile / F2P", "Children's apps"],
     "evidenceLevel": "Strong", "evidenceNote": "Prevalent in children's apps per reliable content-coding studies.",
@@ -141,6 +151,7 @@
   },
   {
     "code": "M11", "slug": "accidental-purchase-ui", "title": "Accidental-purchase / default-to-purchase UI",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "interface-interference", "severity": "High",
     "platforms": ["Mobile / F2P", "Children's apps", "UGC platforms"],
     "evidenceLevel": "Strong", "evidenceNote": "Documented in 3D/UGC player-perception work and consumer-protection enforcement.",
@@ -155,6 +166,7 @@
   },
   {
     "code": "M12", "slug": "subscription-battle-pass-traps", "title": "Subscription / battle-pass traps",
+    "purpose": "both",
     "category": "Monetary & randomised", "family": "obstruction", "severity": "Medium",
     "platforms": ["Live-service", "Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Analysed in free-to-play transition research.",
@@ -170,6 +182,7 @@
 
   {
     "code": "T1", "slug": "grinding-engineered-repetition", "title": "Grinding / engineered repetition",
+    "purpose": "both",
     "category": "Temporal & attention", "family": "temporal", "severity": "Low",
     "platforms": ["Mobile / F2P", "PC / console", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Often normalised as 'progression'; harmful chiefly when monetized.",
@@ -184,6 +197,7 @@
   },
   {
     "code": "T2", "slug": "energy-wait-timers", "title": "Energy / wait timers (appointment mechanics)",
+    "purpose": "both",
     "category": "Temporal & attention", "family": "temporal", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Classic temporal dark pattern; documented in early-childhood gaming.",
@@ -198,6 +212,7 @@
   },
   {
     "code": "T3", "slug": "daily-login-streaks", "title": "Daily login / streaks",
+    "purpose": "both",
     "category": "Temporal & attention", "family": "temporal", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Loss-aversion mechanic noted across temporal-pattern and child-app studies.",
@@ -212,6 +227,7 @@
   },
   {
     "code": "T4", "slug": "time-fog-playtime-opacity", "title": "Time fog / playtime opacity",
+    "purpose": "business",
     "category": "Temporal & attention", "family": "sneaking", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Emerging", "evidenceNote": "Part of the newer attention-capture deceptive-design literature.",
@@ -226,6 +242,7 @@
   },
   {
     "code": "T5", "slug": "sticky-loops", "title": "Interruptible-but-sticky loops",
+    "purpose": "both",
     "category": "Temporal & attention", "family": "temporal", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Emerging", "evidenceNote": "Attention-capture mechanics; evidence base still developing.",
@@ -241,6 +258,7 @@
 
   {
     "code": "S1", "slug": "social-obligation-guilt", "title": "Social obligation / guilt",
+    "purpose": "both",
     "category": "Social & parasocial", "family": "social", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service", "UGC platforms"],
     "evidenceLevel": "Moderate", "evidenceNote": "Reported across UGC and competitive-fairness studies.",
@@ -255,6 +273,7 @@
   },
   {
     "code": "S2", "slug": "parasocial-character-pressure", "title": "Parasocial-character pressure",
+    "purpose": "business",
     "category": "Social & parasocial", "family": "social", "severity": "High",
     "platforms": ["Children's apps", "Mobile / F2P"],
     "evidenceLevel": "Strong", "evidenceNote": "Documented as a prevalent manipulative tactic in children's apps.",
@@ -269,6 +288,7 @@
   },
   {
     "code": "S3", "slug": "gifting-invitation-spam", "title": "Gifting / invitation spam (social pyramid)",
+    "purpose": "business",
     "category": "Social & parasocial", "family": "nagging", "severity": "Low",
     "platforms": ["Mobile / F2P", "Social platforms"],
     "evidenceLevel": "Emerging", "evidenceNote": "Long-noted virality tactic; systematic game-specific evidence still thin.",
@@ -283,6 +303,7 @@
   },
   {
     "code": "S4", "slug": "impersonation-system-as-friend", "title": "Impersonation / disguised system-as-friend",
+    "purpose": "business",
     "category": "Social & parasocial", "family": "sneaking", "severity": "Medium",
     "platforms": ["Mobile / F2P", "UGC platforms"],
     "evidenceLevel": "Moderate", "evidenceNote": "Reported in 3D/UGC player-perception research as interpersonal persuasion.",
@@ -297,6 +318,7 @@
   },
   {
     "code": "S5", "slug": "monetised-social-status", "title": "Monetised social status",
+    "purpose": "both",
     "category": "Social & parasocial", "family": "social", "severity": "Medium",
     "platforms": ["Live-service", "Mobile / F2P", "UGC platforms"],
     "evidenceLevel": "Moderate", "evidenceNote": "Linked to gamblification and competitive-fairness perceptions.",
@@ -312,6 +334,7 @@
 
   {
     "code": "P1", "slug": "variable-ratio-near-miss", "title": "Variable-ratio reward / near-miss",
+    "purpose": "both",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "High",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Strong", "evidenceNote": "Core gambling psychology; well-evidenced reinforcement mechanism.",
@@ -326,6 +349,7 @@
   },
   {
     "code": "P2", "slug": "sunk-cost-entrapment", "title": "Sunk-cost / entrapment",
+    "purpose": "both",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Mechanism described across predatory-monetization analyses.",
@@ -340,6 +364,7 @@
   },
   {
     "code": "P3", "slug": "illusion-of-control", "title": "Illusion of control / skill framing",
+    "purpose": "business",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Identified in exploitation analyses of chance-based mechanics.",
@@ -354,6 +379,7 @@
   },
   {
     "code": "P4", "slug": "aesthetic-sensory-manipulation", "title": "Aesthetic / sensory manipulation",
+    "purpose": "both",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Reinforcing 'celebration' effects noted in gambling-adjacent design.",
@@ -368,6 +394,7 @@
   },
   {
     "code": "P5", "slug": "aggressive-nagging-upsell", "title": "Aggressive nagging / interruptive upsell",
+    "purpose": "business",
     "category": "Psychological / reinforcement", "family": "nagging", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Nagging is a well-established cross-domain dark-pattern family.",
@@ -383,6 +410,7 @@
 
   {
     "code": "I1", "slug": "hidden-costs", "title": "Hidden costs",
+    "purpose": "business",
     "category": "Informational / interface", "family": "sneaking", "severity": "Medium",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Canonical dark pattern carried into games.",
@@ -397,6 +425,7 @@
   },
   {
     "code": "I2", "slug": "confirmshaming", "title": "Confirmshaming",
+    "purpose": "business",
     "category": "Informational / interface", "family": "interface-interference", "severity": "Low",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Well-documented interface-interference pattern.",
@@ -411,6 +440,7 @@
   },
   {
     "code": "I3", "slug": "misdirection-false-hierarchy", "title": "Misdirection / false visual hierarchy",
+    "purpose": "business",
     "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Recognised across mobile-app dark-pattern studies.",
@@ -425,6 +455,7 @@
   },
   {
     "code": "I4", "slug": "obstructed-exit-sludge", "title": "Obstructed exit / cancellation (sludge)",
+    "purpose": "business",
     "category": "Informational / interface", "family": "obstruction", "severity": "High",
     "platforms": ["Live-service", "Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Sludge / cancellation friction documented in gambling and account-closure studies.",
@@ -439,6 +470,7 @@
   },
   {
     "code": "I5", "slug": "disguised-ads-content", "title": "Disguised ads / content",
+    "purpose": "business",
     "category": "Informational / interface", "family": "sneaking", "severity": "High",
     "platforms": ["Children's apps", "Mobile / F2P"],
     "evidenceLevel": "Strong", "evidenceNote": "Prevalent in children's apps per reliable content analysis.",
@@ -453,6 +485,7 @@
   },
   {
     "code": "I6", "slug": "value-obfuscation-false-narrative", "title": "Value obfuscation / false narratives",
+    "purpose": "business",
     "category": "Informational / interface", "family": "sneaking", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Reported in consumer-law and player-perception work on monetization.",
@@ -467,6 +500,7 @@
   },
   {
     "code": "M13", "slug": "power-creep", "title": "Power creep",
+    "purpose": "both",
     "category": "Monetary & randomised", "family": "monetary", "severity": "High",
     "platforms": ["Mobile / F2P", "Live-service", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Documented in exploitation and player-perception analyses of monetised games.",
@@ -481,6 +515,7 @@
   },
   {
     "code": "M14", "slug": "pay-for-early-access", "title": "Pay-for-early-access",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "monetary", "severity": "Medium",
     "platforms": ["Live-service", "Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Player-perceived unfairness of timed advantages; named in the Game-check report.",
@@ -495,6 +530,7 @@
   },
   {
     "code": "M15", "slug": "creator-tipping-crowdfunding", "title": "Creator tipping & crowdfunded content",
+    "purpose": "business",
     "category": "Monetary & randomised", "family": "monetary", "severity": "Medium",
     "platforms": ["UGC platforms", "PC / console", "Mobile / F2P"],
     "evidenceLevel": "Emerging", "evidenceNote": "Newer monetisation surface; UGC-monetisation research and the Game-check report.",
@@ -509,6 +545,7 @@
   },
   {
     "code": "T6", "slug": "cant-pause-or-save", "title": "Can't pause or save",
+    "purpose": "both",
     "category": "Temporal & attention", "family": "temporal", "severity": "High",
     "platforms": ["UGC platforms", "Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Inability to pause is a child-app harm typology (Radesky); children's-rights and temporal-design work.",
@@ -523,6 +560,7 @@
   },
   {
     "code": "T7", "slug": "content-treadmill", "title": "Content treadmill",
+    "purpose": "both",
     "category": "Temporal & attention", "family": "temporal", "severity": "Medium",
     "platforms": ["Live-service", "PC / console", "Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Temporal-design literature; the Game-check report names continuous content refresh as a retention engine.",
@@ -537,6 +575,7 @@
   },
   {
     "code": "S6", "slug": "reciprocity", "title": "Reciprocity",
+    "purpose": "business",
     "category": "Social & parasocial", "family": "social", "severity": "Medium",
     "platforms": ["Mobile / F2P", "UGC platforms", "Social platforms"],
     "evidenceLevel": "Emerging", "evidenceNote": "Reciprocity-norm exploitation; UGC-monetisation research and the Game-check report.",
@@ -551,6 +590,7 @@
   },
   {
     "code": "S7", "slug": "encourages-anti-social-behaviour", "title": "Encourages anti-social behaviour",
+    "purpose": "business",
     "category": "Social & parasocial", "family": "social", "severity": "Medium",
     "platforms": ["Live-service", "UGC platforms", "PC / console"],
     "evidenceLevel": "Emerging", "evidenceNote": "Community-catalogued (DarkPattern.games); social-harm evidence in games is still developing.",
@@ -565,6 +605,7 @@
   },
   {
     "code": "S8", "slug": "manufactured-competition", "title": "Manufactured competition",
+    "purpose": "both",
     "category": "Social & parasocial", "family": "social", "severity": "Medium",
     "platforms": ["Live-service", "Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Competitive-fairness perceptions and gamblification; the Game-check report flags ranked/leaderboard pressure.",
@@ -579,6 +620,7 @@
   },
   {
     "code": "S9", "slug": "licensed-ip-collaboration", "title": "Licensed-IP collaboration FOMO",
+    "purpose": "business",
     "category": "Social & parasocial", "family": "social", "severity": "Medium",
     "platforms": ["Live-service", "Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Player-perceived FOMO monetisation; the Game-check report names brand collaborations.",
@@ -593,6 +635,7 @@
   },
   {
     "code": "P6", "slug": "endowed-progress", "title": "Endowed progress",
+    "purpose": "both",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Emerging", "evidenceNote": "Endowed-progress / Zeigarnik effects; temporal-design literature and the Game-check report.",
@@ -607,6 +650,7 @@
   },
   {
     "code": "P7", "slug": "collection-completionism", "title": "Collection & completionism pressure",
+    "purpose": "both",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P", "PC / console", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Sunk-cost and collection-completion drives; player-perception and Game-check report.",
@@ -621,6 +665,7 @@
   },
   {
     "code": "P8", "slug": "optimism-frequency-bias", "title": "Optimism & frequency bias",
+    "purpose": "business",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Emerging", "evidenceNote": "Cognitive-bias exploitation around chance outcomes; loot-box and exploitation literature.",
@@ -635,6 +680,7 @@
   },
   {
     "code": "I7", "slug": "fake-social-proof", "title": "Fake social proof",
+    "purpose": "business",
     "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
     "platforms": ["Mobile / F2P", "PC / console"],
     "evidenceLevel": "Moderate", "evidenceNote": "Cross-domain dark pattern (Mathur et al.); catalogued by deceptive.design.",
@@ -649,6 +695,7 @@
   },
   {
     "code": "I8", "slug": "comparison-prevention", "title": "Comparison prevention",
+    "purpose": "business",
     "category": "Informational / interface", "family": "obstruction", "severity": "Medium",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Cross-domain dark pattern (Mathur et al.; Gray et al.); catalogued by deceptive.design.",
@@ -663,6 +710,7 @@
   },
   {
     "code": "I9", "slug": "offer-wall-redirection", "title": "Offer-wall / cross-promotion redirection",
+    "purpose": "business",
     "category": "Informational / interface", "family": "forced-action", "severity": "High",
     "platforms": ["Mobile / F2P"],
     "evidenceLevel": "Moderate", "evidenceNote": "Children's-app advertising harms (Radesky); named explicitly in the Game-check report.",
@@ -677,6 +725,7 @@
   },
   {
     "code": "I10", "slug": "personalised-spend-optimisation", "title": "Personalised spend-optimisation",
+    "purpose": "business",
     "category": "Informational / interface", "family": "sneaking", "severity": "Severe",
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Emerging", "evidenceNote": "Patent and exploitation analyses, digital-vulnerability theory, and the Game-check report's hidden-manipulation focus area.",

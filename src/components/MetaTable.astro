@@ -1,6 +1,14 @@
 ---
 import Badge from "./Badge.astro";
-import { sevTone, evTone, tagLabel, type Pattern } from "../lib/patterns";
+import {
+  sevTone,
+  evTone,
+  tagLabel,
+  purposeLabel,
+  purposeTone,
+  purposeNote,
+  type Pattern,
+} from "../lib/patterns";
 
 interface Props {
   pattern: Pattern;
@@ -33,6 +41,13 @@ const dt = "text-xs font-semibold uppercase tracking-wide text-muted";
     <dd class="mt-1 flex flex-col gap-1">
       <Badge label={d.evidenceLevel} tone={evTone(d.evidenceLevel)} />
       {d.evidenceNote && <span class="text-xs text-muted">{d.evidenceNote}</span>}
+    </dd>
+  </div>
+  <div class="sm:col-span-2">
+    <dt class={dt}>Purpose served</dt>
+    <dd class="mt-1 flex flex-col gap-1">
+      <Badge label={purposeLabel(d.purpose)} tone={purposeTone(d.purpose)} />
+      <span class="text-xs text-muted">{purposeNote(d.purpose)}</span>
     </dd>
   </div>
   <div>

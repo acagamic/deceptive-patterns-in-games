@@ -10,6 +10,7 @@ const patterns = defineCollection({
     category: z.string(), // human-readable group, e.g. "Monetary & randomised"
     family: z.string(), // family id, e.g. "monetary"
     severity: z.enum(["Low", "Medium", "High", "Severe"]),
+    purpose: z.enum(["gameplay", "business", "both"]).default("both"),
     platforms: z.array(z.string()).default([]),
     evidenceLevel: z.enum(["Strong", "Moderate", "Emerging"]),
     evidenceNote: z.string().optional(),

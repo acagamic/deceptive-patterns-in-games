@@ -1,6 +1,6 @@
 ---
 import Badge from "./Badge.astro";
-import { sevTone, evTone, type Pattern } from "../lib/patterns";
+import { sevTone, evTone, purposeLabel, purposeTone, type Pattern } from "../lib/patterns";
 
 interface Props {
   pattern: Pattern;
@@ -21,6 +21,7 @@ const d = pattern.data;
   data-category={d.category}
   data-platforms={d.platforms.join("|")}
   data-tags={d.tags.join("|")}
+  data-purpose={d.purpose}
 >
   <div class="flex items-center justify-between gap-2">
     <span class="font-mono text-xs text-muted">{d.code}</span>
@@ -35,5 +36,6 @@ const d = pattern.data;
   <div class="mt-3 flex flex-wrap items-center gap-1.5">
     {familyName && <Badge label={familyName} tone="neutral" />}
     <Badge label={`Evidence: ${d.evidenceLevel}`} tone={evTone(d.evidenceLevel)} />
+    <Badge label={purposeLabel(d.purpose)} tone={purposeTone(d.purpose)} />
   </div>
 </a>

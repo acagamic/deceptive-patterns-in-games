@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PatternCard from "../../components/PatternCard.astro";
-import { allPatterns, labelMaps, sevRank } from "../../lib/patterns";
+import { allPatterns, labelMaps, sevRank, purposeLabel } from "../../lib/patterns";
 
 const patterns = await allPatterns();
 const maps = await labelMaps();
@@ -13,6 +13,9 @@ const platforms = [
   ...new Set(patterns.flatMap((p) => p.data.platforms)),
 ].sort();
 const tags = [...new Set(patterns.flatMap((p) => p.data.tags))].sort();
+const purposes = ["both", "business", "gameplay"].filter((v) =>
+  patterns.some((p) => p.data.purpose === v),
+);
 
 // default order: severity desc, then title
 const ordered = [...patterns].sort(
@@ -109,6 +112,20 @@ const groupBtn =
             }
           </div>
         </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >Purpose served</span
+          >
+          <div class="mt-1.5 flex flex-wrap gap-1.5">
+            {
+              purposes.map((p) => (
+                <button class={groupBtn} data-group="purpose" data-value={p} aria-pressed="false">
+                  {purposeLabel(p)}
+                </button>
+              ))
+            }
+          </div>
+        </div>
       </div>
 
       <div class="mt-4 flex flex-wrap items-end justify-between gap-3">
@@ -163,7 +180,7 @@ const groupBtn =
       const countEl = document.getElementById("facet-count");
       const emptyEl = document.getElementById("facet-empty");
       const btns = Array.from(document.querySelectorAll(".facet-btn"));
-      const active = { severity: new Set(), evidence: new Set(), category: new Set(), platform: new Set() };
+      const active = { severity: new Set(), evidence: new Set(), category: new Set(), platform: new Set(), purpose: new Set() };
 
       function apply() {
         const q = (search.value || "").trim().toLowerCase();
@@ -179,7 +196,8 @@ const groupBtn =
           const okPlat = !active.platform.size || cardPlat.some((p) => active.platform.has(p));
           const cardTags = (d.tags || "").split("|");
           const okTag = !tag || cardTags.includes(tag);
-          const show = okText && okSev && okEv && okCat && okPlat && okTag;
+          const okPurpose = !active.purpose.size || active.purpose.has(d.purpose);
+          const show = okText && okSev && okEv && okCat && okPlat && okTag && okPurpose;
           card.style.display = show ? "" : "none";
           if (show) shown++;
         }

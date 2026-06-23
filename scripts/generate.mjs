@@ -32,6 +32,7 @@ for (const p of patterns) {
     `category: ${q(p.category)}`,
     `family: ${q(p.family)}`,
     `severity: ${q(p.severity)}`,
+    `purpose: ${q(p.purpose || "both")}`,
     `platforms: ${arr(p.platforms)}`,
     `evidenceLevel: ${q(p.evidenceLevel)}`,
     `evidenceNote: ${q(p.evidenceNote)}`,

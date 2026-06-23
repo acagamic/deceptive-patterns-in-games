@@ -21,6 +21,7 @@ code: "T3"                       # short axis code, unique
 category: "Temporal & attention" # display group
 family: "temporal"               # id from families.json
 severity: "Medium"               # Low | Medium | High | Severe
+purpose: "both"                  # gameplay | business | both — whose purpose the mechanic serves
 platforms: ["Mobile / F2P"]
 evidenceLevel: "Moderate"        # Strong | Moderate | Emerging
 evidenceNote: "Loss-aversion mechanic; documented across temporal-pattern studies."
