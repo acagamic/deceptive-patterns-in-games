@@ -12,6 +12,7 @@ import {
   sevTone,
   evTone,
 } from "../../lib/patterns";
+import community from "../../data/community.json";
 
 export async function getStaticPaths() {
   const patterns = await getCollection("patterns");
@@ -24,6 +25,7 @@ const { Content } = await render(entry);
 const maps = await labelMaps();
 const all = await allPatterns();
 const related = relatedPatterns(entry, all);
+const comm = (community as Record<string, any>)[entry.id];
 ---
 
 <Base title={d.title} description={d.summary}>
@@ -94,6 +96,29 @@ const related = relatedPatterns(entry, all);
               <Citation id={id} />
             ))}
           </ol>
+        </section>
+      )
+    }
+
+    {
+      comm && (
+        <section class="mt-8">
+          <h2 class="font-serif text-xl font-semibold text-ink">
+            Community catalogue
+          </h2>
+          <div class="mt-3 rounded-xl border border-border bg-surface/50 p-4 text-sm">
+            <p class="text-ink">
+              The community site{" "}
+              <a class="text-link underline" href="https://www.darkpattern.games" rel="noopener">DarkPattern.games</a>{" "}
+              catalogues a related pattern,{" "}
+              <a class="text-link underline" href={comm.url} rel="noopener">“{comm.title}”</a>, with {comm.exampleCount}+ community-reported example games
+              {comm.examples.length > 0 ? `, including ${comm.examples.join(", ")}` : ""}.
+            </p>
+            <p class="mt-2 text-xs text-muted">
+              Community-contributed and votes-based; the listed game titles are examples reported there, not our assessment.{" "}
+              <a class="text-link underline" href={comm.url} rel="noopener">View on DarkPattern.games →</a>
+            </p>
+          </div>
         </section>
       )
     }

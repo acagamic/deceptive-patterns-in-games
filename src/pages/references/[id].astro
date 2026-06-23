@@ -18,9 +18,12 @@ const glossary = (await getCollection("glossary")).filter((g) =>
 );
 
 const bibType =
-  { "article-journal": "article", "paper-conference": "inproceedings", chapter: "incollection" }[
-    ref.type
-  ] ?? "misc";
+  {
+    "article-journal": "article",
+    "paper-conference": "inproceedings",
+    chapter: "incollection",
+    report: "techreport",
+  }[ref.type] ?? "misc";
 const bibAuthors = (ref.author ?? [])
   .map((a) => a.literal ?? `${a.family ?? ""}, ${a.given ?? ""}`.replace(/, $/, ""))
   .join(" and ");
@@ -51,7 +54,7 @@ const preCls =
     {ref["container-title"] && <p class="text-muted italic">{ref["container-title"]}</p>}
 
     {
-      ref.DOI && (
+      ref.DOI ? (
         <a
           class="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-brand-ink hover:opacity-90"
           href={ref.URL ?? `https://doi.org/${ref.DOI}`}
@@ -59,7 +62,15 @@ const preCls =
         >
           View at doi.org/{ref.DOI}
         </a>
-      )
+      ) : ref.URL ? (
+        <a
+          class="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-brand-ink hover:opacity-90"
+          href={ref.URL}
+          rel="noopener"
+        >
+          View source ↗
+        </a>
+      ) : null
     }
 
     {

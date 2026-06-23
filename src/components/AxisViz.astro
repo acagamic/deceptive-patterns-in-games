@@ -1,0 +1,198 @@
+---
+import { getCollection } from "astro:content";
+import { allPatterns } from "../lib/patterns";
+
+const patterns = await allPatterns();
+const families = await getCollection("families");
+const harms = await getCollection("harms");
+
+const famOrder = families.map((f) => f.id);
+const famTitle = Object.fromEntries(families.map((f) => [f.id, f.data.title]));
+const harmOrder = harms.map((h) => h.id);
+const harmTitle = Object.fromEntries(harms.map((h) => [h.id, h.data.title]));
+
+const sevRank: Record<string, number> = { Severe: 4, High: 3, Medium: 2, Low: 1 };
+const techs = patterns
+  .map((p) => ({
+    slug: p.id,
+    code: p.data.code,
+    title: p.data.title,
+    severity: p.data.severity,
+    family: p.data.family,
+    harms: p.data.harmVectors,
+  }))
+  .sort((a, b) => {
+    const fo = famOrder.indexOf(a.family) - famOrder.indexOf(b.family);
+    if (fo) return fo;
+    const sv = (sevRank[b.severity] ?? 0) - (sevRank[a.severity] ?? 0);
+    if (sv) return sv;
+    return a.title.localeCompare(b.title);
+  });
+
+const vizData = { famOrder, famTitle, harmOrder, harmTitle, techs };
+---
+
+<div class="axisviz">
+  <div class="axisviz-scroll">
+    <svg id="axis-viz" role="img" aria-label="Interactive map linking mechanism families, named techniques, and harm vectors"></svg>
+  </div>
+  <p id="axis-viz-cap" class="axisviz-cap">
+    Hover a <strong>mechanism</strong>, <strong>technique</strong>, or{" "}
+    <strong>harm</strong> to trace its links — click a technique to open it.
+    Prefer a list? <a class="text-link underline" href="/patterns">Browse all patterns</a>.
+  </p>
+</div>
+
+<script type="application/json" id="axis-viz-data" set:html={JSON.stringify(vizData)}
+></script>
+
+<script>
+  import { select } from "d3";
+  import { linkHorizontal } from "d3";
+
+  const svg = document.getElementById("axis-viz");
+  const dataEl = document.getElementById("axis-viz-data");
+  const cap = document.getElementById("axis-viz-cap");
+  if (svg && dataEl) {
+    const data = JSON.parse(dataEl.textContent || "{}");
+    const techs = data.techs as any[];
+    const n = techs.length;
+
+    const top = 78, rowH = 15;
+    const famX = 300, techX = 575, harmX = 855, W = 1140;
+    const bottom = top + (n - 1) * rowH;
+    const H = bottom + 56;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+
+    const techY = (i: number) => top + i * rowH;
+    const techIndex = new Map(techs.map((t, i) => [t.slug, i]));
+    const famMembers: Record<string, number[]> = {};
+    techs.forEach((t, i) => (famMembers[t.family] ||= []).push(i));
+    const famY: Record<string, number> = {};
+    data.famOrder.forEach((f: string) => {
+      const m = famMembers[f] || [];
+      famY[f] = m.length ? m.reduce((a, i) => a + techY(i), 0) / m.length : top;
+    });
+    const harmY: Record<string, number> = {};
+    const hc = data.harmOrder.length;
+    data.harmOrder.forEach((h: string, i: number) => (harmY[h] = top + (i * (bottom - top)) / (hc - 1)));
+
+    const link = linkHorizontal().x((d: any) => d[0]).y((d: any) => d[1]);
+    const links: any[] = [];
+    techs.forEach((t, i) => {
+      links.push({ kind: "fl", fam: t.family, tech: t.slug, s: [famX, famY[t.family]], t: [techX, techY(i)] });
+      t.harms.forEach((h: string) => links.push({ kind: "tr", harm: h, tech: t.slug, s: [techX, techY(i)], t: [harmX, harmY[h]] }));
+    });
+
+    const root = select(svg);
+    // axis headers
+    const head = (x: number, anchor: string, a: string, b: string) => {
+      root.append("text").attr("x", x).attr("y", 26).attr("text-anchor", anchor)
+        .attr("class", "axisviz-head").text(a);
+      root.append("text").attr("x", x).attr("y", 44).attr("text-anchor", anchor)
+        .attr("class", "axisviz-headsub").text(b);
+    };
+    head(famX - 14, "end", "MECHANISM", "how it works");
+    head(techX, "middle", "TECHNIQUE", `${n} named`);
+    head(harmX + 14, "start", "HARM VECTOR", "what it costs");
+
+    const gLinks = root.append("g");
+    gLinks.selectAll("path").data(links).enter().append("path")
+      .attr("class", "axisviz-link")
+      .attr("d", (d: any) => link({ source: d.s, target: d.t }) as string)
+      .attr("data-tech", (d: any) => d.tech)
+      .attr("data-fam", (d: any) => d.fam || "")
+      .attr("data-harm", (d: any) => d.harm || "");
+
+    const gNodes = root.append("g");
+
+    // family + harm anchor nodes with labels
+    function anchorNode(id: string, label: string, x: number, y: number, side: "l" | "r", kind: string) {
+      const g = gNodes.append("g").attr("class", "axisviz-node").attr("data-id", id);
+      g.append("circle").attr("cx", x).attr("cy", y).attr("r", 5).attr("class", `axisviz-anchor ${kind}`);
+      g.append("text").attr("x", side === "l" ? x - 12 : x + 12).attr("y", y + 4)
+        .attr("text-anchor", side === "l" ? "end" : "start").attr("class", "axisviz-label").text(label);
+      g.on("mouseenter", () => (kind === "fam" ? focusFam(id) : focusHarm(id))).on("mouseleave", clear);
+      return g;
+    }
+    data.famOrder.forEach((f: string) => anchorNode(f, data.famTitle[f], famX, famY[f], "l", "fam"));
+    data.harmOrder.forEach((h: string) => anchorNode(h, data.harmTitle[h], harmX, harmY[h], "r", "harm"));
+
+    // technique nodes
+    techs.forEach((t, i) => {
+      const g = gNodes.append("g").attr("class", "axisviz-node axisviz-tech").attr("data-id", t.slug)
+        .style("cursor", "pointer").attr("role", "link").attr("tabindex", 0)
+        .attr("aria-label", `${t.title} (${t.severity})`);
+      g.append("circle").attr("cx", techX).attr("cy", techY(i)).attr("r", 4.2).attr("class", `axisviz-dot sev-${t.severity}`);
+      g.append("circle").attr("cx", techX).attr("cy", techY(i)).attr("r", 8).attr("fill", "transparent");
+      const go = () => (window.location.href = `/patterns/${t.slug}`);
+      g.on("mouseenter", () => focusTech(t.slug)).on("mouseleave", clear)
+        .on("click", go).on("keydown", (e: any) => { if (e.key === "Enter") go(); });
+    });
+
+    const allLinks = root.selectAll(".axisviz-link");
+    const allNodes = gNodes.selectAll(".axisviz-node");
+    const defaultCap = cap ? cap.innerHTML : "";
+
+    function apply(linkActive: (d: any) => boolean, nodeActive: (id: string) => boolean) {
+      allLinks.each(function (d: any) {
+        const a = linkActive(d);
+        (this as Element).classList.toggle("hl", a);
+        (this as Element).classList.toggle("dim", !a);
+      });
+      allNodes.each(function () {
+        const id = (this as Element).getAttribute("data-id") || "";
+        (this as Element).classList.toggle("dim", !nodeActive(id));
+      });
+    }
+    function clear() {
+      allLinks.each(function () { (this as Element).classList.remove("hl", "dim"); });
+      allNodes.each(function () { (this as Element).classList.remove("dim"); });
+      if (cap) cap.innerHTML = defaultCap;
+    }
+    function focusTech(slug: string) {
+      const t = techs[techIndex.get(slug) as number];
+      apply((l) => l.tech === slug, (id) => id === slug || id === t.family || t.harms.includes(id));
+      if (cap) cap.innerHTML = `<strong>${t.code} · ${t.title}</strong> — ${data.famTitle[t.family]} → ${t.harms.map((h: string) => data.harmTitle[h]).join(" · ")}`;
+    }
+    function focusFam(fid: string) {
+      const members = new Set((famMembers[fid] || []).map((i) => techs[i].slug));
+      const memberHarms = new Set<string>();
+      (famMembers[fid] || []).forEach((i) => techs[i].harms.forEach((h: string) => memberHarms.add(h)));
+      apply((l) => l.fam === fid || (l.kind === "tr" && members.has(l.tech)),
+        (id) => id === fid || members.has(id) || memberHarms.has(id));
+      if (cap) cap.innerHTML = `<strong>${data.famTitle[fid]}</strong> — ${members.size} techniques`;
+    }
+    function focusHarm(hid: string) {
+      const targeting = new Set(techs.filter((t) => t.harms.includes(hid)).map((t) => t.slug));
+      const fams = new Set(techs.filter((t) => t.harms.includes(hid)).map((t) => t.family));
+      apply((l) => l.harm === hid || (l.kind === "fl" && targeting.has(l.tech)),
+        (id) => id === hid || targeting.has(id) || fams.has(id));
+      if (cap) cap.innerHTML = `<strong>${data.harmTitle[hid]}</strong> — targeted by ${targeting.size} techniques`;
+    }
+  }
+</script>
+
+<style is:global>
+  .axisviz-scroll { overflow-x: auto; }
+  #axis-viz { width: 100%; height: auto; min-width: 680px; display: block; }
+  .axisviz-cap { margin-top: 0.75rem; font-size: 0.85rem; color: var(--muted); text-align: center; }
+  .axisviz-head { fill: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+  .axisviz-headsub { fill: var(--muted); font-size: 11px; }
+  .axisviz-label { fill: var(--ink); font-size: 11.5px; }
+  .axisviz-anchor { stroke: var(--paper); stroke-width: 1.5; }
+  .axisviz-anchor.fam { fill: var(--brand); }
+  .axisviz-anchor.harm { fill: var(--accent); }
+  .axisviz-link { fill: none; stroke: var(--border); stroke-width: 1; opacity: 0.4; transition: opacity 0.12s, stroke 0.12s; }
+  .axisviz-link.hl { stroke: var(--accent); opacity: 0.95; stroke-width: 1.6; }
+  .axisviz-link.dim { opacity: 0.06; }
+  .axisviz-node { transition: opacity 0.12s; }
+  .axisviz-node.dim { opacity: 0.16; }
+  .axisviz-dot { stroke: var(--paper); stroke-width: 1; }
+  .axisviz-dot.sev-Low { fill: var(--sev-low); }
+  .axisviz-dot.sev-Medium { fill: var(--sev-medium); }
+  .axisviz-dot.sev-High { fill: var(--sev-high); }
+  .axisviz-dot.sev-Severe { fill: var(--sev-severe); }
+  .axisviz-tech:focus-visible { outline: none; }
+  .axisviz-tech:focus-visible .axisviz-dot { stroke: var(--accent); stroke-width: 2.5; }
+</style>

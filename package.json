@@ -25,6 +25,7 @@
     "@pagefind/default-ui": "^1.5.2",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^7.0.0",
+    "d3": "^7.9.0",
     "tailwindcss": "^4.3.1"
   }
 }

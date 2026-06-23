@@ -1,0 +1,350 @@
+{
+  "loot-boxes-gacha": {
+    "title": "Gambling / Loot Boxes",
+    "url": "https://www.darkpattern.games/pattern/38/gambling-loot-boxes.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle",
+      "Paper.io 2"
+    ]
+  },
+  "premium-currency-obfuscation": {
+    "title": "Premium Currency",
+    "url": "https://www.darkpattern.games/pattern/16/premium-currency.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Redecor - Home Design Game",
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle"
+    ]
+  },
+  "bundle-anchoring-decoys": {
+    "title": "Anchoring Tricks",
+    "url": "https://www.darkpattern.games/pattern/51/anchoring-tricks.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "My Leisure Time",
+      "Mystic Messenger",
+      "Sonic Rumble"
+    ]
+  },
+  "pay-to-win": {
+    "title": "Pay to Win",
+    "url": "https://www.darkpattern.games/pattern/18/pay-to-win.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle",
+      "Off The Road - OTR Open World Driving"
+    ]
+  },
+  "pay-to-skip-engineered-grind": {
+    "title": "Pay to Skip",
+    "url": "https://www.darkpattern.games/pattern/34/pay-to-skip.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle",
+      "Pondlife — Relaxing Fish Game",
+      "Pixel Starships™ Space MMORPG"
+    ]
+  },
+  "fomo-limited-time-offers": {
+    "title": "Artificial Scarcity",
+    "url": "https://www.darkpattern.games/pattern/27/artificial-scarcity.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Redecor - Home Design Game",
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle",
+      "Paper.io 2"
+    ]
+  },
+  "monetising-quality-of-life": {
+    "title": "Pay Wall",
+    "url": "https://www.darkpattern.games/pattern/47/pay-wall.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Plants vs. Zombies™",
+      "Pixel Starships™ Space MMORPG",
+      "Gorogoa",
+      "Super Hexagon"
+    ]
+  },
+  "predatory-forced-advertising": {
+    "title": "Advertisements",
+    "url": "https://www.darkpattern.games/pattern/13/advertisements.html",
+    "category": "Temporal Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Sonic Rumble",
+      "Redecor - Home Design Game",
+      "Dye Hard - Color War",
+      "Hatch Dragons"
+    ]
+  },
+  "accidental-purchase-ui": {
+    "title": "Accidental Purchases",
+    "url": "https://www.darkpattern.games/pattern/35/accidental-purchases-.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Life Makeover",
+      "My Leisure Time",
+      "Tears of Themis",
+      "Cookie Run: Kingdom"
+    ]
+  },
+  "subscription-battle-pass-traps": {
+    "title": "Recurring Fee",
+    "url": "https://www.darkpattern.games/pattern/36/recurring-fee.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Plants vs. Zombies™",
+      "Pixel Starships™ Space MMORPG",
+      "Heroes of History: Epic Empire",
+      "Trickcal: Chibi Go"
+    ]
+  },
+  "grinding-engineered-repetition": {
+    "title": "Grinding",
+    "url": "https://www.darkpattern.games/pattern/12/grinding.html",
+    "category": "Temporal Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "Pixel Starships™ Space MMORPG",
+      "Royal Kingdom"
+    ]
+  },
+  "energy-wait-timers": {
+    "title": "Wait To Play",
+    "url": "https://www.darkpattern.games/pattern/30/wait-to-play.html",
+    "category": "Temporal Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle",
+      "Heartopia"
+    ]
+  },
+  "daily-login-streaks": {
+    "title": "Daily Rewards",
+    "url": "https://www.darkpattern.games/pattern/11/daily-rewards.html",
+    "category": "Temporal Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "SUMI SUMI : Matching Puzzle",
+      "Race The Sun",
+      "Paper.io 2"
+    ]
+  },
+  "sticky-loops": {
+    "title": "Infinite Treadmill",
+    "url": "https://www.darkpattern.games/pattern/14/infinite-treadmill.html",
+    "category": "Temporal Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Redecor - Home Design Game",
+      "Hatch Dragons",
+      "Pondlife — Relaxing Fish Game",
+      "Match Collector"
+    ]
+  },
+  "social-obligation-guilt": {
+    "title": "Social Obligation / Guilds",
+    "url": "https://www.darkpattern.games/pattern/21/social-obligation-guilds.html",
+    "category": "Social Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "XXL WOOFIA",
+      "Pixel Starships™ Space MMORPG",
+      "My Leisure Time"
+    ]
+  },
+  "gifting-invitation-spam": {
+    "title": "Social Pyramid Scheme",
+    "url": "https://www.darkpattern.games/pattern/20/social-pyramid-scheme.html",
+    "category": "Social Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "Umamusume: Pretty Derby",
+      "Tears of Themis",
+      "War Thunder Mobile"
+    ]
+  },
+  "impersonation-system-as-friend": {
+    "title": "Friend Spam / Impersonation",
+    "url": "https://www.darkpattern.games/pattern/22/friend-spam-impersonation.html",
+    "category": "Social Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Sonic Rumble",
+      "Starbrew Cafe: Mystical Merge",
+      "Ragnarok M: Eternal Love(ROM)",
+      "Animal Crossing: Pocket Camp C"
+    ]
+  },
+  "variable-ratio-near-miss": {
+    "title": "Variable Rewards",
+    "url": "https://www.darkpattern.games/pattern/49/variable-rewards.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "Pixel Starships™ Space MMORPG",
+      "GWENT: The Witcher Card Game",
+      "Match Collector"
+    ]
+  },
+  "sunk-cost-entrapment": {
+    "title": "Invested / Endowed Value",
+    "url": "https://www.darkpattern.games/pattern/24/invested-endowed-value.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "Paper.io 2",
+      "Jujutsu Kaisen Phantom Parade"
+    ]
+  },
+  "illusion-of-control": {
+    "title": "Illusion of Control",
+    "url": "https://www.darkpattern.games/pattern/48/illusion-of-control.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Match Collector",
+      "Kingshot",
+      "Sonic Dash"
+    ]
+  },
+  "aesthetic-sensory-manipulation": {
+    "title": "Aesthetic Manipulations",
+    "url": "https://www.darkpattern.games/pattern/52/aesthetic-manipulations.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "SUMI SUMI : Matching Puzzle",
+      "Doki Doki Literature Club!",
+      "LYNE"
+    ]
+  },
+  "power-creep": {
+    "title": "Power Creep",
+    "url": "https://www.darkpattern.games/pattern/39/power-creep.html",
+    "category": "Monetary Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "Paper.io 2",
+      "Pikmin Bloom"
+    ]
+  },
+  "cant-pause-or-save": {
+    "title": "Can't Pause or Save",
+    "url": "https://www.darkpattern.games/pattern/28/can-t-pause-or-save.html",
+    "category": "Temporal Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "Paper.io 2",
+      "Evony: The King's Return",
+      "Star Stable Online"
+    ]
+  },
+  "collection-completionism": {
+    "title": "Complete the Collection",
+    "url": "https://www.darkpattern.games/pattern/46/complete-the-collection.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "Paper.io 2",
+      "LYNE"
+    ]
+  },
+  "endowed-progress": {
+    "title": "Badges / Endowed Progress",
+    "url": "https://www.darkpattern.games/pattern/45/badges-endowed-progress.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Hatch Dragons",
+      "Paper.io 2",
+      "Plants vs. Zombies™",
+      "Pixel Starships™ Space MMORPG"
+    ]
+  },
+  "optimism-frequency-bias": {
+    "title": "Optimism and Frequency Biases",
+    "url": "https://www.darkpattern.games/pattern/55/optimism-and-frequency-biases.html",
+    "category": "Psychological Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Plants vs. Zombies™",
+      "WWE SuperCard – Multiplayer Card Battle Game",
+      "Pixel Starships™ Space MMORPG",
+      "Heroes of History: Epic Empire"
+    ]
+  },
+  "reciprocity": {
+    "title": "Reciprocity",
+    "url": "https://www.darkpattern.games/pattern/42/reciprocity.html",
+    "category": "Social Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Persona5: The Phantom X",
+      "Royal Kingdom",
+      "Life Makeover",
+      "My Leisure Time"
+    ]
+  },
+  "encourages-anti-social-behaviour": {
+    "title": "Encourages Anti-Social Behavior",
+    "url": "https://www.darkpattern.games/pattern/44/encourages-anti-social-behavior.html",
+    "category": "Social Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Pixel Starships™ Space MMORPG",
+      "Evony: The King's Return",
+      "Star Stable Online",
+      "Umamusume: Pretty Derby"
+    ]
+  },
+  "manufactured-competition": {
+    "title": "Competition",
+    "url": "https://www.darkpattern.games/pattern/54/competition.html",
+    "category": "Social Dark Patterns",
+    "exampleCount": 10,
+    "examples": [
+      "Heartopia",
+      "Dye Hard - Color War",
+      "Hatch Dragons",
+      "Off The Road - OTR Open World Driving"
+    ]
+  }
+}

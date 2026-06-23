@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import PatternCard from "../components/PatternCard.astro";
+import AxisViz from "../components/AxisViz.astro";
 import { getCollection } from "astro:content";
 import { allPatterns, labelMaps, sevRank } from "../lib/patterns";
 
@@ -22,7 +23,7 @@ const stats = [
   { n: patterns.length, l: "named patterns" },
   { n: families.length, l: "mechanism families" },
   { n: harms.length, l: "harm vectors" },
-  { n: refs.length, l: "DOI-linked sources" },
+  { n: refs.length, l: "cited sources" },
 ];
 ---
 
@@ -104,13 +105,17 @@ const stats = [
   </section>
 
   <section class="border-y border-border bg-surface/40">
-    <div class="mx-auto max-w-5xl px-4 py-14">
+    <div class="mx-auto max-w-6xl px-4 py-14">
       <h2 class="font-serif text-2xl font-bold text-ink">A three-axis model</h2>
       <p class="mt-2 max-w-2xl text-muted">
         Each technique is described by how it works, what it costs, and where it
-        sits in the catalogue.
+        sits in the catalogue. The map below is interactive — hover any node to
+        trace its links; click a technique to open it.
       </p>
-      <div class="mt-6 grid gap-3 md:grid-cols-3">
+      <div class="mt-8 rounded-2xl border border-border bg-paper p-4 sm:p-6">
+        <AxisViz />
+      </div>
+      <div class="mt-8 grid gap-3 md:grid-cols-3">
         <a
           href="/families"
           class="rounded-xl border border-border bg-paper p-5 transition hover:border-accent/50"

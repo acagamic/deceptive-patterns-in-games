@@ -13,7 +13,7 @@ const d = map.get(id);
   d ? (
     <li class="leading-relaxed text-ink" id={`ref-${id}`}>
       <span>{formatRef(d)}</span>{" "}
-      {d.DOI && (
+      {d.DOI ? (
         <a
           class="text-link underline-offset-2 hover:underline break-words"
           href={d.URL ?? `https://doi.org/${d.DOI}`}
@@ -21,7 +21,15 @@ const d = map.get(id);
         >
           doi.org/{d.DOI}
         </a>
-      )}{" "}
+      ) : d.URL ? (
+        <a
+          class="text-link underline-offset-2 hover:underline break-words"
+          href={d.URL}
+          rel="noopener"
+        >
+          {d.URL.replace(/^https?:\/\//, "")}
+        </a>
+      ) : null}{" "}
       <a class="text-xs text-muted hover:text-accent" href={`/references/${id}`}>
         · citing patterns
       </a>

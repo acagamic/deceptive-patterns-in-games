@@ -11,9 +11,16 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const d = entry.data;
 const { Content } = await render(entry);
-const all = await getCollection("glossary");
+const glossaryAll = await getCollection("glossary");
+const patternsAll = await getCollection("patterns");
 const seeAlso = d.seeAlso
-  .map((s) => all.find((g) => g.id === s))
+  .map((s) => {
+    const g = glossaryAll.find((x) => x.id === s);
+    if (g) return { href: `/glossary/${g.id}`, label: g.data.term };
+    const p = patternsAll.find((x) => x.id === s);
+    if (p) return { href: `/patterns/${p.id}`, label: p.data.title };
+    return null;
+  })
   .filter(Boolean);
 ---
 
@@ -38,13 +45,13 @@ const seeAlso = d.seeAlso
         <section class="mt-8">
           <h2 class="font-serif text-lg font-semibold text-ink">See also</h2>
           <ul class="mt-2 flex flex-wrap gap-2">
-            {seeAlso.map((g: any) => (
+            {seeAlso.map((s: any) => (
               <li>
                 <a
                   class="rounded-full border border-border px-3 py-1 text-sm text-link hover:border-accent/50"
-                  href={`/glossary/${g.id}`}
+                  href={s.href}
                 >
-                  {g.data.term}
+                  {s.label}
                 </a>
               </li>
             ))}
