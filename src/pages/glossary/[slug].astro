@@ -1,0 +1,69 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Citation from "../../components/Citation.astro";
+
+export async function getStaticPaths() {
+  const glossary = await getCollection("glossary");
+  return glossary.map((g) => ({ params: { slug: g.id }, props: { entry: g } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const all = await getCollection("glossary");
+const seeAlso = d.seeAlso
+  .map((s) => all.find((g) => g.id === s))
+  .filter(Boolean);
+---
+
+<Base title={d.term} description={d.short}>
+  <article class="mx-auto max-w-2xl px-4 py-10" data-pagefind-body>
+    <nav class="mb-4 text-xs text-muted">
+      <a href="/glossary" class="hover:text-accent">Glossary</a>
+      <span class="px-1">/</span><span>{d.term}</span>
+    </nav>
+    <div hidden><span data-pagefind-filter="type">Glossary</span></div>
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">{d.term}</h1>
+    {
+      d.aliases.length > 0 && (
+        <p class="mt-1 text-sm text-muted">Also: {d.aliases.join(", ")}</p>
+      )
+    }
+    <p class="mt-4 text-lg text-muted">{d.short}</p>
+    <div class="prose-content mt-6"><Content /></div>
+
+    {
+      seeAlso.length > 0 && (
+        <section class="mt-8">
+          <h2 class="font-serif text-lg font-semibold text-ink">See also</h2>
+          <ul class="mt-2 flex flex-wrap gap-2">
+            {seeAlso.map((g: any) => (
+              <li>
+                <a
+                  class="rounded-full border border-border px-3 py-1 text-sm text-link hover:border-accent/50"
+                  href={`/glossary/${g.id}`}
+                >
+                  {g.data.term}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      d.references.length > 0 && (
+        <section class="mt-8">
+          <h2 class="font-serif text-lg font-semibold text-ink">References</h2>
+          <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm">
+            {d.references.map((id) => (
+              <Citation id={id} />
+            ))}
+          </ol>
+        </section>
+      )
+    }
+  </article>
+</Base>

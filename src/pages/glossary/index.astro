@@ -1,0 +1,43 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const glossary = (await getCollection("glossary")).sort((a, b) =>
+  a.data.term.localeCompare(b.data.term),
+);
+---
+
+<Base
+  title="Glossary"
+  description="Plain-language definitions of key concepts: dark patterns, deceptive design, sludge, friction, consent, retention mechanics, persuasive design, exploitation, and more."
+>
+  <section class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">Glossary</h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      The vocabulary the field uses — defined narrowly so the same word means the
+      same thing across academia, industry, and policy.
+    </p>
+    <dl class="mt-8 divide-y divide-border">
+      {
+        glossary.map((g) => (
+          <div class="py-4">
+            <dt>
+              <a
+                href={`/glossary/${g.id}`}
+                class="font-serif text-lg font-semibold text-ink hover:text-accent"
+              >
+                {g.data.term}
+              </a>
+              {g.data.aliases.length > 0 && (
+                <span class="ml-2 text-xs text-muted">
+                  ({g.data.aliases.join(", ")})
+                </span>
+              )}
+            </dt>
+            <dd class="mt-1 text-sm text-muted">{g.data.short}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+</Base>

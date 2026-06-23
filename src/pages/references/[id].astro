@@ -1,0 +1,118 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Badge from "../../components/Badge.astro";
+import { formatRef, refYear, refAuthors, CATEGORY_LABEL, type CSL } from "../../lib/refs";
+import { allPatterns, sevTone } from "../../lib/patterns";
+
+export async function getStaticPaths() {
+  const refs = await getCollection("references");
+  return refs.map((r) => ({ params: { id: r.id }, props: { ref: r.data } }));
+}
+
+const ref = Astro.props.ref as unknown as CSL;
+const patterns = await allPatterns();
+const citedBy = patterns.filter((p) => p.data.references.includes(ref.id));
+const glossary = (await getCollection("glossary")).filter((g) =>
+  g.data.references.includes(ref.id),
+);
+
+const bibType =
+  { "article-journal": "article", "paper-conference": "inproceedings", chapter: "incollection" }[
+    ref.type
+  ] ?? "misc";
+const bibAuthors = (ref.author ?? [])
+  .map((a) => a.literal ?? `${a.family ?? ""}, ${a.given ?? ""}`.replace(/, $/, ""))
+  .join(" and ");
+const venueField = ref.type === "article-journal" ? "journal" : "booktitle";
+const bibtex = `@${bibType}{${ref.id},
+  author    = {${bibAuthors}},
+  title     = {${ref.title}},
+  ${ref["container-title"] ? `${venueField} = {${ref["container-title"]}},\n  ` : ""}year      = {${refYear(ref)}},${ref.publisher ? `\n  publisher = {${ref.publisher}},` : ""}${ref.DOI ? `\n  doi       = {${ref.DOI}},` : ""}${ref.URL ? `\n  url       = {${ref.URL}}` : ""}
+}`;
+const csl = JSON.stringify(ref, null, 2);
+const preCls =
+  "mt-2 overflow-x-auto rounded-lg border border-border bg-surface/60 p-3 text-xs text-ink";
+---
+
+<Base title={ref.title} description={formatRef(ref)}>
+  <article class="mx-auto max-w-3xl px-4 py-10" data-pagefind-body>
+    <nav class="mb-4 text-xs text-muted">
+      <a href="/references" class="hover:text-accent">References</a>
+      <span class="px-1">/</span><span class="font-mono">{ref.id}</span>
+    </nav>
+    <div hidden><span data-pagefind-filter="type">Reference</span></div>
+
+    <Badge label={CATEGORY_LABEL[ref.category ?? "paper"] ?? "Paper"} tone="neutral" />
+    <h1 class="mt-2 font-serif text-2xl font-bold leading-snug text-ink sm:text-3xl">
+      {ref.title}
+    </h1>
+    <p class="mt-3 text-muted">{refAuthors(ref)} · {refYear(ref)}</p>
+    {ref["container-title"] && <p class="text-muted italic">{ref["container-title"]}</p>}
+
+    {
+      ref.DOI && (
+        <a
+          class="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-brand-ink hover:opacity-90"
+          href={ref.URL ?? `https://doi.org/${ref.DOI}`}
+          rel="noopener"
+        >
+          View at doi.org/{ref.DOI}
+        </a>
+      )
+    }
+
+    {
+      citedBy.length > 0 && (
+        <section class="mt-10">
+          <h2 class="font-serif text-xl font-semibold text-ink">
+            Patterns citing this source
+          </h2>
+          <ul class="mt-3 space-y-2">
+            {citedBy.map((p) => (
+              <li>
+                <a
+                  class="flex items-center justify-between gap-3 rounded-lg border border-border bg-paper px-4 py-2.5 hover:border-accent/50"
+                  href={`/patterns/${p.id}`}
+                >
+                  <span class="text-ink">{p.data.title}</span>
+                  <Badge label={p.data.severity} tone={sevTone(p.data.severity)} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      glossary.length > 0 && (
+        <section class="mt-8">
+          <h2 class="font-serif text-xl font-semibold text-ink">
+            Glossary entries citing this source
+          </h2>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {glossary.map((g) => (
+              <li>
+                <a
+                  class="rounded-full border border-border px-3 py-1 text-sm text-link hover:border-accent/50"
+                  href={`/glossary/${g.id}`}
+                >
+                  {g.data.term}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <section class="mt-10">
+      <h2 class="font-serif text-xl font-semibold text-ink">Export</h2>
+      <h3 class="mt-3 text-sm font-semibold text-muted">BibTeX</h3>
+      <pre class={preCls}>{bibtex}</pre>
+      <h3 class="mt-4 text-sm font-semibold text-muted">CSL JSON</h3>
+      <pre class={preCls}>{csl}</pre>
+    </section>
+  </article>
+</Base>

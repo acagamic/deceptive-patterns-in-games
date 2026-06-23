@@ -1,0 +1,128 @@
+[
+  {
+    "term": "Dark patterns", "slug": "dark-patterns", "aliases": ["deceptive patterns"],
+    "short": "Interface and system choices that benefit the provider by steering, deceiving, or coercing users against their own interest.",
+    "seeAlso": ["deceptive-design", "fair-patterns"],
+    "references": ["gray-2018", "mathur-2019", "narayanan-2020"],
+    "body": "Coined by UX practitioner Harry Brignull in 2010 (a foundational, non-DOI source), 'dark patterns' name design choices whose predictable effect transfers value from the user to the provider. The research community and regulators increasingly prefer 'deceptive design' / 'deceptive patterns' to avoid the connotations of 'dark' and to align with legal language. There is no single agreed definition; the field is better understood as a family of normative concerns drawn from psychology, economics, ethics, and law."
+  },
+  {
+    "term": "Deceptive design", "slug": "deceptive-design", "aliases": ["deceptive patterns"],
+    "short": "The contemporary umbrella term for asymmetric, user-adverse design — broader than literal deception.",
+    "seeAlso": ["dark-patterns", "exploitation", "manipulation"],
+    "references": ["mathur-2021", "gray-2024", "timms-2025"],
+    "body": "Now codified in instruments such as the EU Digital Services Act, 'deceptive design' is often used as the umbrella for the whole phenomenon. Strictly, deception is only one mechanism: a design can be manipulative, coercive, or exploitative without inducing a false belief. For precision this library names the specific mode wherever possible."
+  },
+  {
+    "term": "Sludge", "slug": "sludge", "aliases": ["administrative friction"],
+    "short": "Excessive friction deliberately placed in the user's protective path — the opposite of a helpful nudge.",
+    "seeAlso": ["friction", "obstructed-exit-sludge", "coercion"],
+    "references": ["newall-2025", "kelly-2024"],
+    "body": "Sludge is friction engineered to discourage choices that protect the user — cancelling, refunding, opting out, or closing an account. Where a nudge eases a beneficial action, sludge obstructs one. It is the mechanism behind 'roach motel' designs that are easy to enter and hard to leave."
+  },
+  {
+    "term": "Friction", "slug": "friction", "aliases": ["design friction"],
+    "short": "Any deliberate impediment to action; harmful or protective depending on whose interest it serves.",
+    "seeAlso": ["sludge", "obstructed-exit-sludge"],
+    "references": ["newall-2025"],
+    "body": "Friction is neutral in itself: a confirmation step that prevents accidental spending is protective friction, while a buried cancellation flow is adversarial friction (sludge). Asymmetry is the tell — protective choices made hard while provider-favouring choices are made effortless."
+  },
+  {
+    "term": "Consent", "slug": "consent", "aliases": ["informed consent"],
+    "short": "Valid agreement requires the player to perceive the mechanism, be competent, and have a real exit.",
+    "seeAlso": ["coercion", "accidental-purchase-ui", "diegetic-deception"],
+    "references": ["nguyen-2020", "luguri-2021"],
+    "body": "Opting into a magic show licenses deception within that frame — but consent is undermined when the mechanism is covert, the user is not competent to consent (e.g., children), the 'consent' was itself produced by a dark pattern, or exit is blocked. Consent obtained under aggressive dark patterns can be legally voidable, and awareness does not equal resistance."
+  },
+  {
+    "term": "Retention mechanics", "slug": "retention-mechanics", "aliases": ["engagement mechanics"],
+    "short": "Systems designed to bring players back and keep them playing; benign or harmful by dose and intent.",
+    "seeAlso": ["daily-login-streaks", "energy-wait-timers", "persuasive-design"],
+    "references": ["lewis-2014", "karlsen-2021"],
+    "body": "Streaks, timers, daily rewards, and appointment mechanics are ordinary engagement tools that industry treats as standard craft. They become harmful chiefly when combined with monetization, covert operation, or vulnerable targets — a clear case where context, not the mechanic, decides harm."
+  },
+  {
+    "term": "Persuasive design", "slug": "persuasive-design", "aliases": ["persuasion"],
+    "short": "Influence that appeals to rational agency; the legitimate sibling of manipulation.",
+    "seeAlso": ["manipulation", "deceptive-design"],
+    "references": ["wilkinson-2013", "sanchezchamorro-2023"],
+    "body": "Persuasion appeals to a person's reasons and evidence and is generally legitimate. It crosses into manipulation when it bypasses or subverts rational agency — exploiting bias, emotion, or hidden influence. UX practitioners report this line is genuinely blurred in practice and shaped by commercial pressure."
+  },
+  {
+    "term": "Manipulation", "slug": "manipulation", "aliases": [],
+    "short": "Influencing behaviour by bypassing or subverting rational agency.",
+    "seeAlso": ["persuasive-design", "deceptive-design", "coercion"],
+    "references": ["wilkinson-2013", "ahuja-2022"],
+    "body": "Manipulation works on the decision process itself — through cognitive bias, emotion, or hidden influence — in ways the person would not endorse if they saw the mechanism. It differs from deception (which targets beliefs) and coercion (which targets the choice set)."
+  },
+  {
+    "term": "Coercion", "slug": "coercion", "aliases": ["coercive design"],
+    "short": "Removing, withholding, or penalising acceptable alternatives.",
+    "seeAlso": ["obstructed-exit-sludge", "energy-wait-timers", "consent"],
+    "references": ["goltz-2020", "nguyen-2020"],
+    "body": "Coercion shrinks the choice set rather than the player's beliefs. Non-transparent choice architecture deployed without consent — and the withholding of resources needed to progress — can itself be coercive, which maps onto engineered grind, energy gating, and obstructed exits. The structural counter-move is genuine consent and opt-out by design."
+  },
+  {
+    "term": "Exploitation", "slug": "exploitation", "aliases": ["exploitative design"],
+    "short": "Taking unfair advantage of an asymmetry or vulnerability — even when the user is not deceived.",
+    "seeAlso": ["digital-vulnerability", "loot-box", "whales"],
+    "references": ["brenncke-2023", "helberger-2021", "king-delfabbro-2019"],
+    "body": "Exploitation is the heart of the games problem: the gravest harms — randomised monetization, whale-targeting, personalised pricing — are often exploitative even when fully transparent. On the autonomy theory of exploitation, this is an autonomy violation, and it usually cannot be fixed by disclosure alone."
+  },
+  {
+    "term": "Diegetic vs non-diegetic deception", "slug": "diegetic-deception", "aliases": ["diegetic", "magic circle"],
+    "short": "Deception inside the consented fiction (fair play) versus deception on the player-as-consumer.",
+    "seeAlso": ["consent", "deceptive-design"],
+    "references": ["gualeni-2021"],
+    "body": "Bluffing, fog of war, and plot twists are diegetic deception — part of the consented-to 'magic circle' of play, governed by fair-play and artistic norms. A hidden auto-renewing subscription is non-diegetic: it operates on the player as a consumer and is governed by consumer-protection norms. This locus distinction is the single most useful games-specific heuristic."
+  },
+  {
+    "term": "Loot box", "slug": "loot-box", "aliases": ["gacha", "surprise mechanic"],
+    "short": "A paid, randomised reward container with unknown contents at the point of purchase.",
+    "seeAlso": ["loot-boxes-gacha", "variable-ratio-reinforcement", "whales"],
+    "references": ["king-delfabbro-2018a", "drummond-2018"],
+    "body": "Loot boxes (and the related gacha model) are the canonical case where exploitation, not deception, drives harm: they can be fully transparent about being random yet remain the leading harm candidate, with a replicated correlation to problem gambling that is stronger in adolescents."
+  },
+  {
+    "term": "Whales", "slug": "whales", "aliases": ["high-spenders"],
+    "short": "The small share of players who generate most monetization revenue, often through randomised mechanics.",
+    "seeAlso": ["loot-box", "exploitation"],
+    "references": ["garea-2021", "king-delfabbro-2019"],
+    "body": "Revenue in randomised-reward games is concentrated in a small fraction of high-spenders ('whales'). Designs that individually profile and price to maximise a specific player's spend — dynamically targeting identified at-risk spenders — are among the clearest candidates for prohibition."
+  },
+  {
+    "term": "Variable-ratio reinforcement", "slug": "variable-ratio-reinforcement", "aliases": ["variable ratio schedule"],
+    "short": "Rewarding on an unpredictable schedule — the most persistent form of behavioural reinforcement.",
+    "seeAlso": ["variable-ratio-near-miss", "loot-box"],
+    "references": ["drummond-2018", "king-delfabbro-2018a"],
+    "body": "Variable-ratio schedules deliver rewards after an unpredictable number of actions, producing high, persistent response rates — the same mechanism that makes slot machines compelling. Combined with near-miss framing, it is the engine behind randomised-reward harm."
+  },
+  {
+    "term": "Digital vulnerability", "slug": "digital-vulnerability", "aliases": [],
+    "short": "Vulnerability as a universal, situational property of the choice architecture — not just a few 'vulnerable groups'.",
+    "seeAlso": ["exploitation", "consent"],
+    "references": ["helberger-2021", "strycharz-2021"],
+    "body": "Digital vulnerability is architectural, relational, and data-driven: everyone is situationally vulnerable online, because the environment can detect and act on momentary states. This reframing explains why exploitative design can harm even competent adults, not only protected groups."
+  },
+  {
+    "term": "Fair patterns", "slug": "fair-patterns", "aliases": ["bright patterns"],
+    "short": "Designs that actively protect the user's interest — the constructive counterpart to dark patterns.",
+    "seeAlso": ["dark-patterns", "deceptive-design"],
+    "references": ["potelsaville-2024"],
+    "body": "Fair (or 'bright') patterns are the mirror image of dark patterns: clear pricing, honest defaults, visible odds, frictionless cancellation, spend caps, and reality checks. They are the practical menu of remedies a studio can adopt as a design-review standard."
+  },
+  {
+    "term": "Gamblification", "slug": "gamblification", "aliases": ["gamblification of games"],
+    "short": "The migration of gambling structures and aesthetics into mainstream digital games.",
+    "seeAlso": ["loot-box", "variable-ratio-reinforcement"],
+    "references": ["brock-2021"],
+    "body": "Gamblification describes how chance-based reward, wagering aesthetics, and monetised risk have spread from gambling into ordinary games — blurring the boundary that regulation has historically relied on and raising public-health concerns."
+  },
+  {
+    "term": "FOMO", "slug": "fomo", "aliases": ["fear of missing out", "fading opportunities"],
+    "short": "Manufactured fear of missing out, used to shortcut deliberation through scarcity and urgency.",
+    "seeAlso": ["fomo-limited-time-offers", "retention-mechanics"],
+    "references": ["petrovskaya-zendle-2022", "sousa-2023"],
+    "body": "Limited-time banners, expiring bundles, and countdowns manufacture urgency that pressures impulsive action. As a decision-point tactic it is especially risky for minors and when offers are triggered by behavioural data at moments of heightened susceptibility."
+  }
+]

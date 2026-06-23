@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page not found">
+  <section class="mx-auto max-w-xl px-4 py-24 text-center">
+    <p class="font-mono text-sm text-muted">404</p>
+    <h1 class="mt-2 font-serif text-3xl font-bold text-ink">Page not found</h1>
+    <p class="mt-3 text-muted">
+      That page doesn't exist. Try the pattern library or a search.
+    </p>
+    <div class="mt-6 flex justify-center gap-3">
+      <a
+        href="/patterns"
+        class="rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-brand-ink hover:opacity-90"
+        >Browse patterns</a
+      >
+      <a
+        href="/search"
+        class="rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-ink hover:border-accent/50"
+        >Search</a
+      >
+    </div>
+  </section>
+</Base>

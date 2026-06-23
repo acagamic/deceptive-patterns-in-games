@@ -1,0 +1,9 @@
+[
+  { "id": "financial", "title": "Financial", "description": "Unintended, excessive, or obscured spending of real money." },
+  { "id": "time-attention", "title": "Time / attention", "description": "Engineered overuse and degraded digital wellbeing; time captured beyond what the player intended to give." },
+  { "id": "data-privacy", "title": "Data / privacy", "description": "Over-disclosure, tracking, and profiling — often to target subsequent solicitations." },
+  { "id": "autonomy", "title": "Autonomy / choice", "description": "Subverted or bypassed agency; decisions steered away from what the player would freely choose." },
+  { "id": "social-relational", "title": "Social / relational", "description": "Exploited friendships and reputational or guilt pressure exerted through peers and networks." },
+  { "id": "emotional", "title": "Emotional / psychological", "description": "Anxiety, regret, frustration, and addiction-adjacent harm produced or amplified by the design." },
+  { "id": "competitive-fairness", "title": "Competitive fairness", "description": "Pay-to-win dynamics that undermine the implicit contract of skill-based competition." }
+]

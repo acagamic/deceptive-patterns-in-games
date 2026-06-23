@@ -1,0 +1,171 @@
+---
+import Base from "../layouts/Base.astro";
+import PatternCard from "../components/PatternCard.astro";
+import { getCollection } from "astro:content";
+import { allPatterns, labelMaps, sevRank } from "../lib/patterns";
+
+const patterns = await allPatterns();
+const maps = await labelMaps();
+const families = await getCollection("families");
+const harms = await getCollection("harms");
+const refs = await getCollection("references");
+
+const featured = [...patterns]
+  .sort(
+    (a, b) =>
+      sevRank(b.data.severity) - sevRank(a.data.severity) ||
+      a.data.title.localeCompare(b.data.title),
+  )
+  .slice(0, 6);
+
+const stats = [
+  { n: patterns.length, l: "named patterns" },
+  { n: families.length, l: "mechanism families" },
+  { n: harms.length, l: "harm vectors" },
+  { n: refs.length, l: "DOI-linked sources" },
+];
+---
+
+<Base title="Deceptive Patterns in Games">
+  <section class="border-b border-border bg-surface/40">
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
+      <p class="text-sm font-semibold uppercase tracking-wide text-accent">
+        A research primer
+      </p>
+      <h1
+        class="mt-3 font-serif text-4xl font-bold leading-tight text-ink sm:text-5xl"
+      >
+        Deceptive, exploitative &amp; harmful design in games
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-muted">
+        A clear, source-anchored reference to the design patterns that extract
+        money, time, data, and attention from players — what they are, how they
+        work, and the conditions under which they become harmful.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a
+          href="/patterns"
+          class="rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-brand-ink transition hover:opacity-90"
+          >Browse the library</a
+        >
+        <a
+          href="/rubric"
+          class="rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-accent/50"
+          >When is it harmful?</a
+        >
+        <a
+          href="/about"
+          class="rounded-lg px-5 py-2.5 text-sm font-semibold text-muted transition hover:text-accent"
+          >How this was built</a
+        >
+      </div>
+      <dl class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {
+          stats.map((s) => (
+            <div class="rounded-xl border border-border bg-paper p-4">
+              <dt class="font-serif text-3xl font-bold text-ink">{s.n}</dt>
+              <dd class="text-xs text-muted">{s.l}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-14">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <h2 class="font-serif text-lg font-semibold text-ink">Deception ≠ harm</h2>
+        <p class="mt-2 text-sm text-muted">
+          Games legitimately deceive — bluffs, fog of war, plot twists. We
+          classify by the <em>conditions</em> under which a pattern becomes
+          harmful, not by the label.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-serif text-lg font-semibold text-ink">
+          Exploitation is the target
+        </h2>
+        <p class="mt-2 text-sm text-muted">
+          The gravest harms — loot boxes, whale-targeting — are often fully
+          transparent. We foreground <em>exploitation</em>, not just deception.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-serif text-lg font-semibold text-ink">
+          Evidence on the surface
+        </h2>
+        <p class="mt-2 text-sm text-muted">
+          Every entry carries an evidence level and resolvable, peer-reviewed
+          sources — more transparent than a votes-only directory.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-border bg-surface/40">
+    <div class="mx-auto max-w-5xl px-4 py-14">
+      <h2 class="font-serif text-2xl font-bold text-ink">A three-axis model</h2>
+      <p class="mt-2 max-w-2xl text-muted">
+        Each technique is described by how it works, what it costs, and where it
+        sits in the catalogue.
+      </p>
+      <div class="mt-6 grid gap-3 md:grid-cols-3">
+        <a
+          href="/families"
+          class="rounded-xl border border-border bg-paper p-5 transition hover:border-accent/50"
+        >
+          <div class="text-xs uppercase tracking-wide text-muted">Axis A</div>
+          <div class="mt-0.5 font-serif text-lg font-semibold text-ink">
+            Mechanism — <span class="text-accent">how</span>
+          </div>
+          <p class="mt-1 text-sm text-muted">
+            {families.length} families, from sneaking to randomised monetisation.
+          </p>
+        </a>
+        <a
+          href="/patterns"
+          class="rounded-xl border border-border bg-paper p-5 transition hover:border-accent/50"
+        >
+          <div class="text-xs uppercase tracking-wide text-muted">Axis C</div>
+          <div class="mt-0.5 font-serif text-lg font-semibold text-ink">
+            Techniques — <span class="text-accent">what</span>
+          </div>
+          <p class="mt-1 text-sm text-muted">
+            {patterns.length} named, catalogued techniques used in games today.
+          </p>
+        </a>
+        <a
+          href="/harms"
+          class="rounded-xl border border-border bg-paper p-5 transition hover:border-accent/50"
+        >
+          <div class="text-xs uppercase tracking-wide text-muted">Axis B</div>
+          <div class="mt-0.5 font-serif text-lg font-semibold text-ink">
+            Harm vectors — <span class="text-accent">cost</span>
+          </div>
+          <p class="mt-1 text-sm text-muted">
+            {harms.length} resources a pattern can put at risk.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-14">
+    <div class="flex items-baseline justify-between">
+      <h2 class="font-serif text-2xl font-bold text-ink">
+        Highest-severity patterns
+      </h2>
+      <a href="/patterns" class="text-sm text-link hover:underline"
+        >All patterns →</a
+      >
+    </div>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        featured.map((p) => (
+          <PatternCard pattern={p} familyName={maps.family.get(p.data.family)} />
+        ))
+      }
+    </div>
+  </section>
+</Base>

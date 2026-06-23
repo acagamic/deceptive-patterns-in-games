@@ -1,0 +1,68 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { formatRef, refYear, CATEGORY_LABEL, type CSL } from "../../lib/refs";
+
+const refs = (await getCollection("references")).map((r) => r.data as unknown as CSL);
+const order = ["paper", "book", "report", "legal"];
+const groups = order
+  .map((cat) => ({
+    cat,
+    label: CATEGORY_LABEL[cat] ?? cat,
+    items: refs
+      .filter((r) => (r.category ?? "paper") === cat)
+      .sort(
+        (a, b) =>
+          (a.author?.[0]?.family ?? a.title).localeCompare(
+            b.author?.[0]?.family ?? b.title,
+          ) || refYear(a).localeCompare(refYear(b)),
+      ),
+  }))
+  .filter((g) => g.items.length > 0);
+---
+
+<Base
+  title="References"
+  description="The peer-reviewed, DOI-bearing bibliography behind every pattern — papers, books and chapters, and legal and regulatory sources."
+>
+  <section class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">References</h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      {refs.length} sources, every one with a resolvable DOI. Foundational works
+      that predate DOIs — Zagal, Björk &amp; Lewis (2013) and Brignull's
+      <em>deceptive.design</em> — are credited on the
+      <a class="text-link underline" href="/about">About</a> page.
+    </p>
+
+    {
+      groups.map((g) => (
+        <section class="mt-8">
+          <h2 class="text-xs font-semibold uppercase tracking-wide text-muted">
+            {g.label} ({g.items.length})
+          </h2>
+          <ol class="mt-3 space-y-3 text-sm">
+            {g.items.map((r) => (
+              <li class="leading-relaxed">
+                <a
+                  class="text-ink hover:text-accent"
+                  href={`/references/${r.id}`}
+                >
+                  {formatRef(r)}
+                </a>{" "}
+                {r.DOI && (
+                  <a
+                    class="text-link underline-offset-2 hover:underline break-words"
+                    href={r.URL ?? `https://doi.org/${r.DOI}`}
+                    rel="noopener"
+                  >
+                    doi.org/{r.DOI}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+  </section>
+</Base>

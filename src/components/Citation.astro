@@ -1,0 +1,32 @@
+---
+import { refMap, formatRef } from "../lib/refs";
+
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const map = await refMap();
+const d = map.get(id);
+---
+
+{
+  d ? (
+    <li class="leading-relaxed text-ink" id={`ref-${id}`}>
+      <span>{formatRef(d)}</span>{" "}
+      {d.DOI && (
+        <a
+          class="text-link underline-offset-2 hover:underline break-words"
+          href={d.URL ?? `https://doi.org/${d.DOI}`}
+          rel="noopener"
+        >
+          doi.org/{d.DOI}
+        </a>
+      )}{" "}
+      <a class="text-xs text-muted hover:text-accent" href={`/references/${id}`}>
+        · citing patterns
+      </a>
+    </li>
+  ) : (
+    <li class="text-muted">Unknown reference: {id}</li>
+  )
+}

@@ -1,0 +1,45 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { allPatterns } from "../../lib/patterns";
+
+const harms = await getCollection("harms");
+const patterns = await allPatterns();
+const count = new Map<string, number>();
+for (const p of patterns)
+  for (const h of p.data.harmVectors)
+    count.set(h, (count.get(h) ?? 0) + 1);
+---
+
+<Base
+  title="Harm vectors"
+  description="Axis B: the resources a deceptive or exploitative pattern can put at risk — money, time, data, autonomy, social ties, emotional wellbeing, and competitive fairness."
+>
+  <section class="mx-auto max-w-4xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
+      Harm vectors
+    </h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      Axis B — <em>what it costs the player</em>. A single pattern usually
+      threatens more than one of these.
+    </p>
+    <div class="mt-6 grid gap-3 sm:grid-cols-2">
+      {
+        harms.map((h) => (
+          <a
+            href={`/harms/${h.id}`}
+            class="rounded-xl border border-border bg-paper p-4 transition hover:border-accent/50"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <h2 class="font-serif text-lg font-semibold text-ink">
+                {h.data.title}
+              </h2>
+              <span class="text-xs text-muted">{count.get(h.id) ?? 0} patterns</span>
+            </div>
+            <p class="mt-1 text-sm text-muted">{h.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

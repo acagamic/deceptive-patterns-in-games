@@ -1,0 +1,135 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="About & methodology"
+  description="How this primer was built: scope, DOI-only sourcing, AI-assistance disclosure, foundational works, how to contribute, and licensing."
+>
+  <section class="mx-auto max-w-2xl px-4 py-10" data-pagefind-body>
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
+      About &amp; methodology
+    </h1>
+
+    <div class="prose-content mt-6">
+      <p>
+        <strong>Deceptive Patterns in Games</strong> is a research primer: a
+        clear, source-anchored orientation to the design patterns that extract
+        money, time, data, and attention from players. It is meant to sit
+        alongside the dense general dark-patterns literature and point newcomers
+        — students, journalists, developers, parents, and policymakers — to the
+        evidence, rather than to replace the scholarship.
+      </p>
+
+      <h2>What makes this different</h2>
+      <ul>
+        <li>
+          <strong>Deception ≠ harm.</strong> Games legitimately deceive. Every
+          entry is classified by the <a href="/rubric">conditions</a> under which
+          it becomes harmful, not by the label.
+        </li>
+        <li>
+          <strong>Exploitation is foregrounded.</strong> The gravest harms are
+          often fully transparent, so the model centres exploitation alongside
+          deception.
+        </li>
+        <li>
+          <strong>Evidence on the surface.</strong> Each pattern shows an
+          evidence level and resolvable sources — more transparent than a
+          votes-only directory.
+        </li>
+      </ul>
+
+      <h2>Sourcing rule: DOI-only</h2>
+      <p>
+        Every reference in the <a href="/references">bibliography</a> is a
+        peer-reviewed or formally published source with a resolvable DOI, so any
+        claim can be checked at source. Where a foundational idea originates in a
+        source that has <em>no</em> DOI, it is credited here in prose rather than
+        cited as if a DOI existed:
+      </p>
+      <ul>
+        <li>
+          <strong>Zagal, Björk &amp; Lewis (2013)</strong>, “Dark Patterns in the
+          Design of Games” — the conference paper that founded this subfield.
+        </li>
+        <li>
+          <strong>Harry Brignull (2010)</strong>, who coined “dark patterns,” and
+          the practitioner catalogue at <em>deceptive.design</em> (formerly
+          darkpatterns.org).
+        </li>
+        <li>
+          <strong>Björk &amp; Holopainen</strong>, whose game-design-patterns
+          program underpins the “pattern” framing.
+        </li>
+      </ul>
+
+      <h2>AI-assistance disclosure</h2>
+      <p>
+        Literature discovery used AI-assisted academic search tools, and the
+        catalogue's structure and prose were drafted with AI support during a
+        2026 Dagstuhl Seminar working session. Every DOI was verified against a
+        bibliographic index, and the synthesis, severity judgements, and
+        taxonomy design are the editors'. Treat severity and evidence labels as
+        considered editorial calls grounded in the cited literature as of 2026 —
+        not settled fact.
+      </p>
+
+      <h2>How severity and evidence are graded</h2>
+      <p>
+        <strong>Severity</strong> (Low → Severe) reflects the strength of the
+        harm case under the <a href="/rubric">rubric</a> combined with the
+        empirical record. <strong>Evidence level</strong> is graded
+        <em>Strong</em> (replicated or meta-analytic, though often
+        correlational), <em>Moderate</em> (consistent qualitative or
+        observational), or <em>Emerging</em> (newer areas where the base is still
+        forming). Much games-specific harm evidence is correlational; causal and
+        behavioural work remains the priority gap.
+      </p>
+
+      <h2 id="contributing">Contributing</h2>
+      <p>
+        The library is built to be extended by several hands:
+      </p>
+      <ul>
+        <li>
+          <strong>Patterns</strong> live as one MDX file each in
+          <code>src/content/patterns/</code>. Add or edit an entry, fill the
+          frontmatter (title, code, category, family, severity, platforms,
+          evidence level, harm vectors, modes, tags, examples, references), and
+          open a pull request.
+        </li>
+        <li>
+          <strong>References</strong> are the source of truth in
+          <code>src/content/references.csl.json</code> (CSL JSON). Add a source
+          with a DOI and reference its <code>id</code> from any pattern or
+          glossary entry. A shared Zotero library can export straight into this
+          format, so a group can curate references together and sync to the repo.
+        </li>
+        <li>
+          <strong>Glossary, families, harms, modes, and the rubric</strong> are
+          editable the same way. Related-pattern links are generated
+          automatically from shared tags, family, and harm vectors.
+        </li>
+      </ul>
+
+      <h2>Licensing</h2>
+      <p>
+        Written content is licensed
+        <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener"
+          >CC BY 4.0</a
+        >; the site code is MIT. Screenshots, where added, remain the property of
+        their respective rights-holders and are included only where licensing or
+        fair use permits — the library ships with none by default and never
+        scrapes copyrighted game UI.
+      </p>
+
+      <h2>Disclaimer</h2>
+      <p>
+        This site is an educational resource, not legal advice. Naming a pattern
+        is not an accusation against any specific title; the examples are
+        illustrative of genres and mechanics.
+      </p>
+    </div>
+  </section>
+</Base>

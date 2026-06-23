@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (toggled on <html class="dark">) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Semantic design tokens (light) ---- */
+:root {
+  --paper: #ffffff;
+  --surface: #f6f7f9;
+  --surface-2: #eceff4;
+  --ink: #1a2130;
+  --muted: #586173;
+  --border: #e3e7ed;
+  --brand: #1f2a4a;
+  --brand-ink: #ffffff;
+  --accent: #b07d05;        /* amber, AA on paper */
+  --accent-soft: #fbf3da;
+  --link: #355c8a;
+
+  /* Severity scale */
+  --sev-low: #0e8e80;
+  --sev-medium: #b07d05;
+  --sev-high: #c75f28;
+  --sev-severe: #c0333c;
+
+  /* Evidence scale (cool, distinct from severity) */
+  --ev-strong: #2f6f4f;
+  --ev-moderate: #6b6f86;
+  --ev-emerging: #8a7048;
+}
+
+/* ---- Semantic design tokens (dark) ---- */
+.dark {
+  --paper: #0f131c;
+  --surface: #161c28;
+  --surface-2: #1d2533;
+  --ink: #e8ecf3;
+  --muted: #9aa6bc;
+  --border: #283142;
+  --brand: #c9d6f2;
+  --brand-ink: #0f131c;
+  --accent: #f0b429;
+  --accent-soft: #2a2615;
+  --link: #8fb4e0;
+
+  --sev-low: #2bb3a3;
+  --sev-medium: #e7a52a;
+  --sev-high: #ef8a4b;
+  --sev-severe: #f06a72;
+
+  --ev-strong: #5fb98a;
+  --ev-moderate: #aab0c6;
+  --ev-emerging: #d0b277;
+}
+
+/* ---- Map tokens into Tailwind's theme so utilities resolve them ---- */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-link: var(--link);
+
+  --color-sev-low: var(--sev-low);
+  --color-sev-medium: var(--sev-medium);
+  --color-sev-high: var(--sev-high);
+  --color-sev-severe: var(--sev-severe);
+
+  --color-ev-strong: var(--ev-strong);
+  --color-ev-moderate: var(--ev-moderate);
+  --color-ev-emerging: var(--ev-emerging);
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus visibility for keyboard users (accessibility) */
+:where(a, button, input, select, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ---- Long-form MDX prose ---- */
+.prose-content {
+  line-height: 1.72;
+  color: var(--ink);
+}
+.prose-content > * + * { margin-top: 1rem; }
+.prose-content h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin-top: 2rem;
+}
+.prose-content h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.18rem;
+  margin-top: 1.5rem;
+}
+.prose-content a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-content ul { list-style: disc; padding-left: 1.3rem; }
+.prose-content ol { list-style: decimal; padding-left: 1.3rem; }
+.prose-content li + li { margin-top: 0.3rem; }
+.prose-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.prose-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* Pagefind UI theming hooks */
+:root {
+  --pagefind-ui-primary: var(--brand);
+  --pagefind-ui-text: var(--ink);
+  --pagefind-ui-background: var(--paper);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-tag: var(--surface);
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-font: var(--font-sans);
+}

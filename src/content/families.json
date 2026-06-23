@@ -1,0 +1,11 @@
+[
+  { "id": "sneaking", "title": "Sneaking / Hiding", "kind": "General", "description": "Concealing or delaying information that is material to the decision — hidden costs, hidden odds, obscured currency value." },
+  { "id": "interface-interference", "title": "Interface interference", "kind": "General", "description": "Visual or linguistic manipulation of the choice — misdirection, false hierarchy, confirmshaming, pre-selected or default-to-purchase options." },
+  { "id": "forced-action", "title": "Forced action", "kind": "General", "description": "Bundling an unwanted action with a wanted one — forced ad-watching to progress, forced account or data, gated exits. Part of the coercive core." },
+  { "id": "obstruction", "title": "Obstruction", "kind": "General", "description": "Asymmetric friction against user-protective choices — hard-to-cancel, withdrawal friction, 'sludge'. Part of the coercive core." },
+  { "id": "nagging", "title": "Nagging", "kind": "General", "description": "Repeated interruptions that steer toward the provider's goal — persistent upsell prompts and reminders." },
+  { "id": "temporal", "title": "Temporal", "kind": "Games-salient", "description": "Designs that exploit time and the value of the player's time — grinding, energy/wait timers, appointment mechanics, daily streaks, attention capture." },
+  { "id": "monetary", "title": "Monetary / randomised", "kind": "Games-salient", "description": "Designs that obscure or inflate cost or randomise reward — loot boxes/gacha, premium-currency obfuscation, price/odds opacity, pay-to-win." },
+  { "id": "social", "title": "Social / parasocial", "kind": "Games-salient", "description": "Designs that weaponise relationships — social obligation and guilt, gifting spam, social pyramid schemes, impersonation, parasocial pressure from beloved characters." },
+  { "id": "psychological", "title": "Psychological / reinforcement", "kind": "Games-salient", "description": "Designs that exploit reinforcement schedules and cognitive biases — variable-ratio rewards, near-miss, sunk-cost/entrapment, illusion of control, sensory reinforcement." }
+]

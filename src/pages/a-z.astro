@@ -1,0 +1,68 @@
+---
+import Base from "../layouts/Base.astro";
+import Badge from "../components/Badge.astro";
+import { allPatterns, sevTone } from "../lib/patterns";
+
+const patterns = await allPatterns();
+const groups = new Map<string, typeof patterns>();
+for (const p of patterns) {
+  const letter = p.data.title[0].toUpperCase();
+  if (!groups.has(letter)) groups.set(letter, []);
+  groups.get(letter)!.push(p);
+}
+const letters = [...groups.keys()].sort();
+---
+
+<Base
+  title="A–Z index"
+  description="An alphabetical index of every deceptive, exploitative, and harmful design pattern in the library."
+>
+  <section class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
+      A–Z index
+    </h1>
+    <p class="mt-2 text-muted">
+      Every pattern, alphabetically. Looking for a concept instead? Try the
+      <a class="text-link underline" href="/glossary">glossary</a>.
+    </p>
+
+    <nav class="mt-6 flex flex-wrap gap-1.5" aria-label="Jump to letter">
+      {
+        letters.map((l) => (
+          <a
+            href={`#letter-${l}`}
+            class="rounded-md border border-border px-2.5 py-1 text-sm text-muted hover:border-accent/50 hover:text-accent"
+          >
+            {l}
+          </a>
+        ))
+      }
+    </nav>
+
+    {
+      letters.map((l) => (
+        <section id={`letter-${l}`} class="mt-8 scroll-mt-20">
+          <h2 class="font-serif text-xl font-bold text-accent">{l}</h2>
+          <ul class="mt-2 divide-y divide-border">
+            {groups.get(l)!.map((p) => (
+              <li>
+                <a
+                  href={`/patterns/${p.id}`}
+                  class="flex items-center justify-between gap-3 py-2.5 hover:text-accent"
+                >
+                  <span class="text-ink">
+                    {p.data.title}
+                    <span class="ml-2 font-mono text-xs text-muted">
+                      {p.data.code}
+                    </span>
+                  </span>
+                  <Badge label={p.data.severity} tone={sevTone(p.data.severity)} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </section>
+</Base>

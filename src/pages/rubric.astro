@@ -1,0 +1,179 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const rubric = await getCollection("rubric");
+const modes = await getCollection("modes");
+
+const spectrum = [
+  { label: "Acceptable", tone: "sev-low" },
+  { label: "Concerning", tone: "sev-medium" },
+  { label: "Harmful", tone: "sev-high" },
+  { label: "Impermissible", tone: "sev-severe" },
+];
+const segBg: Record<string, string> = {
+  "sev-low": "bg-sev-low",
+  "sev-medium": "bg-sev-medium",
+  "sev-high": "bg-sev-high",
+  "sev-severe": "bg-sev-severe",
+};
+
+const tiers = [
+  {
+    n: "Tier 1",
+    tone: "text-sev-severe",
+    head: "Strongest evidence · candidates for prohibition",
+    body: "Randomised paid mechanics (loot boxes/gacha), especially with hidden odds and especially to minors; manipulative monetisation targeting children.",
+  },
+  {
+    n: "Tier 2",
+    tone: "text-sev-high",
+    head: "Clear consumer detriment · growing evidence",
+    body: "Obstructed exit / sludge, hidden costs, premium-currency obfuscation, aggressive FOMO, and pay-to-win in competitive contexts.",
+  },
+  {
+    n: "Tier 3",
+    tone: "text-sev-medium",
+    head: "Context-dependent · harmful mainly under the rubric",
+    body: "Grinding, daily streaks, timers, and social/parasocial nudges — ordinary engagement design that turns harmful chiefly when combined with monetisation, covert operation, or vulnerable targets.",
+  },
+];
+
+const brightLines = [
+  "Paid randomised rewards (loot boxes/gacha) offered to children, or in games rated for minors.",
+  "Undisclosed probabilities on any paid randomised reward.",
+  "Real-money cost obfuscation (multi-step currency laundering) targeting minors.",
+  "Obstructed cancellation / refund and withdrawal “sludge” on recurring or large spends.",
+  "Ads disguised as gameplay, and purchase-as-default UI in children's titles.",
+  "Designs that individually profile and price to maximise a specific player's spend.",
+];
+---
+
+<Base
+  title="When does it become harmful?"
+  description="Harm is conditional. An eight-dimension rubric, a severity gradient, the five modes of adversarial design, and a bright-line do-not-ship list."
+>
+  <section class="mx-auto max-w-4xl px-4 py-10" data-pagefind-body>
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
+      When does a pattern become harmful?
+    </h1>
+    <p class="mt-3 max-w-2xl text-lg text-muted">
+      Deception is not the same as harm. The descriptive catalogue says what a
+      technique <em>is</em>; this rubric is the separate judgement layer that
+      says how bad a given instance is.
+    </p>
+
+    <!-- spectrum -->
+    <div class="mt-8 overflow-hidden rounded-lg border border-border">
+      <div class="grid grid-cols-2 sm:grid-cols-4">
+        {
+          spectrum.map((s) => (
+            <div
+              class={`${segBg[s.tone]} px-3 py-3 text-center text-sm font-semibold text-white`}
+            >
+              {s.label}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <p class="mt-1 text-right text-xs italic text-muted">increasing severity →</p>
+
+    <!-- 8 dimensions -->
+    <h2 class="mt-10 font-serif text-2xl font-bold text-ink">
+      Eight conditions
+    </h2>
+    <p class="mt-2 text-muted">
+      Each dimension pushes a given instance greener (more acceptable) or darker
+      (more harmful). When locus + consent + vulnerability all tip darker, the
+      case for “harmful” — and at the extreme “impermissible” — is strongest.
+    </p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-border text-left">
+            <th class="py-2 pr-4 font-semibold text-ink">Dimension</th>
+            <th class="py-2 pr-4 font-semibold text-sev-low">Greener</th>
+            <th class="py-2 font-semibold text-sev-severe">Darker</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rubric.map((r) => (
+              <tr class="border-b border-border align-top">
+                <td class="py-3 pr-4 font-medium text-ink">{r.data.dimension}</td>
+                <td class="py-3 pr-4 text-muted">{r.data.greener}</td>
+                <td class="py-3 text-muted">{r.data.darker}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- severity tiers -->
+    <h2 class="mt-12 font-serif text-2xl font-bold text-ink">Severity gradient</h2>
+    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+      {
+        tiers.map((t) => (
+          <div class="rounded-xl border border-border bg-paper p-4">
+            <div class={`font-serif text-lg font-bold ${t.tone}`}>{t.n}</div>
+            <div class="mt-0.5 text-sm font-semibold text-ink">{t.head}</div>
+            <p class="mt-2 text-sm text-muted">{t.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- bright lines -->
+    <h2 class="mt-12 font-serif text-2xl font-bold text-ink">
+      Bright-line “do-not-ship” list
+    </h2>
+    <p class="mt-2 text-muted">
+      The highest-confidence prohibitions, where the evidence and the rubric
+      converge — specific enough for a regulator to enforce and a studio to test
+      against.
+    </p>
+    <ol
+      class="mt-4 space-y-2 rounded-xl border border-sev-severe/30 bg-sev-severe/5 p-5 text-sm"
+    >
+      {
+        brightLines.map((b, i) => (
+          <li class="flex gap-3">
+            <span class="font-mono font-bold text-sev-severe">{i + 1}</span>
+            <span class="text-ink">{b}</span>
+          </li>
+        ))
+      }
+    </ol>
+
+    <!-- modes -->
+    <h2 id="modes" class="mt-12 scroll-mt-20 font-serif text-2xl font-bold text-ink">
+      Five modes of adversarial design
+    </h2>
+    <p class="mt-2 text-muted">
+      A family of near-synonyms, separated by <em>what exactly is wrong</em>.
+      They stack: one feature can be several at once.
+    </p>
+    <div class="mt-4 space-y-3">
+      {
+        modes.map((m) => (
+          <div class="rounded-xl border border-border bg-paper p-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-serif text-lg font-semibold text-ink">
+                {m.data.title}
+              </h3>
+              <span class="text-xs text-muted">
+                Intent required: {m.data.needsIntent}
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-ink">{m.data.wrong}</p>
+            <p class="mt-1 text-xs text-muted">
+              Operates on {m.data.operatesOn.toLowerCase()} · e.g. {m.data.example}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>

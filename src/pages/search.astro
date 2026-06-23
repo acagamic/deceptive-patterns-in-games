@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Search"
+  description="Full-text search across the deceptive-patterns library."
+>
+  <section class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">Search</h1>
+    <p class="mt-2 text-muted">
+      Full-text search across patterns, glossary, families, harms, and
+      references. Use the filters to narrow by type, category, severity,
+      evidence, or platform.
+    </p>
+    <div id="search" class="mt-6"></div>
+    <noscript>
+      <p class="mt-4 text-muted">
+        Search requires JavaScript — browse the
+        <a class="text-link underline" href="/patterns">pattern library</a> instead.
+      </p>
+    </noscript>
+    <p id="search-fallback" class="mt-4 hidden text-sm text-muted">
+      Search is generated at build time and isn't available in local dev. Run a
+      production build, or browse the
+      <a class="text-link underline" href="/patterns">library</a>.
+    </p>
+  </section>
+
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline>
+    window.addEventListener("DOMContentLoaded", function () {
+      function start() {
+        try {
+          // eslint-disable-next-line no-undef
+          new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            showImages: false,
+            pageSize: 8,
+          });
+        } catch (e) {
+          var f = document.getElementById("search-fallback");
+          if (f) f.classList.remove("hidden");
+        }
+      }
+      var s = document.createElement("script");
+      s.src = "/pagefind/pagefind-ui.js";
+      s.onload = start;
+      s.onerror = function () {
+        var f = document.getElementById("search-fallback");
+        if (f) f.classList.remove("hidden");
+      };
+      document.head.appendChild(s);
+    });
+  </script>
+</Base>

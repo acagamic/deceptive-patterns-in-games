@@ -1,0 +1,213 @@
+---
+import Base from "../../layouts/Base.astro";
+import PatternCard from "../../components/PatternCard.astro";
+import { allPatterns, labelMaps, sevRank } from "../../lib/patterns";
+
+const patterns = await allPatterns();
+const maps = await labelMaps();
+
+const categories = [...new Set(patterns.map((p) => p.data.category))].sort();
+const severities = ["Low", "Medium", "High", "Severe"];
+const evidences = ["Strong", "Moderate", "Emerging"];
+const platforms = [
+  ...new Set(patterns.flatMap((p) => p.data.platforms)),
+].sort();
+const tags = [...new Set(patterns.flatMap((p) => p.data.tags))].sort();
+
+// default order: severity desc, then title
+const ordered = [...patterns].sort(
+  (a, b) =>
+    sevRank(b.data.severity) - sevRank(a.data.severity) ||
+    a.data.title.localeCompare(b.data.title),
+);
+
+const groupBtn =
+  "facet-btn rounded-full border border-border px-3 py-1 text-xs text-muted transition hover:border-accent/50 aria-pressed:border-accent aria-pressed:bg-accent-soft aria-pressed:text-accent aria-pressed:font-semibold";
+---
+
+<Base
+  title="Pattern library"
+  description="Browse and filter the catalogue of deceptive, exploitative, and harmful design patterns in games by category, platform, severity, evidence level, and topic."
+>
+  <section class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
+      Pattern library
+    </h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      {patterns.length} named techniques, each mapped to a mechanism, a harm
+      vector, an evidence level, and the literature. Filter to narrow the set,
+      or <a class="text-link underline" href="/search">search the full text</a>.
+    </p>
+
+    <div class="mt-6 rounded-xl border border-border bg-surface/40 p-4">
+      <label class="block">
+        <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+          >Filter by name</span
+        >
+        <input
+          id="facet-search"
+          type="search"
+          placeholder="e.g. loot box, timer, sludge…"
+          class="mt-1 w-full rounded-lg border border-border bg-paper px-3 py-2 text-sm text-ink outline-none focus:border-accent"
+        />
+      </label>
+
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >Severity</span
+          >
+          <div class="mt-1.5 flex flex-wrap gap-1.5">
+            {
+              severities.map((s) => (
+                <button class={groupBtn} data-group="severity" data-value={s} aria-pressed="false">
+                  {s}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >Evidence level</span
+          >
+          <div class="mt-1.5 flex flex-wrap gap-1.5">
+            {
+              evidences.map((e) => (
+                <button class={groupBtn} data-group="evidence" data-value={e} aria-pressed="false">
+                  {e}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >Category</span
+          >
+          <div class="mt-1.5 flex flex-wrap gap-1.5">
+            {
+              categories.map((c) => (
+                <button class={groupBtn} data-group="category" data-value={c} aria-pressed="false">
+                  {c}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >Platform</span
+          >
+          <div class="mt-1.5 flex flex-wrap gap-1.5">
+            {
+              platforms.map((pl) => (
+                <button class={groupBtn} data-group="platform" data-value={pl} aria-pressed="false">
+                  {pl}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-wrap items-end justify-between gap-3">
+        <label class="block">
+          <span class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >Topic</span
+          >
+          <select
+            id="facet-tag"
+            class="mt-1 block rounded-lg border border-border bg-paper px-3 py-2 text-sm text-ink outline-none focus:border-accent"
+          >
+            <option value="">All topics</option>
+            {tags.map((t) => <option value={t}>{t.replace(/-/g, " ")}</option>)}
+          </select>
+        </label>
+        <div class="flex items-center gap-3 text-sm">
+          <span id="facet-count" class="text-muted"></span>
+          <button
+            id="facet-reset"
+            class="rounded-md border border-border px-3 py-1.5 text-xs text-muted hover:border-accent/50 hover:text-accent"
+            >Reset</button
+          >
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="pattern-grid"
+      class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        ordered.map((p) => (
+          <PatternCard pattern={p} familyName={maps.family.get(p.data.family)} />
+        ))
+      }
+    </div>
+    <p
+      id="facet-empty"
+      class="mt-8 hidden text-center text-muted"
+    >
+      No patterns match those filters. <button id="facet-empty-reset" class="text-accent underline">Clear filters</button>.
+    </p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const grid = document.getElementById("pattern-grid");
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll("[data-card]"));
+      const search = document.getElementById("facet-search");
+      const tagSel = document.getElementById("facet-tag");
+      const countEl = document.getElementById("facet-count");
+      const emptyEl = document.getElementById("facet-empty");
+      const btns = Array.from(document.querySelectorAll(".facet-btn"));
+      const active = { severity: new Set(), evidence: new Set(), category: new Set(), platform: new Set() };
+
+      function apply() {
+        const q = (search.value || "").trim().toLowerCase();
+        const tag = tagSel.value;
+        let shown = 0;
+        for (const card of cards) {
+          const d = card.dataset;
+          const okText = !q || d.title.includes(q);
+          const okSev = !active.severity.size || active.severity.has(d.severity);
+          const okEv = !active.evidence.size || active.evidence.has(d.evidence);
+          const okCat = !active.category.size || active.category.has(d.category);
+          const cardPlat = (d.platforms || "").split("|");
+          const okPlat = !active.platform.size || cardPlat.some((p) => active.platform.has(p));
+          const cardTags = (d.tags || "").split("|");
+          const okTag = !tag || cardTags.includes(tag);
+          const show = okText && okSev && okEv && okCat && okPlat && okTag;
+          card.style.display = show ? "" : "none";
+          if (show) shown++;
+        }
+        countEl.textContent = shown + " of " + cards.length + " shown";
+        emptyEl.classList.toggle("hidden", shown !== 0);
+      }
+
+      btns.forEach((b) =>
+        b.addEventListener("click", () => {
+          const g = b.dataset.group, v = b.dataset.value;
+          const set = active[g];
+          if (set.has(v)) { set.delete(v); b.setAttribute("aria-pressed", "false"); }
+          else { set.add(v); b.setAttribute("aria-pressed", "true"); }
+          apply();
+        }),
+      );
+      search.addEventListener("input", apply);
+      tagSel.addEventListener("change", apply);
+
+      function reset() {
+        for (const k in active) active[k].clear();
+        btns.forEach((b) => b.setAttribute("aria-pressed", "false"));
+        search.value = ""; tagSel.value = "";
+        apply();
+      }
+      document.getElementById("facet-reset").addEventListener("click", reset);
+      document.getElementById("facet-empty-reset").addEventListener("click", reset);
+      apply();
+    })();
+  </script>
+</Base>

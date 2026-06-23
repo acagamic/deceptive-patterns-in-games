@@ -1,0 +1,34 @@
+---
+import Base from "../../layouts/Base.astro";
+import { allPatterns, tagCounts, tagLabel } from "../../lib/patterns";
+
+const patterns = await allPatterns();
+const tags = tagCounts(patterns);
+const max = tags[0]?.count ?? 1;
+---
+
+<Base
+  title="Topics"
+  description="Recurring concepts across the deceptive-patterns library, as a tag cloud."
+>
+  <section class="mx-auto max-w-4xl px-4 py-10">
+    <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">Topics</h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      Recurring concepts that cut across mechanisms and harms. Larger labels
+      appear in more patterns.
+    </p>
+    <div class="mt-6 flex flex-wrap items-center gap-2.5">
+      {
+        tags.map(({ tag, count }) => (
+          <a
+            href={`/tags/${tag}`}
+            class="rounded-full border border-border bg-paper px-3 py-1 text-ink transition hover:border-accent/50 hover:text-accent"
+            style={`font-size:${(0.82 + (count / max) * 0.55).toFixed(2)}rem`}
+          >
+            {tagLabel(tag)} <span class="text-muted">· {count}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,47 @@
+---
+import Base from "../../layouts/Base.astro";
+import PatternCard from "../../components/PatternCard.astro";
+import { allPatterns, labelMaps, tagLabel, sevRank } from "../../lib/patterns";
+
+export async function getStaticPaths() {
+  const patterns = await allPatterns();
+  const tags = [...new Set(patterns.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      members: patterns
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => sevRank(b.data.severity) - sevRank(a.data.severity)),
+    },
+  }));
+}
+
+const { tag, members } = Astro.props;
+const maps = await labelMaps();
+---
+
+<Base
+  title={`Topic: ${tagLabel(tag)}`}
+  description={`Patterns tagged “${tagLabel(tag)}”.`}
+>
+  <section class="mx-auto max-w-4xl px-4 py-10" data-pagefind-body>
+    <nav class="mb-4 text-xs text-muted">
+      <a href="/tags" class="hover:text-accent">Topics</a>
+      <span class="px-1">/</span><span>{tagLabel(tag)}</span>
+    </nav>
+    <h1 class="font-serif text-3xl font-bold capitalize text-ink sm:text-4xl">
+      {tagLabel(tag)}
+    </h1>
+    <p class="mt-2 text-muted">
+      {members.length} pattern{members.length === 1 ? "" : "s"} tagged with this topic.
+    </p>
+    <div class="mt-6 grid gap-3 sm:grid-cols-2">
+      {
+        members.map((p) => (
+          <PatternCard pattern={p} familyName={maps.family.get(p.data.family)} />
+        ))
+      }
+    </div>
+  </section>
+</Base>

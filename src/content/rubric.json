@@ -1,0 +1,10 @@
+[
+  { "id": "locus", "dimension": "Locus (diegetic vs commercial)", "greener": "Deception lives inside the consented fiction / fair-play (a bluff, a twist).", "darker": "Deception or extraction operates on the player-as-consumer (store, billing, data)." },
+  { "id": "consent", "dimension": "Consent & expectation", "greener": "The player opted into this kind of influence; the mechanism is overt.", "darker": "Covert; outside what was consented; 'consent' was manufactured by another pattern." },
+  { "id": "transparency", "dimension": "Transparency of material info", "greener": "Costs, odds, and terms are clear and timely.", "darker": "Odds or costs are hidden, delayed, or obfuscated." },
+  { "id": "asymmetry", "dimension": "Asymmetry of benefit", "greener": "Mutual, or player-favouring.", "darker": "Strongly provider-favouring at the player's expense." },
+  { "id": "reversibility", "dimension": "Reversibility & exit", "greener": "Easy to undo, refund, cancel, or disable.", "darker": "Locked-in; obstructed exit; non-refundable." },
+  { "id": "materiality", "dimension": "Materiality of harm", "greener": "Trivial stakes.", "darker": "Large or escalating loss of money, time, or data." },
+  { "id": "vulnerability", "dimension": "Vulnerability of target", "greener": "Competent, informed adult.", "darker": "Children, problem gamblers, 'whales', cognitively loaded or impaired users; SES-correlated targeting." },
+  { "id": "pressure", "dimension": "Pressure intensity", "greener": "Gentle, resistible nudge.", "darker": "Aggressive, repeated, scarcity/urgency-laden coercion." }
+]

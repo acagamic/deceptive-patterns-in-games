@@ -1,0 +1,21 @@
+# Netlify build configuration.
+# `npm run build` runs `astro build` then `pagefind --site dist`, so the
+# static search index is generated as part of every deploy.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Pagefind ships small wasm/json assets; make sure they're served correctly.
+[[headers]]
+  for = "/pagefind/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

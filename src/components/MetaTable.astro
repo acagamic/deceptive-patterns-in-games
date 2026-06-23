@@ -1,0 +1,82 @@
+---
+import Badge from "./Badge.astro";
+import { sevTone, evTone, tagLabel, type Pattern } from "../lib/patterns";
+
+interface Props {
+  pattern: Pattern;
+  family: Map<string, string>;
+  harm: Map<string, string>;
+  mode: Map<string, string>;
+}
+const { pattern, family, harm, mode } = Astro.props;
+const d = pattern.data;
+const dt = "text-xs font-semibold uppercase tracking-wide text-muted";
+---
+
+<dl
+  class="grid gap-x-6 gap-y-4 rounded-xl border border-border bg-surface/50 p-5 text-sm sm:grid-cols-2"
+>
+  <div>
+    <dt class={dt}>Code</dt>
+    <dd class="mt-1 font-mono text-ink">{d.code}</dd>
+  </div>
+  <div>
+    <dt class={dt}>Category</dt>
+    <dd class="mt-1 text-ink">{d.category}</dd>
+  </div>
+  <div>
+    <dt class={dt}>Severity</dt>
+    <dd class="mt-1"><Badge label={d.severity} tone={sevTone(d.severity)} /></dd>
+  </div>
+  <div>
+    <dt class={dt}>Evidence</dt>
+    <dd class="mt-1 flex flex-col gap-1">
+      <Badge label={d.evidenceLevel} tone={evTone(d.evidenceLevel)} />
+      {d.evidenceNote && <span class="text-xs text-muted">{d.evidenceNote}</span>}
+    </dd>
+  </div>
+  <div>
+    <dt class={dt}>Mechanism family</dt>
+    <dd class="mt-1">
+      <a class="text-link underline-offset-2 hover:underline" href={`/families/${d.family}`}>
+        {family.get(d.family) ?? d.family}
+      </a>
+    </dd>
+  </div>
+  <div>
+    <dt class={dt}>Platforms</dt>
+    <dd class="mt-1 text-ink">{d.platforms.join(" · ")}</dd>
+  </div>
+  <div>
+    <dt class={dt}>Harm vectors</dt>
+    <dd class="mt-1 flex flex-wrap gap-1.5">
+      {d.harmVectors.map((h) => (
+        <Badge label={harm.get(h) ?? h} tone="neutral" href={`/harms/${h}`} />
+      ))}
+    </dd>
+  </div>
+  <div>
+    <dt class={dt}>Modes</dt>
+    <dd class="mt-1 flex flex-wrap gap-1.5">
+      {d.modes.map((m) => (
+        <Badge label={mode.get(m) ?? m} tone="accent" href={`/rubric#modes`} />
+      ))}
+    </dd>
+  </div>
+  <div class="sm:col-span-2">
+    <dt class={dt}>Tags</dt>
+    <dd class="mt-1 flex flex-wrap gap-1.5">
+      {d.tags.map((t) => (
+        <Badge label={tagLabel(t)} tone="neutral" href={`/tags/${t}`} />
+      ))}
+    </dd>
+  </div>
+  {
+    d.aliases.length > 0 && (
+      <div class="sm:col-span-2">
+        <dt class={dt}>Also known as</dt>
+        <dd class="mt-1 text-muted">{d.aliases.join(", ")}</dd>
+      </div>
+    )
+  }
+</dl>
