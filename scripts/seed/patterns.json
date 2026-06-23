@@ -57,7 +57,7 @@
     "howItWorks": "An overpriced top tier and a token bottom tier make the target mid-tier look rational, while leftover balances nudge the next purchase.",
     "whyHarmful": "The arrangement exploits anchoring and the decoy effect to shift spending upward without adding real value, privileging the provider's interest over the player's.",
     "examples": ["Starter / Value / Mega coin packs where 'Value' is the obvious pick", "Limited 'bundle' deals that bundle in unwanted items"],
-    "references": ["petrovskaya-zendle-2022"]
+    "references": ["petrovskaya-zendle-2022", "gray-2024"]
   },
   {
     "code": "M5", "slug": "pay-to-win", "title": "Pay-to-win",
@@ -96,13 +96,13 @@
     "platforms": ["Mobile / F2P", "Live-service"],
     "evidenceLevel": "Moderate", "evidenceNote": "Recurring in player reports and early-childhood gaming studies.",
     "harmVectors": ["financial"], "modes": ["manipulative", "coercive"],
-    "tags": ["FOMO", "scarcity", "urgency", "retention"],
+    "tags": ["fomo", "scarcity", "urgency", "retention"],
     "aliases": ["fading opportunities", "flash offers", "countdown deals"],
     "summary": "Artificial scarcity and urgency pressure players into purchases before a countdown expires.",
     "howItWorks": "Limited-time banners, expiring bundles, and countdown timers manufacture a fear of missing out that shortcuts deliberation.",
     "whyHarmful": "Time pressure at the decision point interferes with reasoning and pushes impulsive spending; data-triggered offers can target moments of heightened susceptibility.",
     "examples": ["'Only today!' starter bundles for new players", "Rotating limited banners tied to events"],
-    "references": ["petrovskaya-zendle-2022", "sousa-2023"]
+    "references": ["petrovskaya-zendle-2022", "sousa-2023", "gray-2024"]
   },
   {
     "code": "M8", "slug": "monetising-quality-of-life", "title": "Monetising basic quality-of-life",
@@ -117,7 +117,7 @@
     "howItWorks": "Basic conveniences — extra inventory, auto-collect, faster menus — are withheld and sold back as upgrades.",
     "whyHarmful": "It manufactures inconvenience to extract payment for relief, an asymmetric transfer of value that benefits the provider at the player's expense.",
     "examples": ["Paid inventory expansions in games with deliberately tiny default storage", "Selling an 'auto-play' for a grindy loop"],
-    "references": ["petrovskaya-zendle-2022"]
+    "references": ["petrovskaya-zendle-2022", "gray-2024"]
   },
   {
     "code": "M9", "slug": "bait-and-switch", "title": "Bait-and-switch / product not as expected",
@@ -162,7 +162,7 @@
     "howItWorks": "Buy buttons sit where 'continue' usually is, confirmation is minimal, and stored payment makes a tap a charge.",
     "whyHarmful": "It manufactures purchases the player did not intend — a consent failure that has drawn major regulatory action, and is acute for children.",
     "examples": ["A 'claim reward' button that actually buys currency", "One-tap purchases with no meaningful confirmation"],
-    "references": ["king-2023"]
+    "references": ["king-2023", "gray-2024"]
   },
   {
     "code": "M12", "slug": "subscription-battle-pass-traps", "title": "Subscription / battle-pass traps",
@@ -253,7 +253,7 @@
     "howItWorks": "The next round, reward, or item loads automatically, removing the friction that would prompt a player to stop.",
     "whyHarmful": "By engineering away stopping cues it captures attention beyond the player's intention, a temporal harm to digital wellbeing.",
     "examples": ["Auto-queue into the next match", "Continuous reward feeds with no end screen"],
-    "references": ["mongeroffarello-2022"]
+    "references": ["mongeroffarello-2022", "gray-2024"]
   },
 
   {
@@ -299,7 +299,7 @@
     "howItWorks": "Rewards or gating require inviting contacts, sharing, or gifting, turning the player into a distribution channel.",
     "whyHarmful": "It instrumentalises relationships and can harvest contact data, transferring social capital and privacy to the provider.",
     "examples": ["'Invite 3 friends to unlock'", "Daily gift-spam to a contact list"],
-    "references": ["zhang-2025a"]
+    "references": ["zhang-2025a", "gray-2024"]
   },
   {
     "code": "S4", "slug": "impersonation-system-as-friend", "title": "Impersonation / disguised system-as-friend",
@@ -405,7 +405,7 @@
     "howItWorks": "Interruptive prompts surface offers on launch, between levels, and at idle moments, wearing down resistance.",
     "whyHarmful": "Repetition imposes an attention tax and pressures purchases through persistence rather than value.",
     "examples": ["A store pop-up every time you open the app", "Offers interrupting the flow between levels"],
-    "references": ["mathur-2019"]
+    "references": ["mathur-2019", "gray-2024"]
   },
 
   {
@@ -451,7 +451,7 @@
     "howItWorks": "Color, size, and placement make the spend or opt-in button dominant while the alternative is muted.",
     "whyHarmful": "It biases choices by exploiting attention rather than informing it, quietly redirecting decisions.",
     "examples": ["A bright 'Buy' button beside a greyed-out 'No'", "Pre-highlighted most-expensive option"],
-    "references": ["king-2023", "digeronimo-2020"]
+    "references": ["king-2023", "digeronimo-2020", "gray-2024"]
   },
   {
     "code": "I4", "slug": "obstructed-exit-sludge", "title": "Obstructed exit / cancellation (sludge)",
@@ -466,7 +466,7 @@
     "howItWorks": "Cancellation is buried, multi-step, or routed through obstacles, while signup is one tap.",
     "whyHarmful": "It penalises and withholds exit — the coercive core — trapping spend and time and overriding the player's choice to leave.",
     "examples": ["Refund links hidden deep in settings", "Cancellation that demands multiple confirmations and waits"],
-    "references": ["newall-2025", "kelly-2024"]
+    "references": ["newall-2025", "kelly-2024", "gray-2024"]
   },
   {
     "code": "I5", "slug": "disguised-ads-content", "title": "Disguised ads / content",
@@ -634,6 +634,21 @@
     "references": ["petrovskaya-zendle-2022", "vanrooij-2025"]
   },
   {
+    "code": "S10", "slug": "involuntary-social-ranking-identity-labels", "title": "Involuntary social ranking / identity labels",
+    "purpose": "both",
+    "category": "Social & parasocial", "family": "social", "severity": "Medium",
+    "platforms": ["Social platforms", "Mobile / F2P", "Live-service", "UGC platforms"],
+    "evidenceLevel": "Emerging", "evidenceNote": "Directly observable in social-platform features; broader support from social-comparison, social-media dark-pattern, and consent literature. Game-specific evidence is still developing.",
+    "harmVectors": ["social-relational", "emotional", "autonomy", "data-privacy"], "modes": ["manipulative", "exploitative"],
+    "tags": ["social-sorting", "ranking", "identity-labels", "peer-comparison", "algorithmic", "consent"],
+    "aliases": ["algorithmic social sorting", "non-consensual friendship ranking", "imposed relationship labels", "friendship scores"],
+    "summary": "The system assigns relationship labels, closeness ranks, or social-cluster positions to people from behavioural data they did not choose to make socially meaningful.",
+    "howItWorks": "Interaction frequency, message history, gifting, guild activity, or proximity data are converted into labels and ranks such as best friend, mutual best friend, top supporter, inner circle, or a position in another person's social orbit. The label can feel authoritative even when the metric is partial, private, volatile, or poorly explained.",
+    "whyHarmful": "It turns inferred behaviour into identity and relationship status without meaningful consent from everyone affected. The result can expose relational metadata, intensify comparison and insecurity, provoke conflict between friends or partners, and pressure people to change their behaviour to regain a preferred rank or label.",
+    "examples": ["Snapchat Friend Solar Systems ranking a user as a planet in someone else's Best Friends list", "Automatic friend emojis that label best friends, mutual besties, or streak status", "Game friend leaderboards that rank closeness by gifts, messages, or co-play", "Guild or creator-community tiers that publicly mark insiders and outsiders"],
+    "references": ["snapchat-solar-system", "snapchat-friend-emojis", "snap-2024-solar-system", "festinger-1954", "vogel-2014", "mildner-2023", "nguyen-2020"]
+  },
+  {
     "code": "P6", "slug": "endowed-progress", "title": "Endowed progress",
     "purpose": "both",
     "category": "Psychological / reinforcement", "family": "psychological", "severity": "Medium",
@@ -691,7 +706,7 @@
     "howItWorks": "The interface shows invented or unverifiable activity, purchase counts, or “players online” figures to imply popularity and manufacture trust and urgency.",
     "whyHarmful": "It induces a false belief about how others behave, exploiting conformity to steer spending and engagement — deception about the social context.",
     "examples": ["Fake “X people are viewing or buying this” counters", "Inflated player-count or popularity badges", "Bogus testimonial pop-ups"],
-    "references": ["mathur-2019", "gray-2018"]
+    "references": ["mathur-2019", "gray-2018", "gray-2024"]
   },
   {
     "code": "I8", "slug": "comparison-prevention", "title": "Comparison prevention",
@@ -728,14 +743,104 @@
     "purpose": "business",
     "category": "Informational / interface", "family": "sneaking", "severity": "Severe",
     "platforms": ["Mobile / F2P", "Live-service"],
-    "evidenceLevel": "Emerging", "evidenceNote": "Patent and exploitation analyses, digital-vulnerability theory, and the Game-check report's hidden-manipulation focus area.",
+    "evidenceLevel": "Emerging", "evidenceNote": "Precautionary severe rating based on the potential harm of covert individual targeting; game-specific evidence remains emerging.",
     "harmVectors": ["financial", "data-privacy", "autonomy", "competitive-fairness", "emotional"], "modes": ["exploitative", "manipulative", "deceptive", "malicious"],
     "tags": ["algorithmic", "personalisation", "data", "dynamic-pricing", "hidden"],
     "aliases": ["dynamic spend optimisation", "algorithmic targeting", "personalised pricing"],
     "summary": "Silently using a player's behavioural data to tune offers, prices, odds, difficulty, or matchmaking to maximise that individual's spending.",
     "howItWorks": "Dynamic systems informed by play and purchase history adjust what each player sees — offers, “frustration → sell-a-fix” difficulty, or matchmaking that surrounds them with spenders — optimised per person to increase spend, invisibly.",
-    "whyHarmful": "Invisible, individualised targeting defeats informed consent and comparison, can exploit identified vulnerabilities (a data-protection concern), and manufactures false social proof; children and at-risk players cannot detect or resist it.",
+    "whyHarmful": "Invisible, individualised targeting defeats informed consent and comparison, can exploit identified vulnerabilities (a data-protection concern), and manufactures false social proof; children and at-risk players cannot detect or resist it. The severity rating is precautionary: the harm could be severe when such targeting is deployed at scale, even though the public game-specific evidence base is still emerging.",
     "examples": ["Behaviour-tuned offers and dynamic pricing", "Difficulty tuned to sell a fix", "Matchmaking that normalises spending"],
-    "references": ["king-delfabbro-2019", "helberger-2021", "strycharz-2021", "vanrooij-2025"]
+    "references": ["king-delfabbro-2019", "helberger-2021", "strycharz-2021", "vanrooij-2025", "gray-2024"]
+  },
+  {
+    "code": "I11", "slug": "trick-wording-misleading-copy", "title": "Trick wording / misleading copy",
+    "purpose": "business",
+    "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
+    "platforms": ["Mobile / F2P", "PC / console", "Live-service", "UGC platforms"],
+    "evidenceLevel": "Moderate", "evidenceNote": "Well-established cross-domain deceptive-design pattern; game-specific evidence overlaps with purchase, consent, and interface-interference studies.",
+    "harmVectors": ["autonomy", "financial", "data-privacy"], "modes": ["deceptive", "manipulative"],
+    "tags": ["trick-wording", "misleading-copy", "ambiguity", "consent", "purchase-flow"],
+    "aliases": ["trick questions", "misleading labels", "ambiguous copy"],
+    "summary": "Confusing, ambiguous, or expectation-violating wording makes the player take an action they did not mean to take.",
+    "howItWorks": "Button labels, toggles, prompts, or shop copy are phrased so a quick scan suggests one meaning while the actual consequence is different. In games this can attach purchases, data sharing, notifications, account linking, or unwanted difficulty and matchmaking choices to wording that looks harmless or protective.",
+    "whyHarmful": "The harm is epistemic and autonomy-based: the player is not choosing the action they believe they are choosing. When attached to premium currency, subscriptions, ads, data permissions, or account-linking flows, misleading copy can turn ordinary scan-reading into financial or privacy harm.",
+    "examples": ["A claim button that quietly spends premium currency rather than collecting a free reward", "Double-negative consent toggles for tracking, notifications, or personalised offers", "A decline option worded so it appears to reject a penalty but actually accepts one", "Quest or event copy that hides a required ad watch, account link, or purchase behind vague wording"],
+    "references": ["deceptive-design-trick-wording", "gray-2024", "mathur-2019", "gray-2018", "king-2023"]
+  },
+  {
+    "code": "I12", "slug": "bad-defaults-preselection", "title": "Bad defaults / preselection",
+    "purpose": "business",
+    "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
+    "platforms": ["Mobile / F2P", "PC / console", "Live-service", "UGC platforms"],
+    "evidenceLevel": "Moderate", "evidenceNote": "Gray et al. identify bad defaults and preselection as interface-interference patterns; game-specific evidence overlaps with accidental purchase and consent-flow studies.",
+    "harmVectors": ["autonomy", "financial", "data-privacy"], "modes": ["manipulative", "deceptive"],
+    "tags": ["bad-defaults", "preselection", "defaults", "consent", "purchase-flow"],
+    "aliases": ["preselected option", "default-to-opt-in", "default-to-purchase"],
+    "summary": "The provider-preferred option is already selected or treated as the normal path, so inaction becomes consent, spending, or data sharing.",
+    "howItWorks": "Settings, purchase confirmations, account-linking prompts, or privacy choices ship with the risky option preselected. The player must notice and actively undo the default, often while trying to continue play.",
+    "whyHarmful": "Defaults exploit inertia and misplaced trust: players often assume defaults are safe or recommended. In games, this can turn a quick continue action into opt-in tracking, notifications, matchmaking exposure, subscription renewal, or a paid purchase path.",
+    "examples": ["A paid bundle tier preselected in a shop modal", "Personalised offers or tracking enabled by default", "Auto-renewal or notifications preselected during account linking", "A default matchmaking or social-visibility setting that exposes more than expected"],
+    "references": ["gray-2024", "mathur-2019", "luguri-2021", "king-2023"]
+  },
+  {
+    "code": "I13", "slug": "choice-overload-option-flooding", "title": "Choice overload / option flooding",
+    "purpose": "business",
+    "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
+    "platforms": ["Mobile / F2P", "Live-service", "PC / console"],
+    "evidenceLevel": "Emerging", "evidenceNote": "Named in Gray et al.'s ontology; game-specific evidence is emerging through shop, bundle, and settings-interface analyses.",
+    "harmVectors": ["autonomy", "financial", "time-attention"], "modes": ["manipulative"],
+    "tags": ["choice-overload", "option-flooding", "shop", "settings", "comparison-prevention"],
+    "aliases": ["option flooding", "offer overload", "choice overload"],
+    "summary": "The interface floods the player with too many overlapping options, currencies, bundles, settings, or offers to compare meaningfully.",
+    "howItWorks": "A shop, event screen, or settings flow presents dense, shifting, and partially incomparable options. The resulting cognitive load makes the default, highlighted, or most urgent option more likely to be accepted.",
+    "whyHarmful": "Choice overload undermines informed consent without hiding every detail. Players technically see options, but the volume and structure of information make meaningful comparison unrealistic, especially under time pressure or during play interruption.",
+    "examples": ["A live-service shop with dozens of time-limited bundles and currencies", "Settings split across many screens with repeated prompts to accept the default", "Event reward screens with many exchange rates and upgrade paths", "A consent or account-linking flow with dense toggles and unclear tradeoffs"],
+    "references": ["gray-2024", "mathur-2021", "gray-2021"]
+  },
+  {
+    "code": "I14", "slug": "forced-registration-data-disclosure", "title": "Forced registration / data disclosure",
+    "purpose": "business",
+    "category": "Informational / interface", "family": "forced-action", "severity": "High",
+    "platforms": ["Mobile / F2P", "UGC platforms", "Social platforms", "Live-service"],
+    "evidenceLevel": "Moderate", "evidenceNote": "Gray et al. group forced registration, privacy zuckering, friend spam, and address-book leeching under forced communication or disclosure.",
+    "harmVectors": ["data-privacy", "autonomy", "social-relational"], "modes": ["coercive", "deceptive", "exploitative"],
+    "tags": ["forced-registration", "data-disclosure", "privacy-zuckering", "address-book", "account-linking"],
+    "aliases": ["privacy zuckering", "address book leeching", "forced disclosure", "forced account linking"],
+    "summary": "Access to play, rewards, or social features is made conditional on creating an account, linking an identity, or sharing unnecessary personal or contact data.",
+    "howItWorks": "The game blocks or degrades functionality until the player registers, links a platform account, grants contact permissions, uploads age or identity data, or shares friend-network data. The request is framed as necessary even when the data primarily benefits growth, advertising, analytics, or cross-platform tracking.",
+    "whyHarmful": "The design converts access pressure into consent. It can expose personal and social data, affect non-consenting contacts, and make refusal feel like losing access to play or progress rather than exercising a real privacy choice.",
+    "examples": ["A game reward gated behind linking a social account", "Contact-list access framed as necessary to find friends", "UGC access that requires unnecessary profile or identity data", "Friend-invite flows that collect contacts before clearly explaining how they will be used"],
+    "references": ["gray-2024", "nguyen-2020", "luguri-2021", "helberger-2021"]
+  },
+  {
+    "code": "I15", "slug": "language-inaccessibility-complex-copy", "title": "Language inaccessibility / complex copy",
+    "purpose": "business",
+    "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
+    "platforms": ["Mobile / F2P", "PC / console", "Live-service", "UGC platforms"],
+    "evidenceLevel": "Emerging", "evidenceNote": "Gray et al.'s ontology names wrong-language and complex-language patterns; game-specific evidence overlaps with trick wording and consent-flow research.",
+    "harmVectors": ["autonomy", "financial", "data-privacy"], "modes": ["deceptive", "manipulative"],
+    "tags": ["language-inaccessibility", "complex-language", "wrong-language", "consent", "transparency"],
+    "aliases": ["complex language", "wrong language", "unreadable disclosure"],
+    "summary": "Important purchase, privacy, odds, or consent information is presented in language the player cannot reasonably understand.",
+    "howItWorks": "Disclosures use legalistic, technical, untranslated, or age-inappropriate wording while the action button remains simple and salient. The result is a consent or purchase flow that appears transparent but is not intelligible to the affected player.",
+    "whyHarmful": "Disclosure does not protect autonomy if the player cannot understand it. In games, complex or inaccessible wording is especially harmful for children, cross-language audiences, and fast-paced play contexts where players are pushed to continue quickly.",
+    "examples": ["Loot-box odds or subscription terms written in dense legal language", "Tracking or personalised-offer consent shown only in the wrong language", "Child-facing purchase prompts with adult legal vocabulary", "Account-linking terms hidden behind untranslated platform jargon"],
+    "references": ["gray-2024", "deceptive-design-trick-wording", "mathur-2021", "nguyen-2020"]
+  },
+  {
+    "code": "I16", "slug": "feedforward-ambiguity-unclear-consequences", "title": "Feedforward ambiguity / unclear consequences",
+    "purpose": "business",
+    "category": "Informational / interface", "family": "interface-interference", "severity": "Medium",
+    "platforms": ["Mobile / F2P", "PC / console", "Live-service"],
+    "evidenceLevel": "Emerging", "evidenceNote": "Gray et al. introduce feedforward ambiguity as a pattern; game-specific support comes from player-perception work on deceptive gameplay and interface cues.",
+    "harmVectors": ["autonomy", "financial", "emotional"], "modes": ["deceptive", "manipulative"],
+    "tags": ["feedforward-ambiguity", "unclear-consequences", "ambiguity", "purchase-flow", "interface-cues"],
+    "aliases": ["unclear consequence", "ambiguous action", "misleading affordance"],
+    "summary": "The interface fails to make clear what a button, prompt, or action will actually do before the player commits.",
+    "howItWorks": "Labels, icons, animations, or placement suggest one outcome while the actual outcome is different or materially more consequential. Unlike broad trick wording, the problem is the missing or misleading feedforward cue about what will happen next.",
+    "whyHarmful": "Games often ask for rapid, repeated action. When consequence cues are ambiguous, players can spend currency, consume scarce resources, reveal data, start timers, or change irreversible settings without a fair chance to predict the result.",
+    "examples": ["A glowing 'open' affordance that consumes premium currency without saying so", "A reroll button that spends a rare item without previewing the cost", "A social-share icon that posts publicly rather than opening a private invite", "A claim prompt that starts a timed event instead of merely collecting a reward"],
+    "references": ["gray-2024", "king-2023", "yin-2024", "deceptive-design-trick-wording"]
   }
 ]

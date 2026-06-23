@@ -1,0 +1,28 @@
+---
+title: "Bad defaults / preselection"
+code: "I12"
+category: "Informational / interface"
+family: "interface-interference"
+severity: "Medium"
+purpose: "business"
+platforms: ["Mobile / F2P", "PC / console", "Live-service", "UGC platforms"]
+evidenceLevel: "Moderate"
+evidenceNote: "Gray et al. identify bad defaults and preselection as interface-interference patterns; game-specific evidence overlaps with accidental purchase and consent-flow studies."
+harmVectors: ["autonomy", "financial", "data-privacy"]
+modes: ["manipulative", "deceptive"]
+tags: ["bad-defaults", "preselection", "defaults", "consent", "purchase-flow"]
+aliases: ["preselected option", "default-to-opt-in", "default-to-purchase"]
+summary: "The provider-preferred option is already selected or treated as the normal path, so inaction becomes consent, spending, or data sharing."
+examples: ["A paid bundle tier preselected in a shop modal", "Personalised offers or tracking enabled by default", "Auto-renewal or notifications preselected during account linking", "A default matchmaking or social-visibility setting that exposes more than expected"]
+references: ["gray-2024", "mathur-2019", "luguri-2021", "king-2023"]
+related: []
+updated: "2026-06-23"
+---
+
+## How it works
+
+Settings, purchase confirmations, account-linking prompts, or privacy choices ship with the risky option preselected. The player must notice and actively undo the default, often while trying to continue play.
+
+## Why it can be harmful
+
+Defaults exploit inertia and misplaced trust: players often assume defaults are safe or recommended. In games, this can turn a quick continue action into opt-in tracking, notifications, matchmaking exposure, subscription renewal, or a paid purchase path.

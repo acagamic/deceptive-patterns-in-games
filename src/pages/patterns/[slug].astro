@@ -111,11 +111,11 @@ const comm = (community as Record<string, any>)[entry.id];
               The community site{" "}
               <a class="text-link underline" href="https://www.darkpattern.games" rel="noopener">DarkPattern.games</a>{" "}
               catalogues a related pattern,{" "}
-              <a class="text-link underline" href={comm.url} rel="noopener">“{comm.title}”</a>, with {comm.exampleCount}+ community-reported example games
+              <a class="text-link underline" href={comm.url} rel="noopener">“{comm.title}”</a>, with {comm.exampleCount}+ example game mentions captured in our source crawl
               {comm.examples.length > 0 ? `, including ${comm.examples.join(", ")}` : ""}.
             </p>
             <p class="mt-2 text-xs text-muted">
-              Community-contributed and votes-based; the listed game titles are examples reported there, not our assessment.{" "}
+              Community-contributed and votes-based; the listed game titles are page-level examples from that catalogue, not a full game-profile crawl or our assessment.{" "}
               <a class="text-link underline" href={comm.url} rel="noopener">View on DarkPattern.games →</a>
             </p>
           </div>

@@ -1,12 +1,12 @@
 // Builds src/data/community.json: a crosswalk from our pattern slugs to the
-// community DarkPattern.games catalogue (title, URL, example-game count, and a
-// few example game titles for orientation — no quotes republished).
+// community DarkPattern.games catalogue (title, URL, page-level example-game
+// mention count, and a few example game titles for orientation — no quotes
+// republished). The source crawl is not a full crawl of every game profile.
 //
 // Source data: ../darkpattern_games_overview.json (a sitemap crawl of
-// darkpattern.games, kept OUTSIDE the repo). Run from the project root:
+// darkpattern.games, kept outside the public repo). Run from the project root:
 //   node scripts/build-community.mjs
-// The generated community.json IS committed; this script only needs the source
-// file present when regenerating.
+// The generated community.json is committed; the raw crawl is not.
 import fs from "node:fs";
 import path from "node:path";
 

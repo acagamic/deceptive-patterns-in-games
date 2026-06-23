@@ -8,7 +8,7 @@ Prepared around the **2026 Dagstuhl Seminar on Harms**.
 
 - **Deception ≠ harm.** Games legitimately deceive (bluffs, fog of war, plot twists). Entries are classified by the *conditions* under which they become harmful — see the [harm rubric](src/pages/rubric.astro) — not by the label.
 - **Exploitation is foregrounded.** The gravest harms (loot boxes, whale-targeting) are often fully transparent, so the model centres exploitation alongside deception.
-- **Evidence on the surface.** Every pattern carries an evidence level and resolvable, peer-reviewed (DOI-bearing) sources — more transparent than a votes-only directory.
+- **Evidence on the surface.** Every pattern carries an evidence level and resolvable sources, with DOI-linked scholarship where available and primary web sources where they document the mechanism — more transparent than a votes-only directory.
 
 ## Stack
 
@@ -36,13 +36,13 @@ npm run generate   # regenerate pattern/glossary MDX from scripts/seed/*.json
 ```
 src/
   content/
-    patterns/*.mdx        33 technique entries (the library)
+    patterns/*.mdx        technique entries generated from scripts/seed/patterns.json
     glossary/*.mdx        concept definitions
     families.json         Axis A — mechanism families
     harms.json            Axis B — harm vectors
     modes.json            five modes of adversarial design
     rubric.json           eight harm-conditionality dimensions
-    references.csl.json    bibliography (source of truth, DOI-only)
+    references.csl.json    bibliography (source of truth, DOI/URL sources)
   content.config.ts       collection schemas (zod)
   components/             Badge, PatternCard, MetaTable, Citation, Header, Footer
   layouts/Base.astro

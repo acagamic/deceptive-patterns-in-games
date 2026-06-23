@@ -3,14 +3,14 @@
     "term": "Dark patterns", "slug": "dark-patterns", "aliases": ["deceptive patterns"],
     "short": "Interface and system choices that benefit the provider by steering, deceiving, or coercing users against their own interest.",
     "seeAlso": ["deceptive-design", "fair-patterns"],
-    "references": ["gray-2018", "mathur-2019", "narayanan-2020"],
+    "references": ["gray-2018", "mathur-2019", "narayanan-2020", "gray-2024", "chang-2024"],
     "body": "Coined by UX practitioner Harry Brignull in 2010 (a foundational, non-DOI source), 'dark patterns' name design choices whose predictable effect transfers value from the user to the provider. The research community and regulators increasingly prefer 'deceptive design' / 'deceptive patterns' to avoid the connotations of 'dark' and to align with legal language. There is no single agreed definition; the field is better understood as a family of normative concerns drawn from psychology, economics, ethics, and law."
   },
   {
     "term": "Deceptive design", "slug": "deceptive-design", "aliases": ["deceptive patterns"],
     "short": "The contemporary umbrella term for asymmetric, user-adverse design — broader than literal deception.",
     "seeAlso": ["dark-patterns", "exploitation", "manipulation"],
-    "references": ["mathur-2021", "gray-2024", "timms-2025"],
+    "references": ["mathur-2021", "gray-2024", "chang-2024", "timms-2025"],
     "body": "Now codified in instruments such as the EU Digital Services Act, 'deceptive design' is often used as the umbrella for the whole phenomenon. Strictly, deception is only one mechanism: a design can be manipulative, coercive, or exploitative without inducing a false belief. For precision this library names the specific mode wherever possible."
   },
   {
@@ -45,14 +45,21 @@
     "term": "Persuasive design", "slug": "persuasive-design", "aliases": ["persuasion"],
     "short": "Influence that appeals to rational agency; the legitimate sibling of manipulation.",
     "seeAlso": ["manipulation", "deceptive-design"],
-    "references": ["wilkinson-2013", "sanchezchamorro-2023"],
+    "references": ["wilkinson-2013", "sanchezchamorro-2023", "chang-2024"],
     "body": "Persuasion appeals to a person's reasons and evidence and is generally legitimate. It crosses into manipulation when it bypasses or subverts rational agency — exploiting bias, emotion, or hidden influence. UX practitioners report this line is genuinely blurred in practice and shaped by commercial pressure."
+  },
+  {
+    "term": "Choice architecture", "slug": "choice-architecture", "aliases": ["choice architect", "choice environment"],
+    "short": "The structured context in which a player perceives options and makes decisions.",
+    "seeAlso": ["deceptive-design", "manipulation", "sludge"],
+    "references": ["chang-2024", "mathur-2021", "luguri-2021"],
+    "body": "Choice architecture is the surrounding arrangement of options, defaults, friction, timing, and information that shapes decisions. Chang, Seaborn, and Adams identify choice architecture, nudge theory, dual-process theory, sludge, and related psychological theories as recurring but often under-specified foundations in dark-pattern research."
   },
   {
     "term": "Manipulation", "slug": "manipulation", "aliases": [],
     "short": "Influencing behaviour by bypassing or subverting rational agency.",
     "seeAlso": ["persuasive-design", "deceptive-design", "coercion"],
-    "references": ["wilkinson-2013", "ahuja-2022"],
+    "references": ["wilkinson-2013", "ahuja-2022", "chang-2024"],
     "body": "Manipulation works on the decision process itself — through cognitive bias, emotion, or hidden influence — in ways the person would not endorse if they saw the mechanism. It differs from deception (which targets beliefs) and coercion (which targets the choice set)."
   },
   {

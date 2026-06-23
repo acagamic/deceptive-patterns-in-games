@@ -65,9 +65,10 @@ export function relatedPatterns(
   all: Pattern[],
   limit = 6,
 ): Pattern[] {
+  const targetTags = new Set(target.data.tags.map(tagKey));
   const score = (p: Pattern) => {
     if (p.id === target.id) return -1;
-    const tag = p.data.tags.filter((t) => target.data.tags.includes(t)).length;
+    const tag = p.data.tags.filter((t) => targetTags.has(tagKey(t))).length;
     const fam = p.data.family === target.data.family ? 1 : 0;
     const harm = p.data.harmVectors.filter((h) =>
       target.data.harmVectors.includes(h),
@@ -82,10 +83,21 @@ export function relatedPatterns(
     .map((x) => x.p);
 }
 
+export function tagKey(t: string): string {
+  return t.trim().toLowerCase();
+}
+
 export function tagCounts(all: Pattern[]): { tag: string; count: number }[] {
   const m = new Map<string, number>();
-  for (const p of all)
-    for (const t of p.data.tags) m.set(t, (m.get(t) ?? 0) + 1);
+  for (const p of all) {
+    const seen = new Set<string>();
+    for (const raw of p.data.tags) {
+      const tag = tagKey(raw);
+      if (!tag || seen.has(tag)) continue;
+      seen.add(tag);
+      m.set(tag, (m.get(tag) ?? 0) + 1);
+    }
+  }
   return [...m.entries()]
     .map(([tag, count]) => ({ tag, count }))
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
@@ -106,5 +118,5 @@ export async function labelMaps() {
 }
 
 export function tagLabel(t: string): string {
-  return t.replace(/-/g, " ");
+  return tagKey(t).replace(/-/g, " ");
 }

@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && astro build && pagefind --site dist",
     "preview": "astro preview",
     "generate": "node scripts/generate.mjs",
     "astro": "astro"

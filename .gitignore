@@ -18,3 +18,5 @@ pnpm-debug.log*
 .vscode/
 # QA artifacts
 .playwright-mcp/
+# local raw crawl exports
+data/

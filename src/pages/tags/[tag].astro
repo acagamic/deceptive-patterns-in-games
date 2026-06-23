@@ -1,18 +1,24 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PatternCard from "../../components/PatternCard.astro";
-import { allPatterns, labelMaps, tagLabel, sevRank } from "../../lib/patterns";
+import { allPatterns, labelMaps, tagLabel, sevRank, tagKey } from "../../lib/patterns";
 
 export async function getStaticPaths() {
   const patterns = await allPatterns();
-  const tags = [...new Set(patterns.flatMap((p) => p.data.tags))];
-  return tags.map((tag) => ({
+  const byTag = new Map<string, typeof patterns>();
+  for (const p of patterns) {
+    for (const raw of new Set(p.data.tags.map(tagKey))) {
+      if (!raw) continue;
+      byTag.set(raw, [...(byTag.get(raw) ?? []), p]);
+    }
+  }
+  return [...byTag.entries()].map(([tag, members]) => ({
     params: { tag },
     props: {
       tag,
-      members: patterns
-        .filter((p) => p.data.tags.includes(tag))
-        .sort((a, b) => sevRank(b.data.severity) - sevRank(a.data.severity)),
+      members: members.sort(
+        (a, b) => sevRank(b.data.severity) - sevRank(a.data.severity),
+      ),
     },
   }));
 }

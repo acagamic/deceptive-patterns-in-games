@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 
 <Base
   title="About & methodology"
-  description="How this primer was built: scope, DOI-only sourcing, AI-assistance disclosure, foundational works, how to contribute, and licensing."
+  description="How this primer was built: scope, source policy, AI-assistance disclosure, foundational works, how to contribute, and licensing."
 >
   <section class="mx-auto max-w-2xl px-4 py-10" data-pagefind-body>
     <h1 class="font-serif text-3xl font-bold text-ink sm:text-4xl">
@@ -38,15 +38,22 @@ import Base from "../layouts/Base.astro";
           evidence level and resolvable sources — more transparent than a
           votes-only directory.
         </li>
+        <li>
+          <strong>Taxonomy crosswalk.</strong> The catalogue maps game-facing
+          patterns against Gray, Santos, Bielova &amp; Mildner's 2024 ontology
+          and uses Chang, Seaborn &amp; Adams' 2024 scoping review to keep
+          theoretical labels explicit.
+        </li>
       </ul>
 
-      <h2>Sourcing rule: DOI-only</h2>
+      <h2>Sourcing rule: DOI-first, source-resolvable</h2>
       <p>
-        Every reference in the <a href="/references">bibliography</a> is a
-        peer-reviewed or formally published source with a resolvable DOI, so any
-        claim can be checked at source. Where a foundational idea originates in a
-        source that has <em>no</em> DOI, it is credited here in prose rather than
-        cited as if a DOI existed:
+        The <a href="/references">bibliography</a> prioritises peer-reviewed and
+        formally published sources with resolvable DOIs. Selected institutional
+        reports and official web sources are included when they document a
+        current platform mechanism, practitioner taxonomy, or primary source that
+        cannot be represented by a DOI. Where a foundational idea sits outside
+        that bibliography, it is credited here:
       </p>
       <ul>
         <li>
@@ -62,14 +69,20 @@ import Base from "../layouts/Base.astro";
           <strong>Björk &amp; Holopainen</strong>, whose game-design-patterns
           program underpins the “pattern” framing.
         </li>
+        <li>
+          <strong>Gray, Santos, Bielova &amp; Mildner (2024)</strong> and
+          <strong>Chang, Seaborn &amp; Adams (2024)</strong>, which provide the
+          current ontology and theory-review anchors for this site's general
+          deceptive-design framing.
+        </li>
       </ul>
 
       <h2>AI-assistance disclosure</h2>
       <p>
         Literature discovery used AI-assisted academic search tools, and the
         catalogue's structure and prose were drafted with AI support during a
-        2026 Dagstuhl Seminar working session. Every DOI was verified against a
-        bibliographic index, and the synthesis, severity judgements, and
+        2026 Dagstuhl Seminar working session. Every DOI or canonical URL was
+        checked against its source, and the synthesis, severity judgements, and
         taxonomy design are the editors'. Treat severity and evidence labels as
         considered editorial calls grounded in the cited literature as of 2026 —
         not settled fact.
@@ -102,9 +115,10 @@ import Base from "../layouts/Base.astro";
         <li>
           <strong>References</strong> are the source of truth in{" "}
           <code>src/content/references.csl.json</code> (CSL JSON). Add a source
-          with a DOI and reference its <code>id</code> from any pattern or
-          glossary entry. A shared Zotero library can export straight into this
-          format, so a group can curate references together and sync to the repo.
+          with a DOI or canonical URL and reference its <code>id</code> from any
+          pattern or glossary entry. A shared Zotero library can export straight
+          into this format, so a group can curate references together and sync to
+          the repo.
         </li>
         <li>
           <strong>Glossary, families, harms, modes, and the rubric</strong> are
