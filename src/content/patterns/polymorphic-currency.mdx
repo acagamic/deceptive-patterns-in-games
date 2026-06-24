@@ -1,0 +1,33 @@
+---
+title: "Polymorphic / fragmented currency"
+code: "M18"
+category: "Monetary & randomised"
+family: "sneaking"
+severity: "Medium"
+purpose: "business"
+platforms: ["Mobile / F2P"]
+evidenceLevel: "Emerging"
+evidenceNote: "Catalogued in qualitative analysis of Chinese and Japanese free-to-play mobile games."
+harmVectors: ["financial"]
+modes: ["manipulative", "exploitative"]
+tags: ["virtual-currency", "price-obfuscation", "monetization", "policymakers", "serves-business", "low-transparency", "monetary-pressure", "cognitive-pressure", "vulnerability-exploitation"]
+communication:
+  honesty: false
+  transparency: true
+  control: false
+  consent: false
+summary: "Many purpose-specific, non-interchangeable currencies fragment a player's funds so true value and price are impossible to track."
+examples: ["Separate currencies for gacha, shop, events, and upgrades that can't be pooled", "Earned soft currency that can't buy what premium currency can", "Event tokens that expire and never convert"]
+references: ["zhang-2025b", "petrovskaya-zendle-2022"]
+related: []
+aliases: ["fragmented currency", "multiple currencies", "non-fungible in-game currency"]
+updated: "2026-06-24"
+---
+
+## How it works
+
+Rather than a single wallet, the game splits spending power across many narrowly-scoped currencies — one for gacha, another for the shop, others for events or upgrades — that cannot be exchanged for one another. Players can rarely tell what anything truly costs, or consolidate what they already hold.
+
+## Why it can be harmful
+
+Fragmentation defeats price comparison and value intuition, and leaves stranded balances that nudge further purchases to "round up" to a usable amount. It is distinct from simple currency-conversion obfuscation: the mechanism here is partitioning funds into silos so that no single balance is ever quite enough for what the player wants.

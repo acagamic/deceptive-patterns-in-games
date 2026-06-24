@@ -1,0 +1,33 @@
+---
+title: "Fragmented downloads / hidden storage cost"
+code: "I17"
+category: "Informational / interface"
+family: "sneaking"
+severity: "Low"
+purpose: "business"
+platforms: ["Mobile / F2P"]
+evidenceLevel: "Emerging"
+evidenceNote: "Identified as a 'technical' deceptive design in analysis of Chinese and Japanese free-to-play mobile games."
+harmVectors: ["autonomy", "financial"]
+modes: ["deceptive"]
+tags: ["storage-cost", "hidden", "disclosure", "developers", "serves-business", "deceptive-communication", "low-transparency", "data-pressure", "cognitive-pressure"]
+communication:
+  honesty: true
+  transparency: true
+  control: false
+  consent: false
+summary: "The true storage footprint is concealed until install begins, after the player is already committed."
+examples: ["A small advertised download that balloons on first launch", "Required data fetched only after installation starts", "Store size that omits mandatory post-install assets"]
+references: ["zhang-2025b"]
+related: []
+aliases: ["hidden storage cost", "deferred download", "post-install bloat"]
+updated: "2026-06-24"
+---
+
+## How it works
+
+The store or install flow advertises a small initial download, but the game pulls down substantial additional data only after installation begins or at first launch — concealing the true storage footprint until the player is already committed.
+
+## Why it can be harmful
+
+Players who manage their device storage cannot make an informed choice, and the partial commitment — a started download, an installed shell — discourages backing out. It carries the concealment logic of hidden costs from the interface into the technical install layer, and can also incur unexpected mobile-data charges.
