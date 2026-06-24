@@ -14,6 +14,23 @@ const patterns = defineCollection({
     platforms: z.array(z.string()).default([]),
     evidenceLevel: z.enum(["Strong", "Moderate", "Emerging"]),
     evidenceNote: z.string().optional(),
+    // Player-facing communication taxonomy. Each flag = this pattern FAILS that
+    // test. Honesty: deceptive to the player. Transparency: hidden from them.
+    // Control: forces them to opt in. Consent: gives no real opt-out before they
+    // engage. A pattern failing none is "transparent but exploitative".
+    communication: z
+      .object({
+        honesty: z.boolean().default(false),
+        transparency: z.boolean().default(false),
+        control: z.boolean().default(false),
+        consent: z.boolean().default(false),
+      })
+      .default({
+        honesty: false,
+        transparency: false,
+        control: false,
+        consent: false,
+      }),
     harmVectors: z.array(z.string()).default([]), // harm ids
     modes: z.array(z.string()).default([]), // mode ids
     tags: z.array(z.string()).default([]),

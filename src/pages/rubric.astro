@@ -2,7 +2,34 @@
 import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
 import Badge from "../components/Badge.astro";
-import ScatterViz from "../components/ScatterViz.astro";
+import QuadrantViz from "../components/QuadrantViz.astro";
+
+const commTests = [
+  {
+    name: "Honesty",
+    q: "Is it deceptive to the player?",
+    tone: "text-sev-high",
+    note: "The mechanic communicates something false — a fake discount, a manufactured “almost”, a misleading label.",
+  },
+  {
+    name: "Transparency",
+    q: "Is the mechanic hidden from the player?",
+    tone: "text-sev-medium",
+    note: "Key facts are withheld rather than misstated — undisclosed odds, obscured real-money cost, buried terms.",
+  },
+  {
+    name: "Control",
+    q: "Are players forced to opt in?",
+    tone: "text-accent",
+    note: "Engagement is imposed by default or by interruption — preselected purchases, forced registration, unskippable prompts.",
+  },
+  {
+    name: "Consent",
+    q: "Can players not opt out before they engage?",
+    tone: "text-sev-severe",
+    note: "There is no real exit once it starts — obstructed cancellation, sludge, penalties for leaving.",
+  },
+];
 
 const rubric = await getCollection("rubric");
 const modes = await getCollection("modes");
@@ -119,9 +146,8 @@ const evidenceScale = [
         Beyond their purpose, we assign every pattern two <em>independent</em> scores.
         <strong class="text-ink">Severity</strong> is how serious the harm can be when
         the pattern is included in a game. <strong class="text-ink">Evidence</strong> rates how strong the
-        research base is that it actually causes harm. They are orthogonal dimensions, a pattern
-        can be severe but barely studied, or well-evidenced yet modest in impact, so the map
-        below plots them on separate axes.
+        research base is that it actually causes harm. They are orthogonal dimensions: a pattern
+        can be severe but barely studied, or well-evidenced yet modest in impact.
       </p>
       <div class="mt-5 grid gap-x-8 gap-y-6 sm:grid-cols-2">
         <div>
@@ -155,8 +181,46 @@ const evidenceScale = [
           </ul>
         </div>
       </div>
-      <figure class="mt-7">
-        <ScatterViz />
+    </section>
+
+    <!-- player-facing communication quadrants -->
+    <section class="mt-8 rounded-2xl border border-border bg-surface p-6">
+      <h2 class="font-sans text-lg font-bold tracking-tight text-ink">
+        Four tests: how a pattern fails the player
+      </h2>
+      <p class="mt-2 max-w-3xl text-xs sm:text-sm leading-relaxed text-muted">
+        Severity and evidence say <em>how bad</em> and <em>how sure</em>. This
+        last lens says <em>how</em> a pattern fails its player — through four
+        questions about the communication a game owes the people playing it. The
+        top two are <strong class="text-ink">informational</strong> pressures
+        (what the player is told); the bottom two are
+        <strong class="text-ink">psychological</strong> pressures (what the
+        player is allowed to choose).
+      </p>
+      <div class="mt-5 grid gap-4 text-xs sm:grid-cols-2">
+        {
+          commTests.map((t) => (
+            <div class="rounded-2xl border border-border bg-paper p-5">
+              <div class="flex items-baseline gap-2">
+                <span class={`text-sm font-bold tracking-tight ${t.tone}`}>{t.name}</span>
+                <span class="text-[11px] font-medium text-muted">{t.q}</span>
+              </div>
+              <p class="mt-2 text-ink/80 leading-relaxed">{t.note}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-5 max-w-3xl text-xs sm:text-sm leading-relaxed text-muted">
+        The map below plots every pattern by the test(s) it fails — a single
+        failure sits in that quadrant, two failures move to the shared edge
+        between them, and a pattern that fails all four pulls to the centre.
+        Dots are coloured by severity. The patterns beneath the grid fail
+        <em>none</em> of the four tests yet remain harmful — the
+        transparent-but-exploitative cases that honesty, transparency, control,
+        and consent rules cannot reach.
+      </p>
+      <figure class="mt-6">
+        <QuadrantViz />
       </figure>
     </section>
 
