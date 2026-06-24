@@ -32,6 +32,7 @@ const vizData = { points };
 
 <script>
   import { select } from "d3";
+  import "d3-transition";
 
   const svg = document.getElementById("comm-quad-viz");
   const dataEl = document.getElementById("comm-quad-data");
@@ -165,6 +166,40 @@ const vizData = { points };
     const defaultCap = cap ? cap.innerHTML : "";
     const R = 4.4,
       sp = 12;
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let dotOrder = 0;
+
+    // hover tooltip — created up front, raised above dots on focus
+    const tip = root
+      .append("g")
+      .attr("class", "quadviz-tip")
+      .style("opacity", 0)
+      .style("pointer-events", "none");
+    const tipBg = tip.append("rect").attr("class", "quadviz-tip-bg").attr("rx", 5);
+    const tipText = tip.append("text").attr("class", "quadviz-tip-text");
+
+    function showTip(p: any, x: number, y: number) {
+      tipText.text(`${p.code} · ${p.title}`);
+      const b = (tipText.node() as SVGTextElement).getBBox();
+      const padX = 9,
+        padY = 5;
+      let bx = x - b.width / 2 - padX;
+      bx = Math.max(mL - 4, Math.min(bx, mL + S + 4 - (b.width + padX * 2)));
+      const below = y - R - 14 - (b.height + padY * 2) < 0;
+      const by = below ? y + R + 10 : y - R - 12 - (b.height + padY * 2);
+      tipBg
+        .attr("x", bx)
+        .attr("y", by)
+        .attr("width", b.width + padX * 2)
+        .attr("height", b.height + padY * 2);
+      tipText.attr("x", bx + padX).attr("y", by + padY + b.height - 3);
+      tip.raise().interrupt().transition().duration(110).style("opacity", 1);
+    }
+    function hideTip() {
+      tip.interrupt().transition().duration(120).style("opacity", 0);
+    }
 
     function makeDot(p: any, x: number, y: number) {
       const g = root
@@ -174,11 +209,26 @@ const vizData = { points };
         .attr("tabindex", 0)
         .attr("aria-label", `${p.title} — ${p.severity} severity`)
         .style("cursor", "pointer");
-      g.append("circle")
-        .attr("cx", x)
-        .attr("cy", y)
-        .attr("r", R)
+      const circle = g
+        .append("circle")
+        .attr("cx", reduce ? x : cxPlot)
+        .attr("cy", reduce ? y : cyPlot)
+        .attr("r", reduce ? R : 0)
         .attr("class", `quadviz-dot sev-${p.severity}`);
+      if (!reduce) {
+        // load animation: dots fly out from the centre and sort into place
+        circle
+          .style("opacity", 0)
+          .transition()
+          .delay(160 + dotOrder * 7)
+          .duration(620)
+          .ease((t: number) => 1 - Math.pow(1 - t, 3))
+          .attr("cx", x)
+          .attr("cy", y)
+          .attr("r", R)
+          .style("opacity", 1);
+        dotOrder++;
+      }
       const go = () => (window.location.href = `/patterns/${p.slug}`);
       g.on("mouseenter", () => focusDot(g, p, x, y))
         .on("mouseleave", () => blurDot(g))
@@ -249,9 +299,10 @@ const vizData = { points };
       makeDot(p, x, rowY);
     });
 
-    function focusDot(g: any, p: any, _x: number, _y: number) {
-      g.select("circle").attr("r", R + 2.6);
+    function focusDot(g: any, p: any, x: number, y: number) {
       g.raise();
+      g.select("circle").interrupt().attr("r", R + 2.6);
+      showTip(p, x, y);
       const on = (["honesty", "transparency", "control", "consent"] as const)
         .filter((d) => p.comm?.[d])
         .map((d) => d[0].toUpperCase() + d.slice(1));
@@ -261,6 +312,7 @@ const vizData = { points };
     }
     function blurDot(g: any) {
       g.select("circle").attr("r", R);
+      hideTip();
       if (cap) cap.innerHTML = defaultCap;
     }
   }
@@ -285,6 +337,18 @@ const vizData = { points };
   }
   .quadviz-note {
     color: var(--ink);
+    font-weight: 600;
+  }
+  .quadviz-tip {
+    transition: opacity 0.12s;
+  }
+  .quadviz-tip-bg {
+    fill: var(--ink);
+    opacity: 0.96;
+  }
+  .quadviz-tip-text {
+    fill: var(--paper);
+    font-size: 12px;
     font-weight: 600;
   }
   .quadviz-band-info {
