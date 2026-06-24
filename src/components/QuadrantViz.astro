@@ -309,9 +309,19 @@ const vizData = { points };
       makeDot(p, x, rowY);
     });
 
+    // Hit areas (r=11) overlap the 12px dot spacing, so a dot's pointerleave
+    // can be swallowed when moving to a neighbour. Track the active dot and
+    // revert it explicitly rather than relying on every leave event firing.
+    let activeG: any = null;
+    function resetDot(g: any) {
+      g.classed("quadviz-node-active", false);
+      g.select(".quadviz-dot").interrupt().attr("r", R);
+    }
     function focusDot(g: any, p: any, x: number, y: number) {
+      if (activeG && activeG.node() !== g.node()) resetDot(activeG);
+      activeG = g;
       g.classed("quadviz-node-active", true);
-      g.select("circle").interrupt().attr("r", R + 2.6);
+      g.select(".quadviz-dot").interrupt().attr("r", R + 2.6);
       showTip(p, x, y);
       const on = (["honesty", "transparency", "control", "consent"] as const)
         .filter((d) => p.comm?.[d])
@@ -321,8 +331,10 @@ const vizData = { points };
         cap.innerHTML = `<strong>${p.code} · ${p.title}</strong> — ${p.severity} severity · fails: <span class="quadviz-note">${fails}</span>`;
     }
     function blurDot(g: any) {
-      g.classed("quadviz-node-active", false);
-      g.select("circle").attr("r", R);
+      resetDot(g);
+      // ignore a stale leave for a dot that is no longer the active one
+      if (activeG && activeG.node() !== g.node()) return;
+      activeG = null;
       hideTip();
       if (cap) cap.innerHTML = defaultCap;
     }
